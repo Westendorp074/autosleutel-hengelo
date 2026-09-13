@@ -698,14 +698,14 @@ def contactblok():
     </div>"""
 
 def formulier(bron, met_contact=True):
-    opties = "".join(f'<option>{t["naam"]}</option>' for t in SLEUTELTYPEN[:-1]) + "<option>Weet ik niet</option>"
+    # Zelfde velden en volgorde als het formulier van autosleutel-almelo (wens eigenaar 13-9-2026).
     return f"""
 <section class="sectie sectie--zand" id="kenteken">
   <div class="wrap">
     <div class="blok blok--form">
     <div class="sectie__kop">
-      <h2>Vaste prijs vóórdat u komt</h2>
-      <p>Stuur uw kenteken. U hoort dezelfde werkdag wat uw sleutel kost, of het terwijl u wacht kan, en of wij bij u langs kunnen komen. Liever direct antwoord? <a href="tel:{TEL_LINK}" data-conv="bellen">Bel {TEL_HTML}</a> of stuur een <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p>
+      <h2>Vraag uw prijs aan</h2>
+      <p>Vul uw kenteken in en u hoort dezelfde werkdag wat uw sleutel kost en wanneer u terecht kunt, of wanneer wij bij u kunnen zijn. Liever direct antwoord? <a href="tel:{TEL_LINK}" data-conv="bellen">Bel {TEL_HTML}</a>.</p>
     </div>
     <form action="https://api.web3forms.com/submit" method="POST" class="form" data-key="{WEB3FORMS_KEY}">
       <input type="hidden" name="access_key" value="{WEB3FORMS_KEY}">
@@ -714,26 +714,23 @@ def formulier(bron, met_contact=True):
       <input type="hidden" name="redirect" value="{SITE}/bedankt">
       <input type="hidden" name="bron" value="{bron}">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
-      <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
-        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off"></div>
-      <div class="veld"><label for="type">Sleuteltype</label>
-        <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option>{opties}</select></div>
-      <div class="veld"><label for="situatie">Wat is er aan de hand</label>
-        <select id="situatie" name="situatie" required><option value="">Maak een keuze</option>
-          <option>Ik wil een reservesleutel</option><option>Ik ben alle sleutels kwijt</option>
-          <option>Mijn sleutel is kapot</option><option>Iets anders</option></select></div>
-      <div class="veld"><label for="waar">Waar wilt u geholpen worden</label>
-        <select id="waar" name="locatie" required><option value="">Maak een keuze</option>
-          <option>In de werkplaats in Enschede</option><option>Aan huis in Hengelo (vanaf € {AAN_HUIS_VANAF})</option>
-          <option>Aan huis buiten Hengelo (op aanvraag)</option></select></div>
       <div class="veld"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
       <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
       <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
-      <div class="veld veld--vol"><label for="opm">Toelichting <small>(niet verplicht)</small></label>
-        <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: merk en bouwjaar, of wat de sleutel precies doet."></textarea></div>
+      <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
+        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off">
+        <small>Hiermee zien wij direct welke sleutel u nodig heeft.</small></div>
+      <div class="veld"><label for="type">Met of zonder afstandsbediening</label>
+        <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option>
+          <option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Weet ik niet</option></select></div>
+      <div class="veld"><label for="start">Hoe start uw auto</label>
+        <select id="start" name="starten" required><option value="">Maak een keuze</option>
+          <option>Sleutel in het contact</option><option>Keyless — startknop</option><option>Weet ik niet</option></select></div>
+      <div class="veld veld--vol"><label for="opm">Opmerkingen</label>
+        <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
       <div class="veld veld--vol">
-        <p class="form-uit" hidden>Het formulier is nog niet actief. Bel <a href="tel:{TEL_LINK}" data-conv="bellen">{TEL_HTML}</a> of stuur een <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p>
-        <button class="knop knop--geel" type="submit" data-conv="formulier">Prijs opvragen</button>
+        <p class="form-uit" hidden>Het aanvraagformulier is nog niet actief. Bel <a href="tel:{TEL_LINK}" data-conv="bellen">{TEL_HTML}</a> of stuur een <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp-bericht</a> — dan heeft u meteen antwoord.</p>
+        <button class="knop knop--geel" type="submit" data-conv="formulier">Vraag mijn prijs aan</button>
         <small>Wij gebruiken uw gegevens alleen om uw aanvraag te beantwoorden. <a href="/privacy">Privacyverklaring</a>.</small>
       </div>
     </form>

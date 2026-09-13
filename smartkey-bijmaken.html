@@ -71,8 +71,8 @@
   <div class="wrap">
     <div class="blok blok--form">
     <div class="sectie__kop">
-      <h2>Vaste prijs vóórdat u komt</h2>
-      <p>Stuur uw kenteken. U hoort dezelfde werkdag wat uw sleutel kost, of het terwijl u wacht kan, en of wij bij u langs kunnen komen. Liever direct antwoord? <a href="tel:+31534784245" data-conv="bellen">Bel 053 - 478 42 45</a> of stuur een <a href="https://wa.me/31534784245" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p>
+      <h2>Vraag uw prijs aan</h2>
+      <p>Vul uw kenteken in en u hoort dezelfde werkdag wat uw sleutel kost en wanneer u terecht kunt, of wanneer wij bij u kunnen zijn. Liever direct antwoord? <a href="tel:+31534784245" data-conv="bellen">Bel 053 - 478 42 45</a>.</p>
     </div>
     <form action="https://api.web3forms.com/submit" method="POST" class="form" data-key="a64f80df-574c-43c9-b15c-f67332fd1a3f">
       <input type="hidden" name="access_key" value="a64f80df-574c-43c9-b15c-f67332fd1a3f">
@@ -81,26 +81,23 @@
       <input type="hidden" name="redirect" value="https://autosleutel-hengelo.nl/bedankt">
       <input type="hidden" name="bron" value="smartkey-bijmaken">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
-      <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
-        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off"></div>
-      <div class="veld"><label for="type">Sleuteltype</label>
-        <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option><option>Transpondersleutel</option><option>Klapsleutel</option><option>Smartkey</option><option>Sleutelkaart</option><option>Weet ik niet</option></select></div>
-      <div class="veld"><label for="situatie">Wat is er aan de hand</label>
-        <select id="situatie" name="situatie" required><option value="">Maak een keuze</option>
-          <option>Ik wil een reservesleutel</option><option>Ik ben alle sleutels kwijt</option>
-          <option>Mijn sleutel is kapot</option><option>Iets anders</option></select></div>
-      <div class="veld"><label for="waar">Waar wilt u geholpen worden</label>
-        <select id="waar" name="locatie" required><option value="">Maak een keuze</option>
-          <option>In de werkplaats in Enschede</option><option>Aan huis in Hengelo (vanaf € 45)</option>
-          <option>Aan huis buiten Hengelo (op aanvraag)</option></select></div>
       <div class="veld"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
       <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
       <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
-      <div class="veld veld--vol"><label for="opm">Toelichting <small>(niet verplicht)</small></label>
-        <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: merk en bouwjaar, of wat de sleutel precies doet."></textarea></div>
+      <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
+        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off">
+        <small>Hiermee zien wij direct welke sleutel u nodig heeft.</small></div>
+      <div class="veld"><label for="type">Met of zonder afstandsbediening</label>
+        <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option>
+          <option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Weet ik niet</option></select></div>
+      <div class="veld"><label for="start">Hoe start uw auto</label>
+        <select id="start" name="starten" required><option value="">Maak een keuze</option>
+          <option>Sleutel in het contact</option><option>Keyless — startknop</option><option>Weet ik niet</option></select></div>
+      <div class="veld veld--vol"><label for="opm">Opmerkingen</label>
+        <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
       <div class="veld veld--vol">
-        <p class="form-uit" hidden>Het formulier is nog niet actief. Bel <a href="tel:+31534784245" data-conv="bellen">053 - 478 42 45</a> of stuur een <a href="https://wa.me/31534784245" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p>
-        <button class="knop knop--geel" type="submit" data-conv="formulier">Prijs opvragen</button>
+        <p class="form-uit" hidden>Het aanvraagformulier is nog niet actief. Bel <a href="tel:+31534784245" data-conv="bellen">053 - 478 42 45</a> of stuur een <a href="https://wa.me/31534784245" rel="noopener" data-conv="whatsapp">WhatsApp-bericht</a> — dan heeft u meteen antwoord.</p>
+        <button class="knop knop--geel" type="submit" data-conv="formulier">Vraag mijn prijs aan</button>
         <small>Wij gebruiken uw gegevens alleen om uw aanvraag te beantwoorden. <a href="/privacy">Privacyverklaring</a>.</small>
       </div>
     </form>
