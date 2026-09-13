@@ -24,7 +24,7 @@ PER_JAAR = "1.500"
 AAN_HUIS_VANAF = "45"
 REISTIJD = "15 minuten"
 GBP_LINK = "https://share.google/j46orGZulGyU4amTy"   # Google-bedrijfsprofiel Autosleutel Hengelo (deellink)
-REVIEW_LINK = GBP_LINK   # vervangen door de "Vraag om reviews"-link (g.page/r/…/review) uit het Hengelo-profiel
+REVIEW_LINK = "https://g.page/r/CakJOOdkl5gzEAE/review"   # "Vraag om reviews"-link uit het Hengelo-profiel
 ROUTE_LINK = "https://maps.app.goo.gl/1DX8q4eZJTdBvAbd8"   # Maps-vermelding werkplaats Enschede (Westendorp Sleutel- en Slotenspecialist)
 GBP_SCORE, GBP_AANTAL = "", 0   # invullen zodra er reviews zijn; leeg = niets tonen
 WEB3FORMS_KEY = "a64f80df-574c-43c9-b15c-f67332fd1a3f"   # eigen key voor deze site (web3forms.com, 13-9-2026)
