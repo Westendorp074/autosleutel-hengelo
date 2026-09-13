@@ -41,18 +41,19 @@ PLAATSEN = ["Hengelo", "Borne", "Delden", "Goor", "Haaksbergen", "Oldenzaal", "L
 
 # Richtprijzen (zelfde werkplaats en tarieven als de andere vestigingen, anders verwoord)
 P_KOPIE, P_NIEUW, P_SMART, P_REP = "€ 60 – € 120", "€ 150 – € 250", "€ 150 – € 300", "€ 30 – € 80"
+P_KLAP, P_KAART = "€ 130 – € 200", "€ 130 – € 250"   # klapsleutel en sleutelkaart: vanaf € 130 (eigenaar 13-9-2026)
 
 # ============================================================
 # Sleuteltypen — de ruggengraat van deze site
 # ============================================================
 SLEUTELTYPEN = [
     dict(slug="klapsleutel-bijmaken", naam="Klapsleutel", kop="Klapsleutel bijmaken",
-         icoon="klap", prijs_kopie=P_KOPIE, prijs_nieuw=P_NIEUW,
+         icoon="klap", prijs_kopie=P_KLAP, prijs_nieuw=P_NIEUW,
          kort="De sleutel met de uitklapbare baard en knopjes op de behuizing.",
          herken="De metalen baard klapt met een knop uit de behuizing. Op de behuizing zitten twee of drie knopjes.",
          merken="Volkswagen, Audi, Seat, Skoda, Opel, Ford, Fiat, Hyundai, Kia, Peugeot, Citroën",
          foto="opel-astra-klapsleutel-bijmaken.jpg", alt="Twee bijgemaakte Opel-klapsleutels voor een grijze Opel Astra",
-         antwoord=f"Een klapsleutel bijmaken kost {P_KOPIE} als u nog een werkende sleutel heeft, en {P_NIEUW} als u "
+         antwoord=f"Een klapsleutel bijmaken kost {P_KLAP} als u nog een werkende sleutel heeft, en {P_NIEUW} als u "
                   "er geen meer heeft. Daar zit alles in: de behuizing, het frezen van de baard, de chip en het "
                   "inleren van de afstandsbediening. In de meeste gevallen is de sleutel klaar terwijl u wacht.",
          tekst=[
@@ -105,12 +106,12 @@ SLEUTELTYPEN = [
               ("Waarom is een smartkey duurder?",
                "De sleutel zelf is duurder in inkoop en het inleren vraagt merkspecifieke apparatuur en meer tijd.")]),
     dict(slug="sleutelkaart-bijmaken", naam="Sleutelkaart", kop="Sleutelkaart bijmaken",
-         icoon="kaart", prijs_kopie=P_SMART, prijs_nieuw=P_SMART,
+         icoon="kaart", prijs_kopie=P_KAART, prijs_nieuw=P_KAART,
          kort="De platte kaart die u in het dashboard schuift of gewoon bij u houdt.",
          herken="Een platte kaart van ongeveer creditcardformaat, met knopjes. Bekend van Renault, Dacia en Mercedes.",
          merken="Renault, Dacia, Mercedes-Benz",
          foto="renault-kadjar-sleutelkaart-bijmaken.jpg", alt="Twee Renault-sleutelkaarten bijgemaakt voor een Renault Kadjar",
-         antwoord=f"Een sleutelkaart bijmaken kost {P_SMART}. Renault-kaarten (Mégane, Scénic, Clio, Captur, Kadjar) "
+         antwoord=f"Een sleutelkaart bijmaken kost {P_KAART}. Renault-kaarten (Mégane, Scénic, Clio, Captur, Kadjar) "
                   "maken wij inclusief het inleren op de auto. Een kaart waarvan de knopjes het niet meer doen, "
                   "repareren wij vaak voor " + P_REP + ".",
          tekst=[
@@ -494,6 +495,14 @@ def foto(bestand, alt, klas="", breed=1200, hoog=900, lazy=True):
     """Toont de foto als hij in img/ staat; anders een nette plekhouder, zodat de build nooit breekt."""
     if (IMG / bestand).exists():
         lz = ' loading="lazy"' if lazy else ' fetchpriority="high"'
+        # Staande foto's (sleutel onderin, auto erboven) krijgen een klasse zodat de uitsnede iets lager ligt.
+        try:
+            from PIL import Image
+            with Image.open(IMG / bestand) as im:
+                if im.height > im.width:
+                    klas = (klas + " is-staand").strip()
+        except Exception:
+            pass
         return f'<img class="{klas}" src="/img/{bestand}" alt="{html.escape(alt)}" width="{breed}" height="{hoog}"{lz}>'
     return f'<div class="foto-plek {klas}" role="img" aria-label="{html.escape(alt)}"><span>foto volgt</span></div>'
 
@@ -585,7 +594,10 @@ def kop_html(titel, omschrijving, pad, jsonld, beeld=None, noindex=False):
       <a href="/merken">Merken</a>
       <a href="/contact">Contact</a>
     </nav>
-    <a class="top__tel" href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}<span>{TEL_HTML}</span></a>
+    <div class="top__acties">
+      <a class="top__wa" href="{WA_LINK}" rel="noopener" data-conv="whatsapp" aria-label="WhatsApp">{icoon("wa")}</a>
+      <a class="top__tel" href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}<span>{TEL_HTML}</span></a>
+    </div>
   </div>
 </header>
 """
@@ -841,16 +853,16 @@ rijen = "".join(
     f'<tr><td><a href="/{t["slug"]}">{t["naam"]}</a><br><small>{t["kort"]}</small></td><td>{t["prijs_kopie"]}</td><td>{t["prijs_nieuw"]}</td></tr>'
     for t in SLEUTELTYPEN[:-1])
 pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
-       f"Wat kost een autosleutel bijmaken in Hengelo? Richtprijzen per sleuteltype: kopie {P_KOPIE}, nieuwe sleutel {P_NIEUW}, "
-       f"smartkey {P_SMART}, reparatie {P_REP}. Aan huis vanaf € {AAN_HUIS_VANAF}.",
+       f"Wat kost een autosleutel bijmaken in Hengelo? Richtprijzen per sleuteltype: transpondersleutel {P_KOPIE}, klapsleutel {P_KLAP}, "
+       f"sleutelkaart {P_KAART}, smartkey {P_SMART}, reparatie {P_REP}. Aan huis vanaf € {AAN_HUIS_VANAF}.",
        "/prijzen", jsonld=[kruimels_jsonld([("Home", "/"), ("Prijzen", "/prijzen")])],
        body=f"""
 {kruimels([("Home", "/"), ("Prijzen", "")])}
 <section class="sectie sectie--kort">
   <div class="wrap wrap--tekst">
     <h1>Wat kost een autosleutel bijmaken?</h1>
-    {antwoord(f"Een kopie van een sleutel die u nog heeft kost {P_KOPIE}. Heeft u geen werkende sleutel meer, dan is het {P_NIEUW}. "
-              f"Een smartkey of sleutelkaart kost {P_SMART}, een reparatie {P_REP}. Alles inclusief programmeren en btw. "
+    {antwoord(f"Een gewone transpondersleutel kopiëren kost {P_KOPIE}, een klapsleutel {P_KLAP}, een sleutelkaart {P_KAART} en een smartkey {P_SMART}. "
+              f"Heeft u geen werkende sleutel meer, dan is het {P_NIEUW}. Een reparatie kost {P_REP}. Alles inclusief programmeren en btw. "
               f"Aan huis in Hengelo betaalt u vanaf € {AAN_HUIS_VANAF} extra.")}
     <p>De prijs hangt niet af van hoe duur uw auto was, maar van het sleuteltype en van de vraag of u nog een werkende sleutel heeft. Uw kenteken maakt er één vaste prijs van, en die krijgt u vooraf.</p>
     <table class="prijstabel">
@@ -1032,7 +1044,7 @@ for k in KENNIS:
 # ============================================================
 # MERKEN
 # ============================================================
-merk_kaarten = "".join(f'<a class="merk" href="/{s}"><b>{n}</b><span>{" · ".join(TYPE_NAAM[x] for x in typen)}</span></a>' for n, s, typen, *_ in MERKEN)
+merk_kaarten = "".join(f'<a class="merk" href="/{s}"><b>{n}</b><span>Alle sleuteltypen · vanaf {P_KOPIE.split(" – ")[0]}</span></a>' for n, s, typen, *_ in MERKEN)
 pagina("merken.html", f"Autosleutel bijmaken per merk | {HANDELSNAAM}",
        "Per automerk: welke sleuteltypen er zijn, wat wij bijmaken en repareren, en wat het kost. Van Volkswagen tot Jaguar.",
        "/merken", jsonld=[kruimels_jsonld([("Home", "/"), ("Merken", "/merken")])],
@@ -1051,10 +1063,13 @@ for m in MERKEN:
     fotohtml = ""
     if fotoinfo:
         fotohtml = f'<figure class="media__foto">{foto(fotoinfo[0], fotoinfo[1], lazy=False)}<figcaption>{fotoinfo[1]}</figcaption></figure>'
-    typelinks = "".join(f'<a class="kies kies--klein" href="/{TYPE_SLUG[x]}">{icoon(x)}<span>{TYPE_NAAM[x]}</span></a>' for x in typen)
-    prijs = P_SMART if typen[0] in ("smart", "kaart") else P_KOPIE
+    # Bewust ALLE sleuteltypen tonen: welk type een auto heeft verschilt per model en bouwjaar, dus wij gaan er niet vanuit maar vragen het de klant.
+    typelinks = "".join(f'<a class="kies kies--klein" href="/{t["slug"]}">{icoon(t["icoon"])}<span>{t["naam"]}</span></a>' for t in SLEUTELTYPEN)
+    prijs = P_KOPIE
     mfaq = [(f"Wat kost een {naam}-sleutel bijmaken?",
-             f"Een kopie van een {naam}-sleutel kost {P_KOPIE}, een smartkey of sleutelkaart {P_SMART}. Zonder werkende sleutel {P_NIEUW}. Uw kenteken geeft de exacte prijs."),
+             f"Dat hangt af van het sleuteltype: een transpondersleutel {P_KOPIE}, een klapsleutel {P_KLAP}, een sleutelkaart {P_KAART}, een smartkey {P_SMART}. Zonder werkende sleutel {P_NIEUW}. Uw kenteken geeft de exacte prijs."),
+            (f"Welk sleuteltype heeft mijn {naam}?",
+             "Dat verschilt per model en bouwjaar, dus daar gaan wij niet vanuit. Kijk naar uw sleutel: klapt de baard uit (klapsleutel), start u met een knop (smartkey), is het een platte kaart (sleutelkaart) of een vaste sleutel zonder knopjes (transpondersleutel)? Twijfelt u, stuur dan een foto via WhatsApp."),
             (f"Kan het ook als ik alle {naam}-sleutels kwijt ben?",
              "Bij de meeste modellen wel. Neem kentekenbewijs en identiteitsbewijs mee; wij wissen de oude sleutels uit de auto.")]
     pagina(slug + ".html", f"{naam} autosleutel bijmaken Hengelo | {prijs.split(' – ')[0].replace('€ ', 'vanaf € ')}",
@@ -1068,7 +1083,8 @@ for m in MERKEN:
   <div class="wrap {'media' if fotohtml else 'wrap--tekst'}">
     <div>
       <h1>{naam} autosleutel bijmaken in Hengelo</h1>
-      {antwoord(f"Voor {naam} maken wij {' en '.join(TYPE_NAAM[x].lower() + 's' for x in typen)} bij, inclusief het programmeren op uw auto. "
+      {antwoord(f"Voor {naam} maken wij transpondersleutels, klapsleutels, smartkeys en sleutelkaarten bij, inclusief het programmeren op uw auto. "
+                f"Welk type uw {naam} heeft, hangt af van model en bouwjaar; wij vragen het u, of zien het aan uw kenteken. "
                 f"Richtprijs vanaf {prijs.split(' – ')[0]}, meestal klaar terwijl u wacht in onze werkplaats, {REISTIJD} vanaf Hengelo. Ook aan huis.")}
       <p>{tekst1}</p>
       {f"<p>{tekst2}</p>" if tekst2 else ""}
@@ -1077,7 +1093,7 @@ for m in MERKEN:
     {fotohtml}
   </div>
 </section>
-<section class="sectie sectie--zand"><div class="wrap"><div class="sectie__kop"><h2>Sleuteltypen bij {naam}</h2></div><div class="kiezer kiezer--klein">{typelinks}</div></div></section>
+<section class="sectie sectie--zand"><div class="wrap"><div class="sectie__kop"><h2>Welk sleuteltype heeft uw {naam}?</h2><p>Dat verschilt per model en bouwjaar. Kies het type dat op uw sleutel lijkt; u ziet dan meteen de richtprijs. Twijfelt u? Stuur een foto via <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p></div><div class="kiezer kiezer--klein">{typelinks}</div></div></section>
 {faqblok(mfaq, f"Vragen over {naam}")}
 {formulier("merk-" + slug)}
 """)
@@ -1155,7 +1171,7 @@ zusterbedrijf van {MOEDER} ({MOEDER_URL}). Werkplaats: {STRAAT}, {POSTCODE} {PLA
 ## Feiten
 - Telefoon {TEL_TONEN}, WhatsApp, e-mail {MAIL}. Open di–vr 09:00–17:30, za 09:00–17:00.
 - Maakt, programmeert en repareert klapsleutels, smartkeys, sleutelkaarten en transpondersleutels voor vrijwel elk merk.
-- Richtprijzen incl. programmeren en btw: kopie {P_KOPIE}; nieuwe sleutel zonder werkend exemplaar {P_NIEUW}; smartkey/sleutelkaart {P_SMART}; reparatie {P_REP}.
+- Richtprijzen incl. programmeren en btw: transpondersleutel {P_KOPIE}; klapsleutel {P_KLAP}; sleutelkaart {P_KAART}; smartkey {P_SMART}; nieuwe sleutel zonder werkend exemplaar {P_NIEUW}; reparatie {P_REP}.
 - Aan-huisservice in Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; omgeving op aanvraag.
 - Meestal klaar terwijl u wacht (20–30 minuten). Levenslange garantie op de chip, 2 jaar op een nieuwe afstandsbediening.
 - Westendorp bestaat sinds {SINDS}; maakt jaarlijks meer dan {PER_JAAR} autosleutels bij.
