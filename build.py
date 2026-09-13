@@ -753,7 +753,7 @@ def merkenstrip():
 # ============================================================
 galerij = "".join(
     f'<figure>{foto(f, a)}<figcaption>{c}</figcaption></figure>' for f, a, c in [
-        ("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten bijgemaakt voor een Renault Kadjar", "Renault Kadjar · sleutelkaart"),
+        ("mini-clubman-smartkey-bijmaken.jpg", "Twee Mini-smartkeys bijgemaakt voor een Mini Clubman", "Mini Clubman · smartkey"),
         ("citroen-c4-picasso-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Citroën C4 Picasso", "Citroën C4 Picasso · smartkey"),
         ("fiat-500-klapsleutel-bijmaken.jpg", "Fiat 500 met originele en bijgemaakte klapsleutel", "Fiat 500 · klapsleutel"),
         ("jeep-compass-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jeep Compass", "Jeep Compass · smartkey"),
@@ -777,8 +777,8 @@ pagina("index.html",
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
     </div>
-    <figure class="hero__foto">{foto("mini-clubman-smartkey-bijmaken.jpg", "Twee Mini-smartkeys bijgemaakt voor een Mini Clubman", lazy=False)}
-      <figcaption>Mini Clubman, twee smartkeys, klaar in één bezoek</figcaption></figure>
+    <figure class="hero__foto">{foto("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten bijgemaakt voor een Renault Kadjar", lazy=False)}
+      <figcaption>Renault Kadjar, twee sleutelkaarten, klaar in één bezoek</figcaption></figure>
   </div>
   {vertrouwen()}
 </section>
