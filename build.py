@@ -485,6 +485,7 @@ def bedrijf_jsonld():
     d = {
         "@context": "https://schema.org", "@type": "AutomotiveBusiness", "@id": SITE + "/#bedrijf",
         "name": HANDELSNAAM, "url": SITE, "telephone": TEL_LINK, "email": MAIL, "priceRange": "€€",
+        "logo": SITE + "/img/logo-autosleutel-hengelo.png", "image": SITE + "/img/og-autosleutel-hengelo.jpg",
         "foundingDate": str(SINDS),
         "parentOrganization": {"@type": "Organization", "name": RECHTSPERSOON},
         "sameAs": [MOEDER_URL] + ([GBP_LINK] if GBP_LINK else []),
@@ -559,7 +560,7 @@ def kop_html(titel, omschrijving, pad, jsonld, beeld=None, noindex=False):
 <body>
 <header class="top">
   <div class="wrap top__in">
-    <a class="top__merk" href="/"><span class="top__blok" aria-hidden="true"></span>Autosleutel <em>Hengelo</em></a>
+    <a class="top__merk" href="/" aria-label="Autosleutel Hengelo – naar de homepage"><img src="/img/logo-autosleutel-hengelo.png" alt="Autosleutel Hengelo" width="720" height="184" decoding="async"></a>
     <nav class="top__nav" aria-label="Hoofdmenu">
       <a href="/prijzen">Prijzen</a>
       <a href="/klapsleutel-bijmaken">Sleuteltypen</a>
