@@ -40,7 +40,8 @@ PLAATSEN = ["Hengelo", "Borne", "Delden", "Goor", "Haaksbergen", "Oldenzaal", "L
             "Denekamp", "Weerselo", "Hengevelde", "Beckum", "Deurningen"]
 
 # Richtprijzen (zelfde werkplaats en tarieven als de andere vestigingen, anders verwoord)
-P_KOPIE, P_NIEUW, P_SMART, P_REP = "€ 60 – € 120", "€ 150 – € 250", "€ 150 – € 300", "€ 30 – € 80"
+# Alle sleutels kwijt (geen werkend exemplaar): GEEN prijs noemen, verschilt te sterk per merk/bouwjaar (eigenaar 13-9-2026).
+P_KOPIE, P_NIEUW, P_SMART, P_REP = "€ 60 – € 120", "Prijs op aanvraag", "€ 150 – € 300", "€ 30 – € 80"
 P_KLAP, P_KAART = "€ 130 – € 200", "€ 130 – € 250"   # klapsleutel en sleutelkaart: vanaf € 130 (eigenaar 13-9-2026)
 
 # ============================================================
@@ -53,9 +54,10 @@ SLEUTELTYPEN = [
          herken="De metalen baard klapt met een knop uit de behuizing. Op de behuizing zitten twee of drie knopjes.",
          merken="Volkswagen, Audi, Seat, Skoda, Opel, Ford, Fiat, Hyundai, Kia, Peugeot, Citroën",
          foto="opel-astra-klapsleutel-bijmaken.jpg", alt="Twee bijgemaakte Opel-klapsleutels voor een grijze Opel Astra",
-         antwoord=f"Een klapsleutel bijmaken kost {P_KLAP} als u nog een werkende sleutel heeft, en {P_NIEUW} als u "
-                  "er geen meer heeft. Daar zit alles in: de behuizing, het frezen van de baard, de chip en het "
-                  "inleren van de afstandsbediening. In de meeste gevallen is de sleutel klaar terwijl u wacht.",
+         antwoord=f"Een klapsleutel bijmaken kost {P_KLAP} als u nog een werkende sleutel heeft. Daar zit alles in: de "
+                  "behuizing, het frezen van de baard, de chip en het inleren van de afstandsbediening. In de meeste "
+                  "gevallen is de sleutel klaar terwijl u wacht. Bent u alle sleutels kwijt, dan verschilt de prijs sterk "
+                  "per merk en bouwjaar; u krijgt vooraf een vaste prijs op basis van uw kenteken.",
          tekst=[
              ("Wat er in een klapsleutel zit",
               "Drie dingen tegelijk: een gefreesde baard die het slot opent, een transponderchip die de "
@@ -77,7 +79,7 @@ SLEUTELTYPEN = [
                "Nee. Meestal is de veer of het scharnier versleten. Een nieuwe behuizing met uw eigen chip en "
                "zender erin lost dat op, voor " + P_REP + ".")]),
     dict(slug="smartkey-bijmaken", naam="Smartkey", kop="Smartkey / keyless sleutel bijmaken",
-         icoon="smart", prijs_kopie=P_SMART, prijs_nieuw=P_SMART,
+         icoon="smart", prijs_kopie=P_SMART, prijs_nieuw=P_NIEUW,
          kort="U start met een knop; de sleutel blijft in uw zak of tas.",
          herken="Uw auto heeft een startknop. De sleutel heeft vaak geen zichtbare baard, of een noodsleutel die uit de behuizing schuift.",
          merken="BMW, Mini, Mercedes-Benz, Volvo, Jaguar, Land Rover, Jeep, Nissan, Toyota, Hyundai, Kia, Ford",
@@ -106,7 +108,7 @@ SLEUTELTYPEN = [
               ("Waarom is een smartkey duurder?",
                "De sleutel zelf is duurder in inkoop en het inleren vraagt merkspecifieke apparatuur en meer tijd.")]),
     dict(slug="sleutelkaart-bijmaken", naam="Sleutelkaart", kop="Sleutelkaart bijmaken",
-         icoon="kaart", prijs_kopie=P_KAART, prijs_nieuw=P_KAART,
+         icoon="kaart", prijs_kopie=P_KAART, prijs_nieuw=P_NIEUW,
          kort="De platte kaart die u in het dashboard schuift of gewoon bij u houdt.",
          herken="Een platte kaart van ongeveer creditcardformaat, met knopjes. Bekend van Renault, Dacia en Mercedes.",
          merken="Renault, Dacia, Mercedes-Benz",
@@ -138,7 +140,8 @@ SLEUTELTYPEN = [
          merken="Toyota, Suzuki, Nissan, Dacia, oudere Volkswagen, Opel, Ford, Peugeot, Citroën, bestelwagens",
          foto="werkplaats-voorraad-autosleutel-behuizingen.jpg", alt="Voorraadkasten met sleutels, chips en behuizingen per merk in de werkplaats",
          antwoord=f"Een transpondersleutel kopiëren kost {P_KOPIE}. Heeft u geen werkende sleutel meer, dan maken wij "
-                  f"een nieuwe en leren die in op de auto: {P_NIEUW}. Een sleutel zonder chip past wel in het slot, "
+                  "een nieuwe en leren die in op de auto; de prijs daarvan hangt sterk af van merk en bouwjaar en hoort u "
+                  "vooraf via uw kenteken. Een sleutel zonder chip past wel in het slot, "
                   "maar de auto start er niet mee. Daarom is een autosleutel bijmaken programmeerwerk, geen slijpwerk.",
          tekst=[
              ("Wat de chip doet",
@@ -337,8 +340,8 @@ KENNIS = [
     dict(slug="tweedehands-auto-een-sleutel", titel="Tweedehands auto gekocht met maar één sleutel?",
          omschr="Een occasion met één sleutel is een risico. Wat u meteen regelt en waarom dat nu goedkoper is dan later.",
          intro="Laat direct een tweede sleutel maken. Nu kost dat een kopie (" + P_KOPIE + "); raakt die ene sleutel "
-               "later kwijt, dan wordt het een nieuwe sleutel zonder werkend exemplaar (" + P_NIEUW + ") en staat de auto "
-               "stil tot het geregeld is.",
+               "later kwijt, dan wordt het een nieuwe sleutel zonder werkend exemplaar: fors duurder, afhankelijk van merk "
+               "en bouwjaar, en de auto staat stil tot het geregeld is.",
          body=[
              ("Waarom occasions vaak met één sleutel komen", "Sleutels raken kwijt bij inruil, blijven achter bij de vorige "
               "eigenaar of gaan verloren bij de handel. De verkoper geeft wat hij heeft. Voor u betekent het dat alles "
@@ -859,11 +862,12 @@ pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
   <div class="wrap wrap--tekst">
     <h1>Wat kost een autosleutel bijmaken?</h1>
     {antwoord(f"Een gewone transpondersleutel kopiëren kost {P_KOPIE}, een klapsleutel {P_KLAP}, een sleutelkaart {P_KAART} en een smartkey {P_SMART}. "
-              f"Heeft u geen werkende sleutel meer, dan is het {P_NIEUW}. Een reparatie kost {P_REP}. Alles inclusief programmeren en btw. "
+              f"Een reparatie kost {P_REP}. Alles inclusief programmeren en btw. Bent u alle sleutels kwijt, dan verschilt de prijs "
+              f"sterk per merk en bouwjaar; die krijgt u vooraf op basis van uw kenteken. "
               f"Aan huis in Hengelo betaalt u vanaf € {AAN_HUIS_VANAF} extra.")}
     <p>De prijs hangt niet af van hoe duur uw auto was, maar van het sleuteltype en van de vraag of u nog een werkende sleutel heeft. Uw kenteken maakt er één vaste prijs van, en die krijgt u vooraf.</p>
     <table class="prijstabel">
-      <thead><tr><th>Sleuteltype</th><th>Kopie (u heeft nog een sleutel)</th><th>Nieuw (geen werkende sleutel)</th></tr></thead>
+      <thead><tr><th>Sleuteltype</th><th>Kopie (u heeft nog een sleutel)</th><th>Alle sleutels kwijt (geen werkend exemplaar)</th></tr></thead>
       <tbody>{rijen}
       <tr><td><a href="/autosleutel-reparatie">Reparatie</a><br><small>behuizing, knopjes, veer, chip terugsolderen</small></td><td colspan="2">{P_REP}</td></tr>
       <tr><td><a href="/aan-huis">Aan huis in Hengelo</a><br><small>bovenop de sleutelprijs</small></td><td colspan="2">vanaf € {AAN_HUIS_VANAF}</td></tr>
@@ -913,7 +917,7 @@ for t in SLEUTELTYPEN:
 </section>
 <section class="sectie sectie--zand"><div class="wrap wrap--tekst">
   <div class="prijs-kaart"><div><small>Kopie, u heeft nog een sleutel</small><b>{t["prijs_kopie"]}</b></div>
-  <div><small>Nieuw, geen werkende sleutel</small><b>{t["prijs_nieuw"]}</b></div>
+  <div><small>Alle sleutels kwijt</small><b>{t["prijs_nieuw"]}</b></div>
   <div><small>Aan huis in Hengelo</small><b>+ vanaf € {AAN_HUIS_VANAF}</b></div></div>
   {secties}
 </div></section>
@@ -1064,7 +1068,7 @@ for m in MERKEN:
     typelinks = "".join(f'<a class="kies kies--klein" href="/{t["slug"]}">{icoon(t["icoon"])}<span>{t["naam"]}</span></a>' for t in SLEUTELTYPEN)
     prijs = P_KOPIE
     mfaq = [(f"Wat kost een {naam}-sleutel bijmaken?",
-             f"Dat hangt af van het sleuteltype: een transpondersleutel {P_KOPIE}, een klapsleutel {P_KLAP}, een sleutelkaart {P_KAART}, een smartkey {P_SMART}. Zonder werkende sleutel {P_NIEUW}. Uw kenteken geeft de exacte prijs."),
+             f"Dat hangt af van het sleuteltype: een transpondersleutel {P_KOPIE}, een klapsleutel {P_KLAP}, een sleutelkaart {P_KAART}, een smartkey {P_SMART}. Bent u alle sleutels kwijt, dan verschilt de prijs sterk per model en bouwjaar. Uw kenteken geeft de exacte prijs."),
             (f"Welk sleuteltype heeft mijn {naam}?",
              "Dat verschilt per model en bouwjaar, dus daar gaan wij niet vanuit. Kijk naar uw sleutel: klapt de baard uit (klapsleutel), start u met een knop (smartkey), is het een platte kaart (sleutelkaart) of een vaste sleutel zonder knopjes (transpondersleutel)? Twijfelt u, stuur dan een foto via WhatsApp."),
             (f"Kan het ook als ik alle {naam}-sleutels kwijt ben?",
@@ -1168,7 +1172,7 @@ zusterbedrijf van {MOEDER} ({MOEDER_URL}). Werkplaats: {STRAAT}, {POSTCODE} {PLA
 ## Feiten
 - Telefoon {TEL_TONEN}, WhatsApp, e-mail {MAIL}. Open di–vr 09:00–17:30, za 09:00–17:00.
 - Maakt, programmeert en repareert klapsleutels, smartkeys, sleutelkaarten en transpondersleutels voor vrijwel elk merk.
-- Richtprijzen incl. programmeren en btw: transpondersleutel {P_KOPIE}; klapsleutel {P_KLAP}; sleutelkaart {P_KAART}; smartkey {P_SMART}; nieuwe sleutel zonder werkend exemplaar {P_NIEUW}; reparatie {P_REP}.
+- Richtprijzen incl. programmeren en btw: transpondersleutel {P_KOPIE}; klapsleutel {P_KLAP}; sleutelkaart {P_KAART}; smartkey {P_SMART}; reparatie {P_REP}. Alle sleutels kwijt (geen werkend exemplaar): prijs op aanvraag, verschilt sterk per merk en bouwjaar.
 - Aan-huisservice in Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; omgeving op aanvraag.
 - Meestal klaar terwijl u wacht (20–30 minuten). Levenslange garantie op de chip, 2 jaar op een nieuwe afstandsbediening.
 - Westendorp bestaat sinds {SINDS}; maakt jaarlijks meer dan {PER_JAAR} autosleutels bij.
