@@ -55,7 +55,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .label .ic{width:18px;height:18px;margin:0}
 
 /* header */
-.top{position:sticky;top:0;z-index:40;background:rgba(251,248,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
 .top__in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
 .top__merk{display:flex;align-items:center;flex:none}
 .top__merk img{display:block;height:46px;width:auto}
@@ -183,30 +183,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .kb span{font-weight:700;color:var(--groen);display:inline-flex;align-items:center}
 .kb span .ic{margin:0 0 0 6px;width:18px;height:18px}
 .artikel h2{font-size:1.45rem;margin-top:36px}
+.artikel__foto{margin:0 0 8px}
+.artikel__foto img,.artikel__foto .foto-plek{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-groot)}
+.artikel__foto figcaption{font-size:.86rem;color:var(--stil);margin-top:10px}
 .artikel__cta{background:var(--wit);border:1px solid var(--lijn);border-radius:20px;padding:24px 26px;margin-top:40px}
 .artikel__cta .knoppen{margin-bottom:0}
 
-/* contact */
-.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
-.contact-kaart{background:var(--wit);border:1px solid var(--lijn);border-radius:var(--r-groot);padding:30px}
-.contact-kaart h2{font-size:1.4rem}
-.contact-kaart p{display:flex;gap:10px;align-items:flex-start}
-.contact-kaart .ic{margin:3px 0 0}
-.contactlijst{list-style:none;padding:0;margin:24px 0;display:grid;gap:12px}
-.contactlijst a{display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--wit);border:1px solid var(--lijn);border-radius:16px;text-decoration:none;color:var(--tekst)}
+/* contact / blokken (zelfde opzet als autosleutel-almelo: witte blokken onder elkaar) */
+.blok{background:var(--wit);border:1px solid var(--lijn);border-radius:var(--r-groot);padding:40px}
+.blok + .blok{margin-top:28px}
+.blok--form .sectie__kop{margin-bottom:28px;max-width:70ch}
+.blok__kop{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--lijn)}
+.blok__kop h2{font-size:1.5rem;margin-bottom:16px}
+.moeder{display:flex;align-items:center;gap:22px;margin:0;max-width:none;font-size:.95rem;color:var(--zacht)}
+.moeder img{width:150px;height:auto;flex:none}
+.contactlijst{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:12px}
+.contactlijst--rij{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.contactlijst a{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--bg);border:1px solid var(--lijn);border-radius:16px;text-decoration:none;color:var(--tekst)}
 .contactlijst a:hover{border-color:var(--groen)}
 .contactlijst .ic{width:26px;height:26px;margin:0}
-.contactlijst span{display:flex;flex-direction:column;line-height:1.3;font-family:var(--kop);font-weight:800;font-size:1.05rem;min-width:0;overflow-wrap:anywhere}
+.contactlijst span{display:flex;flex-direction:column;line-height:1.3;font-family:var(--kop);font-weight:800;font-size:1.02rem;min-width:0;overflow-wrap:anywhere}
 .contactlijst b{font-size:.78rem;color:var(--stil);font-weight:700}
-.moeder{font-size:.95rem;color:var(--stil);border-top:1px solid var(--lijn);padding-top:18px;margin-top:28px}
-@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+.feiten{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px 24px}
+.feiten li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;line-height:1.5}
+.feiten .ic{margin:3px 0 0}
+.feiten b{display:block;font-family:var(--kop);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--stil);margin-bottom:2px}
+@media(max-width:640px){.blok{padding:24px 20px}.moeder{flex-direction:column;align-items:flex-start;gap:12px}.moeder img{width:130px}}
 
 /* formulier */
-.blok-form{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
-.blok-form__tekst h2{color:#fff}
-.blok-form__tekst p{color:#D6EADF}
-.blok-form__of a{color:#fff}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--wit);border-radius:var(--r-groot);padding:28px;color:var(--tekst)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;color:var(--tekst)}
 .veld{display:flex;flex-direction:column;gap:6px}
 .veld--vol{grid-column:1/-1}
 .veld label{font-size:.9rem;font-weight:700}
@@ -217,8 +222,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .veld small{font-size:.85rem}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-uit{background:#FBF3E1;border-left:3px solid var(--geel-donker);padding:12px 14px;font-size:.95rem;margin:0 0 12px;border-radius:0 8px 8px 0}
-@media(max-width:900px){.blok-form{grid-template-columns:1fr;gap:28px}}
-@media(max-width:600px){.form{grid-template-columns:1fr;padding:20px}}
+@media(max-width:600px){.form{grid-template-columns:1fr}}
 
 /* kruimels */
 .kruimels{font-size:.88rem;color:var(--stil);padding:18px 24px 0}

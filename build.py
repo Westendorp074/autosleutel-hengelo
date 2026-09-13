@@ -183,6 +183,9 @@ SLEUTELTYPEN = [
                "Meestal wel, maar wij zien vaak behuizingen die net niet passen. Onze behuizingen passen op de "
                "originele elektronica.")]),
 ]
+# Volgorde op de site (wens eigenaar): transpondersleutel, klapsleutel, smartkey, sleutelkaart, reparatie.
+_VOLGORDE = ["transpondersleutel-bijmaken", "klapsleutel-bijmaken", "smartkey-bijmaken", "sleutelkaart-bijmaken", "autosleutel-reparatie"]
+SLEUTELTYPEN.sort(key=lambda t: _VOLGORDE.index(t["slug"]))
 
 # ============================================================
 # Merken — alleen inhoud die per merk echt anders is
@@ -408,6 +411,15 @@ KENNIS = [
               ("Wat als mijn auto na een mislukte poging niet meer start?",
                "Bel ons. Vaak kunnen wij de startonderbreker resetten en alsnog een sleutel inleren.")]),
 ]
+# Foto per kennisartikel (bestand, alt, onderschrift)
+KENNIS_FOTO = {
+    "autosleutel-nat-geworden": ("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspecialist repareert de elektronica van een autosleutel aan de werkbank", "Natte elektronica repareren wij op componentniveau"),
+    "klapsleutel-veer-kapot": ("fiat-500-klapsleutel-bijmaken.jpg", "Fiat 500 met originele en bijgemaakte klapsleutel", "Nieuwe behuizing, eigen chip en zender: Fiat 500"),
+    "tweedehands-auto-een-sleutel": ("jaguar-xf-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jaguar XF", "Tweede sleutel bijgemaakt voor een Jaguar XF"),
+    "autosleutel-gestolen": ("jeep-compass-smartkey-bijmaken.jpg", "Sleutelspecialist toont twee nieuwe smartkeys voor een Jeep Compass", "Oude sleutels gewist, twee nieuwe ingeleerd: Jeep Compass"),
+    "afstandsbediening-werkt-niet": ("ford-mustang-autosleutel-bijmaken.jpg", "Bijgemaakte autosleutel met afstandsbediening voor een Ford Mustang", "Afstandsbediening opnieuw ingeleerd: Ford Mustang"),
+    "zelf-autosleutel-programmeren": ("autosleutel-programmeren-hyundai.jpg", "Twee Hyundai-sleutels worden ingeleerd via de OBD-aansluiting", "Inleren via de diagnoseaansluiting met professionele apparatuur"),
+}
 
 # ============================================================
 # Veelgestelde vragen homepage (anders dan Almelo)
@@ -452,10 +464,11 @@ TEL_HTML = html.escape(TEL_TONEN)
 
 _ICONEN = {
     "ster": '<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8z"/>',
-    "klap": '<path d="M4 16.5 12 8.5"/><path d="M12 8.5l3-3a2.5 2.5 0 0 1 3.5 3.5l-3 3"/><rect x="3" y="14" width="8" height="6" rx="2"/><path d="M6 17h2"/>',
+    "klap": '<rect x="8" y="11" width="8" height="10" rx="3"/><path d="M10.5 15h3M10.5 18h3"/><circle cx="12" cy="11" r="1.1" fill="currentColor" stroke="none"/><path d="M12 11l7-7"/><path d="M15.5 7.5l1.4 1.4M17.5 5.5l1.4 1.4"/>',
     "smart": '<rect x="7" y="3" width="10" height="18" rx="4"/><circle cx="12" cy="9" r="1.5"/><path d="M10 14h4M10 17h4"/>',
     "kaart": '<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M7 10h4M7 14h6"/><circle cx="17" cy="12" r="1.5"/>',
-    "chip": '<rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>',
+    "chip": '<circle cx="7.5" cy="12" r="3.8"/><circle cx="7.5" cy="12" r="1" fill="currentColor" stroke="none"/><path d="M11.3 12H21M17.5 12v3.2M20 12v2.4"/>',
+    "winkel": '<path d="M4 10.5 5.2 6h13.6L20 10.5"/><path d="M4 10.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5.5 12.8V20h13v-7.2"/><path d="M10 20v-4.5h4V20"/>',
     "rep": '<path d="M14.5 5.5a3.5 3.5 0 0 0-4.7 4.3L4 15.6 8.4 20l5.8-5.8a3.5 3.5 0 0 0 4.3-4.7l-2.3 2.3-2.2-.6-.6-2.2 2.1-2.3z"/>',
     "tel": '<path d="M5 4h4l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v4a1.5 1.5 0 0 1-1.6 1.5C10.9 20 4 13.1 4 5.6A1.5 1.5 0 0 1 5 4z"/>',
     "wa": '<path d="M4 20l1.3-4A7.5 7.5 0 1 1 8 18.7L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1l-.2-1.2-1.6-.6-.8.9c-1-.4-1.8-1.2-2.2-2.2l.9-.8-.6-1.6L9.8 8c-.5 0-1 .4-1 1z"/>',
@@ -582,7 +595,7 @@ VOET = f"""
   <div class="wrap voet__grid">
     <div>
       <div class="voet__kop">{HANDELSNAAM}</div>
-      <p>Autosleutels bijmaken, programmeren en repareren voor Hengelo en omgeving. Onderdeel van {RECHTSPERSOON}.</p>
+      <p>Autosleutels bijmaken, programmeren en repareren voor Hengelo en omgeving. Onderdeel van {MOEDER} ({RECHTSPERSOON}).</p>
       <p>KvK {KVK} · btw {BTW}</p>
     </div>
     <div>
@@ -610,7 +623,7 @@ VOET = f"""
     </div>
   </div>
   <p class="wrap voet__onder">© 2026 {RECHTSPERSOON}. Merknamen zijn eigendom van de fabrikanten en worden alleen gebruikt om aan te geven voor welke auto's wij sleutels maken.
-  Zusterbedrijven: <a href="{MOEDER_URL}" rel="noopener">Westendorp Slotenspecialist</a> · <a href="https://autosleutel-enschede.nl/" rel="noopener">Autosleutel Enschede</a> · <a href="https://www.autosleutel-almelo.nl/" rel="noopener">Autosleutel Almelo</a></p>
+  {HANDELSNAAM} is onderdeel van <a href="{MOEDER_URL}" rel="noopener">{MOEDER}</a> in Enschede.</p>
 </footer>
 <div class="belbalk is-verborgen">
   <a class="belbalk__bel" href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}Bel {TEL_HTML}</a>
@@ -651,15 +664,36 @@ def vertrouwen():
   <div>{icoon("huis")}<b>Vanaf € {AAN_HUIS_VANAF}</b><span>aan huis in Hengelo</span></div>
 </div>"""
 
-def formulier(bron):
+def contactblok():
+    """Wit blok met contactgegevens, werkplaats en het Westendorp-logo (zelfde opzet als autosleutel-almelo)."""
+    return f"""
+    <div class="blok blok--contact">
+      <div class="blok__kop">
+        <h2>Werkplaats en winkel</h2>
+        <p class="moeder"><a href="{MOEDER_URL}" rel="noopener"><img src="/img/logo-westendorp.png" alt="{MOEDER}" width="360" height="108" loading="lazy"></a>
+          <span>{HANDELSNAAM} is onderdeel van {MOEDER} in Enschede; daar staat onze werkplaats. Ook voor huis- en fietssleutels, sloten en inbraakbeveiliging.</span></p>
+      </div>
+      <ul class="contactlijst contactlijst--rij">
+        <li><a href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}<span><b>Bellen</b>{TEL_HTML}</span></a></li>
+        <li><a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">{icoon("wa")}<span><b>WhatsApp</b>Stuur een foto van uw sleutel</span></a></li>
+        <li><a href="mailto:{MAIL}">{icoon("mail")}<span><b>E-mail</b>{MAIL.replace("@", "@<wbr>")}</span></a></li>
+      </ul>
+      <ul class="feiten">
+        <li>{icoon("pin")}<span><b>Adres</b>{STRAAT}<br>{POSTCODE} {PLAATS}<br><a href="{ROUTE_LINK}" rel="noopener" data-conv="route">Routebeschrijving in Google Maps</a></span></li>
+        <li>{icoon("klok")}<span><b>Openingstijden</b>{"<br>".join(f"{d}: {t}" for d, t in OPENING)}</span></li>
+        <li>{icoon("parkeren")}<span><b>Parkeren</b>Gratis, overdekt winkelcentrum Enschede-Zuid</span></li>
+      </ul>
+    </div>"""
+
+def formulier(bron, met_contact=True):
     opties = "".join(f'<option>{t["naam"]}</option>' for t in SLEUTELTYPEN[:-1]) + "<option>Weet ik niet</option>"
     return f"""
-<section class="sectie sectie--groen" id="kenteken">
-  <div class="wrap blok-form">
-    <div class="blok-form__tekst">
+<section class="sectie sectie--zand" id="kenteken">
+  <div class="wrap">
+    <div class="blok blok--form">
+    <div class="sectie__kop">
       <h2>Vaste prijs vóórdat u komt</h2>
-      <p>Stuur uw kenteken. U hoort dezelfde werkdag wat uw sleutel kost, of het terwijl u wacht kan, en of wij bij u langs kunnen komen. Geen verrassingen achteraf.</p>
-      <p class="blok-form__of">Liever direct antwoord? <a href="tel:{TEL_LINK}" data-conv="bellen">Bel {TEL_HTML}</a> of stuur een <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p>
+      <p>Stuur uw kenteken. U hoort dezelfde werkdag wat uw sleutel kost, of het terwijl u wacht kan, en of wij bij u langs kunnen komen. Liever direct antwoord? <a href="tel:{TEL_LINK}" data-conv="bellen">Bel {TEL_HTML}</a> of stuur een <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p>
     </div>
     <form action="https://api.web3forms.com/submit" method="POST" class="form" data-key="{WEB3FORMS_KEY}">
       <input type="hidden" name="access_key" value="{WEB3FORMS_KEY}">
@@ -682,6 +716,7 @@ def formulier(bron):
           <option>Aan huis buiten Hengelo (op aanvraag)</option></select></div>
       <div class="veld"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
       <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
+      <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--vol"><label for="opm">Toelichting <small>(niet verplicht)</small></label>
         <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: merk en bouwjaar, of wat de sleutel precies doet."></textarea></div>
       <div class="veld veld--vol">
@@ -690,6 +725,8 @@ def formulier(bron):
         <small>Wij gebruiken uw gegevens alleen om uw aanvraag te beantwoorden. <a href="/privacy">Privacyverklaring</a>.</small>
       </div>
     </form>
+    </div>
+    {contactblok() if met_contact else ""}
   </div>
 </section>"""
 
@@ -720,6 +757,10 @@ galerij = "".join(
         ("citroen-c4-picasso-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Citroën C4 Picasso", "Citroën C4 Picasso · smartkey"),
         ("fiat-500-klapsleutel-bijmaken.jpg", "Fiat 500 met originele en bijgemaakte klapsleutel", "Fiat 500 · klapsleutel"),
         ("jeep-compass-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jeep Compass", "Jeep Compass · smartkey"),
+        ("jaguar-xf-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jaguar XF", "Jaguar XF · smartkey"),
+        ("ford-mustang-autosleutel-bijmaken.jpg", "Bijgemaakte autosleutel voor een Ford Mustang", "Ford Mustang · smartkey"),
+        ("bmw-x1-smartkey-bijmaken.jpg", "Twee BMW-smartkeys bijgemaakt voor een BMW X1", "BMW X1 · smartkey"),
+        ("opel-astra-klapsleutel-bijmaken.jpg", "Twee bijgemaakte Opel-klapsleutels voor een Opel Astra", "Opel Astra · klapsleutel"),
     ])
 pagina("index.html",
        f"Autosleutel bijmaken Hengelo | vanmiddag klaar, vanaf € 60",
@@ -736,8 +777,8 @@ pagina("index.html",
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
     </div>
-    <figure class="hero__foto">{foto("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten bijgemaakt voor een Renault Kadjar", lazy=False)}
-      <figcaption>Renault Kadjar, twee sleutelkaarten, klaar in één bezoek</figcaption></figure>
+    <figure class="hero__foto">{foto("mini-clubman-smartkey-bijmaken.jpg", "Twee Mini-smartkeys bijgemaakt voor een Mini Clubman", lazy=False)}
+      <figcaption>Mini Clubman, twee smartkeys, klaar in één bezoek</figcaption></figure>
   </div>
   {vertrouwen()}
 </section>
@@ -748,7 +789,7 @@ pagina("index.html",
     <ol class="stappen">
       <li>{icoon("kenteken")}<h3>Kenteken sturen</h3><p>Via het formulier, WhatsApp of telefoon. Uit het kenteken zien wij precies welke sleutel uw auto heeft.</p></li>
       <li>{icoon("vink")}<h3>Vaste prijs, dezelfde werkdag</h3><p>Inclusief of het terwijl u wacht kan, of een sleutel besteld moet worden, en wat aan huis kost.</p></li>
-      <li>{icoon("auto")}<h3>Werkplaats of aan huis</h3><p>U komt op afspraak naar Enschede ({REISTIJD}), of wij komen naar u toe in Hengelo.</p></li>
+      <li>{icoon("winkel")}<h3>Werkplaats of aan huis</h3><p>U komt op afspraak naar Enschede ({REISTIJD}), of wij komen naar u toe in Hengelo.</p></li>
     </ol>
   </div>
 </section>
@@ -784,7 +825,7 @@ pagina("index.html",
 </section>
 <section class="sectie">
   <div class="wrap">
-    <div class="sectie__kop"><h2>Deze week gemaakt</h2><p>Een greep uit de sleutels die wij onlangs maakten of repareerden.</p></div>
+    <div class="sectie__kop"><h2>Onlangs gemaakt</h2><p>Een greep uit de sleutels die wij de afgelopen tijd maakten of repareerden.</p></div>
     <div class="galerij">{galerij}</div>
   </div>
 </section>
@@ -930,31 +971,26 @@ pagina("contact.html", f"Contact en route vanuit Hengelo | {HANDELSNAAM}",
        body=f"""
 {kruimels([("Home", "/"), ("Contact", "")])}
 <section class="sectie sectie--kort">
-  <div class="wrap contact-grid">
-    <div>
+  <div class="wrap">
+    <div class="wrap--tekst" style="margin:0 0 36px">
       <h1>Contact</h1>
-      <p>Het snelst gaat het per telefoon: dan weet u binnen een paar minuten wat uw sleutel kost en wanneer u terecht kunt. Buiten openingstijden stuurt u een WhatsApp of het formulier; u hoort dezelfde werkdag van ons.</p>
-      <ul class="contactlijst">
-        <li><a href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}<span><b>Bellen</b>{TEL_HTML}</span></a></li>
-        <li><a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">{icoon("wa")}<span><b>WhatsApp</b>Stuur een foto van uw sleutel</span></a></li>
-        <li><a href="mailto:{MAIL}">{icoon("mail")}<span><b>E-mail</b>{MAIL}</span></a></li>
-      </ul>
+      <p class="intro">Het snelst gaat het per telefoon: dan weet u binnen een paar minuten wat uw sleutel kost en wanneer u terecht kunt. Buiten openingstijden stuurt u een WhatsApp of het formulier hieronder; u hoort dezelfde werkdag van ons.</p>
     </div>
-    <div class="contact-kaart">
-      <h2>Werkplaats en winkel</h2>
-      <p>{icoon("pin")}<b>{STRAAT}, {POSTCODE} {PLAATS}</b><br>Overdekt winkelcentrum Enschede-Zuid, gratis parkeren voor de deur.</p>
-      <p>{icoon("klok")}<b>Openingstijden</b><br>{'<br>'.join(f"{d}: {t}" for d, t in OPENING)}</p>
-      <p><a class="knop knop--rand" href="{ROUTE_LINK}" rel="noopener" data-conv="route">{icoon("route")}Routebeschrijving</a></p>
-    </div>
+    {contactblok()}
   </div>
 </section>
-<section class="sectie sectie--zand"><div class="wrap wrap--tekst">
-  <h2>Route vanuit Hengelo</h2>
-  <p>Vanuit Hengelo neemt u de A35 richting Enschede en volgt u de borden Enschede-Zuid. De werkplaats zit in het winkelcentrum aan de Wesseler-Nering; u rijdt er in ongeveer {REISTIJD}. Vanuit Borne, Delden en Oldenzaal is het vergelijkbaar. Kom op afspraak, dan ligt de juiste sleutel klaar en bent u meestal binnen een half uur weer buiten.</p>
-  <p>Auto die niet start? Dan hoeft u niet te komen: <a href="/aan-huis">wij komen naar Hengelo</a>.</p>
-  <p class="moeder">{HANDELSNAAM} is de autosleutelservice van <a href="{MOEDER_URL}" rel="noopener">{MOEDER}</a> in Enschede. Voor huis- en fietssleutels, sloten en inbraakbeveiliging bent u daar aan het juiste adres.</p>
-</div></section>
-{formulier("contact")}
+<section class="sectie sectie--kort sectie--groen-licht">
+  <div class="wrap media">
+    <div>
+      <h2>Route vanuit Hengelo</h2>
+      <p>Vanuit Hengelo neemt u de A35 richting Enschede en volgt u de borden Enschede-Zuid. De werkplaats zit in het winkelcentrum aan de Wesseler-Nering; u rijdt er in ongeveer {REISTIJD}. Vanuit Borne, Delden en Oldenzaal is het vergelijkbaar. Kom op afspraak, dan ligt de juiste sleutel klaar en bent u meestal binnen een half uur weer buiten.</p>
+      <p>Auto die niet start? Dan hoeft u niet te komen: <a href="/aan-huis">wij komen naar Hengelo</a>.</p>
+      <p><a class="knop knop--vol" href="{ROUTE_LINK}" rel="noopener" data-conv="route">{icoon("route")}Routebeschrijving</a></p>
+    </div>
+    <figure class="media__foto">{foto("werkplaats-autosleutel-reparatie-werkbank.jpg", "De werkplaats van Westendorp in Enschede: sleutelspecialist aan de werkbank")}<figcaption>De werkplaats aan de Wesseler-Nering in Enschede</figcaption></figure>
+  </div>
+</section>
+{formulier("contact", met_contact=False)}
 """)
 
 # ============================================================
@@ -974,14 +1010,18 @@ pagina("kennis.html", f"Kennis over autosleutels | {HANDELSNAAM}",
 """)
 for k in KENNIS:
     secties = "".join(f"<h2>{h}</h2><p>{p}</p>" for h, p in k["body"])
+    kf = KENNIS_FOTO.get(k["slug"])
+    kfoto = f'<figure class="artikel__foto">{foto(kf[0], kf[1], breed=1200, hoog=800)}<figcaption>{kf[2]}</figcaption></figure>' if kf else ""
     pagina(k["slug"] + ".html", f"{k['titel']} | Kennis {HANDELSNAAM}", k["omschr"], "/" + k["slug"],
            jsonld=[artikel_jsonld(k["titel"], "/" + k["slug"], k["omschr"]), faq_jsonld(k["faq"]),
                    kruimels_jsonld([("Home", "/"), ("Kennis", "/kennis"), (k["titel"], "/" + k["slug"])])],
+           beeld=kf[0] if kf else None,
            body=f"""
 {kruimels([("Home", "/"), ("Kennis", "/kennis"), (k["titel"], "")])}
 <article class="sectie sectie--kort"><div class="wrap wrap--tekst artikel">
   <h1>{k["titel"]}</h1>
   {antwoord(k["intro"])}
+  {kfoto}
   {secties}
   <div class="artikel__cta"><p><strong>Hulp nodig?</strong> Bel {TEL_HTML} of stuur een WhatsApp met een foto van uw sleutel. U hoort direct wat het kost.</p>{knoppen()}</div>
 </div></article>
