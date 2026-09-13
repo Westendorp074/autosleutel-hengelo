@@ -25,7 +25,7 @@ AAN_HUIS_VANAF = "45"
 REISTIJD = "15 minuten"
 GBP_LINK = ""        # vaste Google Maps-link van het Hengelo-bedrijfsprofiel (deellink: https://share.google/j46orGZulGyU4amTy)
 GBP_SCORE, GBP_AANTAL = "", 0   # invullen zodra er reviews zijn; leeg = niets tonen
-WEB3FORMS_KEY = "VUL-HIER-JE-WEB3FORMS-ACCESS-KEY-IN"   # eigen key voor deze site (web3forms.com)
+WEB3FORMS_KEY = "a64f80df-574c-43c9-b15c-f67332fd1a3f"   # eigen key voor deze site (web3forms.com, 13-9-2026)
 PRIVACY_DATUM = "13 september 2026"
 
 OPENING = [("Maandag", "gesloten"), ("Dinsdag", "09:00 – 17:30"), ("Woensdag", "09:00 – 17:30"),
@@ -133,7 +133,7 @@ SLEUTELTYPEN = [
          kort="De 'gewone' sleutel met een chip in de kop, met of zonder knopjes.",
          herken="Een vaste metalen baard met een kunststof kop. Er zit een chip in die u niet ziet. Vanaf ongeveer 1998 heeft bijna elke auto er een.",
          merken="Toyota, Suzuki, Nissan, Dacia, oudere Volkswagen, Opel, Ford, Peugeot, Citroën, bestelwagens",
-         foto="sleutelmachine-autosleutel-frezen.jpg", alt="Autosleutel wordt gefreesd in een professionele sleutelmachine",
+         foto="werkplaats-voorraad-autosleutel-behuizingen.jpg", alt="Voorraadkasten met sleutels, chips en behuizingen per merk in de werkplaats",
          antwoord=f"Een transpondersleutel kopiëren kost {P_KOPIE}. Heeft u geen werkende sleutel meer, dan maken wij "
                   f"een nieuwe en leren die in op de auto: {P_NIEUW}. Een sleutel zonder chip past wel in het slot, "
                   "maar de auto start er niet mee. Daarom is een autosleutel bijmaken programmeerwerk, geen slijpwerk.",
@@ -219,8 +219,7 @@ MERKEN = [
      "programmeren gaat via de auto zelf en vraagt merkspecifieke apparatuur. Voor de meeste modellen tot en met de "
      "huidige generatie kunnen wij dat.",
      "Bij een enkel zeer recent model is een bestelling via Mercedes de enige weg. Wij checken dat vooraf op "
-     "kenteken, zodat u niet voor niets komt.", "mercedes",
-     "autosleutel-programmeren-mercedes.jpg", "Autosleutel wordt geprogrammeerd op een Mercedes met diagnoseapparatuur"),
+     "kenteken, zodat u niet voor niets komt.", "mercedes"),
     ("Opel", "opel", ["klap", "smart"],
      "Corsa, Astra, Insignia, Zafira, Mokka: klapsleutels met twee of drie knopjes. De nieuwere Opels (vanaf de "
      "samenwerking met Peugeot en Citroën) hebben dezelfde sleutels als die merken.",
@@ -275,7 +274,7 @@ MERKEN = [
     ("Jeep", "jeep", ["smart", "klap"],
      "Renegade, Compass en Cherokee: smartkeys en klapsleutels. Jeep deelt de techniek met Fiat en Alfa Romeo.",
      "Op de foto: twee smartkeys voor een Jeep Compass.", "jeep",
-     "jeep-compass-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jeep Compass"),
+     "jeep-compass-smartkey-bijmaken.jpg", "Sleutelspecialist met handschoen toont twee smartkeys voor een witte Jeep Compass"),
     ("Jaguar", "jaguar", ["smart"],
      "XE, XF, F-Pace en E-Pace: smartkeys met keyless entry. Jaguar deelt de sleuteltechniek met Land Rover.",
      "Op de foto: een Jaguar XF met originele en bijgemaakte smartkey.", "jaguar",
@@ -554,6 +553,7 @@ def kop_html(titel, omschrijving, pad, jsonld, beeld=None, noindex=False):
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css?v={CSS_V}">
 <link rel="icon" href="/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 {ld}
 </head>
 <body>
@@ -891,7 +891,7 @@ pagina("aan-huis.html", f"Autosleutel aan huis Hengelo | vanaf € {AAN_HUIS_VAN
                 "Wij nemen de juiste sleutel mee, leren hem ter plekke in via de diagnoseaansluiting van de auto, en u rijdt weer.")}
       {knoppen("Bel voor een afspraak")}
     </div>
-    <figure class="media__foto">{foto("autosleutel-programmeren-mercedes.jpg", "Autosleutel wordt geprogrammeerd op een Mercedes met diagnoseapparatuur", lazy=False)}<figcaption>Inleren via de auto zelf</figcaption></figure>
+    <figure class="media__foto">{foto("autosleutel-programmeren-hyundai.jpg", "Twee Hyundai-sleutels worden ingeleerd via de OBD-aansluiting van de auto", lazy=False)}<figcaption>Inleren via de diagnoseaansluiting, ook bij u voor de deur</figcaption></figure>
   </div>
 </section>
 <section class="sectie sectie--zand"><div class="wrap wrap--tekst">
