@@ -23,7 +23,9 @@ SINDS = 1985
 PER_JAAR = "1.500"
 AAN_HUIS_VANAF = "45"
 REISTIJD = "15 minuten"
-GBP_LINK = ""        # vaste Google Maps-link van het Hengelo-bedrijfsprofiel (deellink: https://share.google/j46orGZulGyU4amTy)
+GBP_LINK = "https://share.google/j46orGZulGyU4amTy"   # Google-bedrijfsprofiel Autosleutel Hengelo (deellink)
+REVIEW_LINK = GBP_LINK   # vervangen door de "Vraag om reviews"-link (g.page/r/…/review) uit het Hengelo-profiel
+ROUTE_LINK = "https://maps.app.goo.gl/1DX8q4eZJTdBvAbd8"   # Maps-vermelding werkplaats Enschede (Westendorp Sleutel- en Slotenspecialist)
 GBP_SCORE, GBP_AANTAL = "", 0   # invullen zodra er reviews zijn; leeg = niets tonen
 WEB3FORMS_KEY = "a64f80df-574c-43c9-b15c-f67332fd1a3f"   # eigen key voor deze site (web3forms.com, 13-9-2026)
 PRIVACY_DATUM = "13 september 2026"
@@ -449,6 +451,7 @@ CSS_V, JS_V = versie("styles.css"), versie("site.js")
 TEL_HTML = html.escape(TEL_TONEN)
 
 _ICONEN = {
+    "ster": '<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8z"/>',
     "klap": '<path d="M4 16.5 12 8.5"/><path d="M12 8.5l3-3a2.5 2.5 0 0 1 3.5 3.5l-3 3"/><rect x="3" y="14" width="8" height="6" rx="2"/><path d="M6 17h2"/>',
     "smart": '<rect x="7" y="3" width="10" height="18" rx="4"/><circle cx="12" cy="9" r="1.5"/><path d="M10 14h4M10 17h4"/>',
     "kaart": '<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M7 10h4M7 14h6"/><circle cx="17" cy="12" r="1.5"/>',
@@ -585,7 +588,8 @@ VOET = f"""
     <div>
       <div class="voet__kop">Werkplaats</div>
       <p>{STRAAT}<br>{POSTCODE} {PLAATS}<br>Overdekt winkelcentrum, gratis parkeren</p>
-      <p><a href="https://www.google.com/maps/dir/?api=1&destination=Wesseler-Nering+32,+7544+JC+Enschede" rel="noopener" data-conv="route">{icoon("route")}Routebeschrijving</a></p>
+      <p><a href="{ROUTE_LINK}" rel="noopener" data-conv="route">{icoon("route")}Routebeschrijving</a></p>
+      <p><a href="{REVIEW_LINK}" rel="noopener" data-conv="review">{icoon("ster")}Geef ons een Google-review</a></p>
     </div>
     <div>
       <div class="voet__kop">Open</div>
@@ -940,7 +944,7 @@ pagina("contact.html", f"Contact en route vanuit Hengelo | {HANDELSNAAM}",
       <h2>Werkplaats en winkel</h2>
       <p>{icoon("pin")}<b>{STRAAT}, {POSTCODE} {PLAATS}</b><br>Overdekt winkelcentrum Enschede-Zuid, gratis parkeren voor de deur.</p>
       <p>{icoon("klok")}<b>Openingstijden</b><br>{'<br>'.join(f"{d}: {t}" for d, t in OPENING)}</p>
-      <p><a class="knop knop--rand" href="https://www.google.com/maps/dir/?api=1&destination=Wesseler-Nering+32,+7544+JC+Enschede" rel="noopener" data-conv="route">{icoon("route")}Routebeschrijving</a></p>
+      <p><a class="knop knop--rand" href="{ROUTE_LINK}" rel="noopener" data-conv="route">{icoon("route")}Routebeschrijving</a></p>
     </div>
   </div>
 </section>
@@ -1046,6 +1050,7 @@ pagina("bedankt.html", f"Bedankt | {HANDELSNAAM}", "Uw aanvraag is verstuurd.", 
   <h1>Uw aanvraag is verstuurd</h1>
   <p>Wij bekijken uw kenteken en sturen u dezelfde werkdag een vaste prijs, met daarbij wanneer u terecht kunt of wanneer wij bij u kunnen zijn. Heeft u haast? Bel gerust.</p>
   {knoppen()}
+  <p class="review-tip">{icoon("ster")}Al eerder bij ons geweest? Een korte <a href="{REVIEW_LINK}" rel="noopener" data-conv="review">Google-review voor Autosleutel Hengelo</a> helpt andere automobilisten uit Hengelo ons te vinden.</p>
 </div></section>
 """)
 
