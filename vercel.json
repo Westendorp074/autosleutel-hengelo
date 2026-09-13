@@ -2,6 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/", "has": [{ "type": "host", "value": "www.autosleutel-hengelo.nl" }], "destination": "https://autosleutel-hengelo.nl/", "permanent": true },
+    { "source": "/", "has": [{ "type": "host", "value": "autosleutel-hengelo.vercel.app" }], "destination": "https://autosleutel-hengelo.nl/", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "www.autosleutel-hengelo.nl" }], "destination": "https://autosleutel-hengelo.nl/:path*", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "autosleutel-hengelo.vercel.app" }], "destination": "https://autosleutel-hengelo.nl/:path*", "permanent": true },
     { "source": "/services", "destination": "/prijzen", "permanent": true },
