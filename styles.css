@@ -72,7 +72,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:560px){.top__merk img{height:38px}.top__tel span{display:none}.top__tel .ic{width:26px;height:26px;padding:6px;box-sizing:content-box;background:var(--groen-licht);border-radius:10px}}
 
 /* staande foto's: uitsnede iets lager zodat sleutel én auto in beeld blijven */
-img.is-staand{object-position:center 58%}
+img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig in beeld, auto als achtergrond */
 
 /* hero */
 .hero{padding:72px 0 0}
