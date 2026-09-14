@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=ff619001">
+<link rel="stylesheet" href="/styles.css?v=2dba4c07">
 <link rel="icon" href="/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AutomotiveBusiness","@id":"https://autosleutel-hengelo.nl/#bedrijf","name":"Autosleutel Hengelo","url":"https://autosleutel-hengelo.nl","telephone":"+31534784245","email":"autosleutel@westendorpgroep.nl","priceRange":"€€","logo":"https://autosleutel-hengelo.nl/img/logo-autosleutel-hengelo.png","image":"https://autosleutel-hengelo.nl/img/og-autosleutel-hengelo.jpg","foundingDate":"1985","parentOrganization":{"@type":"Organization","name":"Westendorp Groep VOF"},"sameAs":["https://westendorpslotenspecialist.nl/","https://share.google/j46orGZulGyU4amTy"],"address":{"@type":"PostalAddress","streetAddress":"Wesseler-Nering 32","postalCode":"7544 JC","addressLocality":"Enschede","addressRegion":"Overijssel","addressCountry":"NL"},"geo":{"@type":"GeoCoordinates","latitude":52.1929,"longitude":6.8886},"areaServed":[{"@type":"City","name":"Hengelo"},{"@type":"City","name":"Borne"},{"@type":"City","name":"Delden"},{"@type":"City","name":"Goor"},{"@type":"City","name":"Haaksbergen"},{"@type":"City","name":"Oldenzaal"},{"@type":"City","name":"Losser"},{"@type":"City","name":"Denekamp"},{"@type":"City","name":"Weerselo"},{"@type":"City","name":"Hengevelde"},{"@type":"City","name":"Beckum"},{"@type":"City","name":"Deurningen"}],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"09:00","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"09:00","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"09:00","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"17:00"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Transpondersleutel bijmaken"},"description":"De 'gewone' sleutel met een chip in de kop, met of zonder knopjes."},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Klapsleutel bijmaken"},"description":"De sleutel met de uitklapbare baard en knopjes op de behuizing."},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Smartkey / keyless sleutel bijmaken"},"description":"U start met een knop; de sleutel blijft in uw zak of tas."},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Sleutelkaart bijmaken"},"description":"De platte kaart die u in het dashboard schuift of gewoon bij u houdt."},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Autosleutel repareren"},"description":"Knopjes, behuizing, veer of losse chip: repareren is bijna altijd goedkoper."},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Aan-huisservice Hengelo"},"description":"Autosleutel bijmaken op locatie, vanaf € 45 extra."}]}</script>
@@ -101,8 +101,18 @@
       <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
       <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
-        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off">
-        <small>Hiermee zien wij direct welke sleutel u nodig heeft.</small></div>
+        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off" aria-describedby="f-kenteken-check">
+        <div class="kentekencheck" id="f-kenteken-check" aria-live="polite" hidden></div>
+        <small>Hiermee zien wij direct welke sleutel u nodig heeft. <button type="button" class="linkknop" id="f-geen-kenteken">Kenteken niet bij de hand?</button></small>
+        <input type="hidden" name="voertuig_rdw" id="f-voertuig" value=""></div>
+      <div class="veld autovelden" id="f-autovelden" hidden>
+        <p class="autovelden__kop">Vul dan merk, model en bouwjaar in</p>
+        <div class="autovelden__grid">
+          <div class="veld"><label for="f-merk">Merk</label><input id="f-merk" name="merk" placeholder="Bijv. Volkswagen"></div>
+          <div class="veld"><label for="f-model">Model</label><input id="f-model" name="model" placeholder="Bijv. Polo"></div>
+          <div class="veld"><label for="f-bouwjaar">Bouwjaar</label><input id="f-bouwjaar" name="bouwjaar" inputmode="numeric" placeholder="Bijv. 2016" maxlength="4"></div>
+        </div>
+      </div>
       <div class="veld"><label for="type">Met of zonder afstandsbediening</label>
         <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option>
           <option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Weet ik niet</option></select></div>
@@ -160,6 +170,6 @@
   <a class="belbalk__bel" href="tel:+31534784245" data-conv="bellen"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v4a1.5 1.5 0 0 1-1.6 1.5C10.9 20 4 13.1 4 5.6A1.5 1.5 0 0 1 5 4z"/></svg>Bel 053 - 478 42 45</a>
   <a class="belbalk__wa" href="https://wa.me/31534784245" rel="noopener" data-conv="whatsapp"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20l1.3-4A7.5 7.5 0 1 1 8 18.7L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1l-.2-1.2-1.6-.6-.8.9c-1-.4-1.8-1.2-2.2-2.2l.9-.8-.6-1.6L9.8 8c-.5 0-1 .4-1 1z"/></svg>WhatsApp</a>
 </div>
-<script src="/site.js?v=ab8b4c53" defer></script>
+<script src="/site.js?v=9ae51e16" defer></script>
 </body>
 </html>

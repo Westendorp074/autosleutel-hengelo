@@ -42,6 +42,28 @@ small{color:var(--stil)}
 
 /* knoppen */
 .knoppen{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 18px}
+/* cta-strook tussen de blokken */
+.cta{padding:0 0 8px}
+.cta__in{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--wit);border:1px solid var(--lijn);border-left:5px solid var(--groen);border-radius:var(--r-groot);padding:22px 28px;max-width:calc(var(--max) - 48px)}
+.cta__in p{margin:0;display:flex;align-items:center;gap:14px;font-family:var(--kop);font-weight:700;font-size:1.08rem;line-height:1.3}
+.cta__in p .ic{margin:0;flex:none;width:30px;height:30px;color:var(--groen)}
+.cta__in .knoppen{margin:0;flex:none}
+.sectie + .cta{margin-top:-30px}
+.cta + .sectie{padding-top:60px}
+@media(max-width:860px){.cta__in{flex-direction:column;align-items:stretch;padding:20px}.cta__in .knoppen{width:100%}.cta__in .knoppen .knop{flex:1}}
+/* kentekencheck (RDW) en terugval merk/model/bouwjaar */
+.kentekencheck{display:flex;align-items:center;gap:10px;margin-top:8px;padding:10px 14px;border-radius:10px;font-size:.95rem;line-height:1.35;background:#F5F3EE;border:1px solid #E3DED4;color:#333}
+.kentekencheck.is-ok{background:#EAF6EE;border-color:#BFE3CA;color:#14532D}
+.kentekencheck.is-fout{background:#FDF0F0;border-color:#F3C4C4;color:#7F1D1D}
+.kentekencheck.is-bezig{color:#666}
+.kentekencheck .ic{margin:0;flex:none;width:22px;height:22px;color:currentColor}
+.kentekencheck b{display:block;font-weight:800;font-size:1.02rem}
+.linkknop{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.autovelden{grid-column:1/-1;background:#F5F3EE;border:1px solid #E3DED4;border-radius:14px;padding:18px 20px 20px}
+.autovelden__kop{margin:0 0 12px;font-weight:700;display:flex;align-items:center;gap:8px}
+.autovelden__grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 16px}
+@media(max-width:640px){.autovelden__grid{grid-template-columns:1fr}}
+
 .knoppen--midden{justify-content:center;margin:30px 0 0}
 .knop{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--kop);font-weight:800;font-size:1.02rem;padding:16px 26px;border-radius:var(--r);text-decoration:none;border:2px solid transparent;transition:background .15s,border-color .15s,color .15s}
 .knop .ic{color:inherit;margin:0;width:20px;height:20px}

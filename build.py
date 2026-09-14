@@ -661,6 +661,14 @@ def knoppen(primair="Bel " + TEL_HTML):
     return (f'<div class="knoppen"><a class="knop knop--vol" href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}{primair}</a>'
             f'<a class="knop knop--rand" href="/contact#kenteken">{icoon("kenteken")}Prijs via kenteken</a></div>')
 
+def cta(tekst="Weten wat uw sleutel kost? Stuur uw kenteken, dan hoort u het dezelfde werkdag."):
+    """Korte oproep tussen de blokken: kenteken sturen (formulier onderaan) of WhatsApp."""
+    return f"""
+<section class="cta"><div class="wrap cta__in">
+  <p>{icoon("kenteken")}<span>{tekst}</span></p>
+  <div class="knoppen"><a class="knop knop--vol" href="#kenteken">{icoon("kenteken")}Stuur uw kenteken</a><a class="knop knop--rand" href="{WA_LINK}" rel="noopener" data-conv="whatsapp">{icoon("wa")}WhatsApp</a></div>
+</div></section>"""
+
 def kiezer(titel="Welke sleutel heeft u?", intro='Kies uw sleuteltype. U ziet meteen de richtprijs en leest wat wij ermee kunnen. Alles over <a href="/autosleutel-bijmaken">autosleutel bijmaken</a> op één pagina, of lees wat u doet als u <a href="/autosleutel-kwijt">alle sleutels kwijt</a> bent.'):
     kaarten = "".join(
         f'<a class="kies" href="/{t["slug"]}">{icoon(t["icoon"], "ic ic--groot")}<h3>{t["naam"]}</h3>'
@@ -725,8 +733,18 @@ def formulier(bron, met_contact=True):
       <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
       <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
-        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off">
-        <small>Hiermee zien wij direct welke sleutel u nodig heeft.</small></div>
+        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off" aria-describedby="f-kenteken-check">
+        <div class="kentekencheck" id="f-kenteken-check" aria-live="polite" hidden></div>
+        <small>Hiermee zien wij direct welke sleutel u nodig heeft. <button type="button" class="linkknop" id="f-geen-kenteken">Kenteken niet bij de hand?</button></small>
+        <input type="hidden" name="voertuig_rdw" id="f-voertuig" value=""></div>
+      <div class="veld autovelden" id="f-autovelden" hidden>
+        <p class="autovelden__kop">Vul dan merk, model en bouwjaar in</p>
+        <div class="autovelden__grid">
+          <div class="veld"><label for="f-merk">Merk</label><input id="f-merk" name="merk" placeholder="Bijv. Volkswagen"></div>
+          <div class="veld"><label for="f-model">Model</label><input id="f-model" name="model" placeholder="Bijv. Polo"></div>
+          <div class="veld"><label for="f-bouwjaar">Bouwjaar</label><input id="f-bouwjaar" name="bouwjaar" inputmode="numeric" placeholder="Bijv. 2016" maxlength="4"></div>
+        </div>
+      </div>
       <div class="veld"><label for="type">Met of zonder afstandsbediening</label>
         <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option>
           <option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Weet ik niet</option></select></div>
@@ -799,6 +817,7 @@ pagina("index.html",
   {vertrouwen()}
 </section>
 {kiezer()}
+{cta()}
 <section class="sectie sectie--zand">
   <div class="wrap">
     <div class="sectie__kop"><h2>Zo gaat het, in drie stappen</h2></div>
@@ -847,6 +866,7 @@ pagina("index.html",
   </div>
 </section>
 {merkenstrip()}
+{cta("Liever eerst een prijs? Stuur uw kenteken of app een foto van uw sleutel.")}
 {faqblok(FAQ)}
 {formulier("home")}
 """)
@@ -891,6 +911,7 @@ pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
   </div>
 </section>
 {kiezer("Zoek uw sleuteltype", "Per type leest u wat het precies kost en wat wij ermee kunnen.")}
+{cta("Uw echte prijs weten? Stuur uw kenteken; de schatting wordt dan een prijs vooraf.")}
 {formulier("prijzen")}
 """)
 
@@ -927,6 +948,7 @@ for t in SLEUTELTYPEN:
   <div><small>Aan huis in Hengelo</small><b>+ vanaf € {AAN_HUIS_VANAF}</b></div></div>
   {secties}
 </div></section>
+{cta()}
 {faqblok(t["faq"], f"Vragen over {t['naam'].lower()}s")}
 <section class="sectie sectie--kort"><div class="wrap"><div class="sectie__kop"><h2>Ander sleuteltype?</h2><p>Of lees alles over <a href="/autosleutel-bijmaken">autosleutel bijmaken in Hengelo</a>: werkwijze, prijzen en wat u meeneemt.</p></div><div class="kiezer kiezer--klein">{anderen}</div></div></section>
 {formulier(t["slug"])}
@@ -1000,6 +1022,7 @@ pagina("autosleutel-bijmaken.html",
   <p>Klanten komen naar onze werkplaats vanuit Hengelo, {", ".join(PLAATSEN[1:-1])} en {PLAATSEN[-1]}. Kunt u niet komen, bijvoorbeeld omdat de auto niet start, dan komen wij naar u toe.</p>
   {knoppen()}
 </div></section>
+{cta("Twee sleutels tegelijk is goedkoper. Stuur uw kenteken en vraag naar de prijs voor twee.")}
 {merkenstrip()}
 {faqblok(BIJMAKEN_FAQ, "Vragen over autosleutel bijmaken")}
 {formulier("autosleutel-bijmaken")}
@@ -1057,6 +1080,7 @@ pagina("autosleutel-kwijt.html",
   <p>Dan hoeft u niet te slepen. Wij komen naar u toe in Hengelo (vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs) of in de omgeving, en leren de sleutel ter plekke in. <a href="/aan-huis">Zo werkt de aan-huisservice</a>.</p>
   {knoppen()}
 </div></section>
+{cta()}
 {faqblok(KWIJT_FAQ, "Vragen over een verloren autosleutel")}
 {formulier("autosleutel-kwijt")}
 """)
@@ -1106,6 +1130,7 @@ pagina("aan-huis.html", f"Autosleutel aan huis Hengelo | vanaf € {AAN_HUIS_VAN
   <p>Hengelo en directe omgeving: {", ".join(PLAATSEN[1:])}. Buiten Hengelo rekenen wij een kilometervergoeding, die in de prijsopgave zit.</p>
   <p class="noot">Wilt u liever naar de werkplaats komen? Dat is {REISTIJD} rijden en bespaart u de voorrijkosten. <a href="/contact">Route en openingstijden</a>.</p>
 </div></section>
+{cta()}
 {faqblok(AANHUIS_FAQ, "Vragen over aan huis")}
 {formulier("aan-huis")}
 """)
@@ -1230,6 +1255,7 @@ for m in MERKEN:
   </div>
 </section>
 <section class="sectie sectie--zand"><div class="wrap"><div class="sectie__kop"><h2>Welk sleuteltype heeft uw {naam}?</h2><p>Dat verschilt per model en bouwjaar. Kies het type dat op uw sleutel lijkt; u ziet dan meteen de richtprijs. Twijfelt u? Stuur een foto via <a href="{WA_LINK}" rel="noopener" data-conv="whatsapp">WhatsApp</a>.</p></div><div class="kiezer kiezer--klein">{typelinks}</div></div></section>
+{cta(f"Weten wat uw {naam}-sleutel kost? Stuur uw kenteken, dan hoort u het dezelfde werkdag.")}
 {faqblok(mfaq, f"Vragen over {naam}")}
 {formulier("merk-" + slug)}
 """)
@@ -1259,6 +1285,7 @@ pagina("privacy.html", f"Privacyverklaring | {HANDELSNAAM}",
   <h2>Welke gegevens wij verwerken</h2>
   <ul>
     <li><strong>Prijsaanvraag:</strong> kenteken, sleuteltype, naam, telefoonnummer, gewenste locatie en uw toelichting.</li>
+    <li><strong>Kentekencheck:</strong> zodra u een kenteken intypt, vraagt uw browser bij de open data van de RDW merk, model en bouwjaar op, zodat u ziet dat het kenteken klopt. Daarbij worden geen andere gegevens meegestuurd.</li>
     <li><strong>Telefoon, e-mail en WhatsApp:</strong> wat u ons zelf stuurt, inclusief eventuele foto's van uw sleutel.</li>
     <li><strong>Aan huis:</strong> het adres waar de auto staat, alleen voor die afspraak.</li>
     <li><strong>In de werkplaats en aan huis:</strong> wij controleren uw kentekenbewijs en identiteitsbewijs voordat wij een sleutel maken. Wij kijken alleen; wij maken geen kopie of foto en slaan de gegevens daaruit niet op.</li>
