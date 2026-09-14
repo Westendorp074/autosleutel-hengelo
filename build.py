@@ -804,6 +804,7 @@ pagina("index.html",
       <li>{icoon("vink")}<h3>Vaste prijs, dezelfde werkdag</h3><p>Inclusief of het terwijl u wacht kan, of een sleutel besteld moet worden, en wat aan huis kost.</p></li>
       <li>{icoon("winkel")}<h3>Werkplaats of aan huis</h3><p>U komt op afspraak naar Enschede ({REISTIJD}), of wij komen naar u toe in Hengelo.</p></li>
     </ol>
+    <div class="knoppen knoppen--midden">{knoppen()[len('<div class="knoppen">'):]}
   </div>
 </section>
 <section class="sectie">
