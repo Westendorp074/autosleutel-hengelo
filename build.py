@@ -790,7 +790,7 @@ pagina("index.html",
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
     </div>
-    <figure class="hero__foto">{foto("bmw-x1-smartkey-bijmaken.jpg", "Twee BMW-smartkeys bijgemaakt voor een BMW X1", lazy=False)}
+    <figure class="hero__foto">{foto("bmw-x1-smartkey-bijmaken-hero.jpg", "Twee BMW-smartkeys bijgemaakt voor een BMW X1", lazy=False)}
       <figcaption>BMW X1, twee smartkeys, klaar in één bezoek</figcaption></figure>
   </div>
   {vertrouwen()}
