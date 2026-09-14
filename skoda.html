@@ -80,9 +80,6 @@
       <input type="hidden" name="redirect" value="https://autosleutel-hengelo.nl/bedankt">
       <input type="hidden" name="bron" value="merk-skoda">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
-      <div class="veld"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
-      <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
-      <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
         <div class="kentekenveld"><span class="kenteken__nl">NL</span><input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off" maxlength="9" aria-describedby="f-kenteken-check"></div>
         <div class="kentekencheck" id="f-kenteken-check" aria-live="polite" hidden></div>
@@ -109,6 +106,9 @@
           <select id="f-reparatie" name="reparatie"><option value="">Maak een keuze</option><option>Autosleutel behuizing (gebroken, versleten, klapt niet meer uit)</option><option>Printplaat reparatie (knopjes doen niets, elektronica, waterschade)</option><option>Allebei</option><option>Weet ik niet</option></select>
           <small>Twijfelt u? Kies "Weet ik niet" en stuur een foto van de sleutel via WhatsApp.</small></div>
       </div>
+      <div class="veld"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
+      <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
+      <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--vol"><label for="opm">Opmerkingen</label>
         <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
       <div class="veld veld--vol">
