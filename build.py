@@ -749,10 +749,8 @@ def formulier(bron, met_contact=True):
         <select id="f-onderwerp" name="onderwerp" required><option>Autosleutel bijmaken</option><option>Autosleutel repareren</option></select></div>
       <div class="veldgroep" data-voor="Autosleutel bijmaken">
         <div class="veld"><label for="f-start">Hoe start uw auto?</label>
-          <select id="f-start" name="starten" required><option value="">Maak een keuze</option><option>Sleutel in het contact of dashboard</option><option>Startknop, sleutel blijft in uw zak</option><option>Weet ik niet</option></select></div>
-        <div class="veld"><label for="f-ab">Afstandsbediening op de sleutel?</label>
-          <select id="f-ab" name="afstandsbediening" required><option value="">Maak een keuze</option><option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Allebei</option><option>Weet ik niet</option></select></div>
-        <div class="veld veld--vol"><label for="f-situatie">Wat is de situatie?</label>
+          <select id="f-start" name="starten" required><option value="">Maak een keuze</option><option>Sleutel in het contact of dashboard</option><option>Keyless (start-stopknop)</option><option>Weet ik niet</option></select></div>
+          <div class="veld"><label for="f-situatie">Wat is de situatie?</label>
           <select id="f-situatie" name="situatie" required><option value="">Maak een keuze</option><option>Reserve autosleutel, ik heb nog een werkende sleutel</option><option>Alle sleutels kwijt</option></select></div>
       </div>
       <div class="veldgroep" data-voor="Autosleutel repareren" hidden>
