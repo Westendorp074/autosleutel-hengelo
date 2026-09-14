@@ -797,7 +797,7 @@ galerij = "".join(
         ("opel-astra-klapsleutel-bijmaken.jpg", "Twee bijgemaakte Opel-klapsleutels voor een Opel Astra", "Opel Astra · klapsleutel"),
     ])
 pagina("index.html",
-       f"Autosleutel bijmaken Hengelo | vanmiddag klaar, vanaf € 60",
+       f"Autosleutel bijmaken Hengelo | klaar terwijl u wacht, vanaf € 60",
        f"Autosleutel kwijt, kapot of een reservesleutel nodig in Hengelo? Klapsleutel, smartkey of sleutelkaart voor vrijwel elk merk. "
        f"Vaste prijs via uw kenteken, {REISTIJD} vanaf Hengelo, of aan huis vanaf € {AAN_HUIS_VANAF}. Bel {TEL_TONEN}.",
        "/", jsonld=[faq_jsonld(FAQ)], beeld="bmw-x1-smartkey-bijmaken.jpg",
@@ -806,7 +806,7 @@ pagina("index.html",
   <div class="wrap hero__grid">
     <div>
       <span class="label">{icoon("pin")}Werkplaats in Enschede · {REISTIJD} vanaf Hengelo</span>
-      <h1>Autosleutel bijmaken in Hengelo, <em>vanmiddag klaar.</em></h1>
+      <h1>Autosleutel bijmaken in Hengelo, <em>klaar terwijl u wacht.</em></h1>
       <p class="hero__lead">Reservesleutel laten maken, autosleutel kwijt of sleutel kapot? Klapsleutel, smartkey, sleutelkaart of transpondersleutel: wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. Tot 50% goedkoper dan de dealer, prijs vooraf op basis van uw kenteken, meestal klaar terwijl u wacht.</p>
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
