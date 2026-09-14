@@ -603,7 +603,7 @@ def kop_html(titel, omschrijving, pad, jsonld, beeld=None, noindex=False):
     </nav>
     <div class="top__acties">
       <a class="top__wa" href="{WA_LINK}" rel="noopener" data-conv="whatsapp" aria-label="WhatsApp">{icoon("wa")}</a>
-      <a class="top__tel" href="tel:{TEL_LINK}" data-conv="bellen" aria-label="Bel {TEL_TONEN}">{icoon("tel")}<span>Bel</span></a>
+      <a class="top__tel" href="tel:{TEL_LINK}" data-conv="bellen" aria-label="Bel {TEL_TONEN}">{icoon("tel")}<span>{TEL_HTML}</span></a>
     </div>
   </div>
 </header>
@@ -657,7 +657,7 @@ def pagina(bestand, titel, omschrijving, pad, body, jsonld=(), beeld=None, noind
     (OUT / bestand).write_text(kop_html(titel, omschrijving, pad, jsonld, beeld, noindex) + body + VOET, encoding="utf-8")
 
 # ---------- herbruikbare blokken ----------
-def knoppen(primair="Bel"):
+def knoppen(primair='Bel <span class="tel-nr">' + TEL_HTML + '</span>'):
     return (f'<div class="knoppen"><a class="knop knop--vol" href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}{primair}</a>'
             f'<a class="knop knop--rand" href="/contact#kenteken">{icoon("kenteken")}Prijs via kenteken</a></div>')
 
@@ -1066,7 +1066,7 @@ pagina("autosleutel-kwijt.html",
                 "kenteken en leren die in op de auto. De verloren sleutel wissen wij, zodat niemand er nog mee kan rijden. De prijs hangt sterk af "
                 "van merk en bouwjaar; u krijgt hem vooraf, vast, via uw kenteken.")}
       <p>Heeft u nog wél een reservesleutel? Dan is het eenvoudiger en goedkoper: wij <a href="/autosleutel-bijmaken">kopiëren die sleutel</a> (vanaf {P_KOPIE.split(' – ')[0]}) en u heeft er weer twee.</p>
-      {knoppen("Bel direct")}
+      {knoppen('Bel direct <span class="tel-nr">' + TEL_HTML + '</span>')}
     </div>
     <figure class="media__foto">{foto("jeep-compass-smartkey-bijmaken.jpg", "Sleutelspecialist met twee nieuwe smartkeys voor een Jeep Compass waarvan alle sleutels kwijt waren", lazy=False)}<figcaption>Jeep Compass: oude sleutels gewist, twee nieuwe ingeleerd</figcaption></figure>
   </div>

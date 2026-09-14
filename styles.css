@@ -326,3 +326,7 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 @media(max-width:600px){.hero h1{font-size:2.6rem;line-height:1.06}}
 
 @media(max-width:640px){form button[type=submit],.form button,.knop--geel,.knop--donker[type=submit]{width:100%}}
+
+/* telefoonnummer in knoppen: op pc zichtbaar, op telefoon alleen 'Bel' (daar werkt tikken) */
+.tel-nr{margin-left:.3em}
+@media(max-width:600px){.tel-nr{display:none}}
