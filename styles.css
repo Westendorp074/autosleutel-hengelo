@@ -269,7 +269,15 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 .veld label{font-size:.9rem;font-weight:700}
 .veld label small{font-weight:400}
 .veld input,.veld select,.veld textarea{font:inherit;font-size:1rem;padding:13px 14px;border:1px solid #D9D0C2;border-radius:10px;background:var(--wit);color:var(--tekst)}
-.veld--kenteken input{text-transform:uppercase;font-family:var(--kop);font-weight:800;letter-spacing:.08em;background:#FFF7D6;border-color:var(--geel)}
+.veld--kenteken input{text-transform:uppercase;font-family:var(--kop);font-weight:800;letter-spacing:.08em}
+/* vragen per onderwerp + kentekenplaat in het formulier */
+[hidden]{display:none!important}
+.veldgroep{display:contents}
+.kentekenveld{display:flex;align-items:stretch;border:2px solid #151B1F;border-radius:6px;overflow:hidden;background:#F5C400}
+.kentekenveld .kenteken__nl{background:#1D4ED8;color:#fff;font-size:.7rem;font-weight:800;letter-spacing:0;padding:.35em .5em;display:flex;align-items:flex-end}
+.kentekenveld input{border:0!important;border-radius:0!important;background:#F5C400!important;font-weight:800;font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;flex:1;min-width:0;color:#151B1F}
+.kentekenveld input::placeholder{color:rgba(21,27,31,.45)}
+
 .veld textarea{min-height:90px;resize:vertical}
 .veld small{font-size:.85rem}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}

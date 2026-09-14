@@ -76,4 +76,18 @@
     });
     if (geenKt) geenKt.addEventListener('click', function () { toonAutovelden(autovelden && autovelden.hidden); if (autovelden && !autovelden.hidden) { var m = document.getElementById('f-merk'); m && m.focus(); } });
   })();
+
+  // Vragen per onderwerp: bijmaken (start, afstandsbediening, situatie) of repareren (wat is er kapot).
+  (function () {
+    var ond = document.getElementById('f-onderwerp');
+    if (!ond) return;
+    function toon() {
+      document.querySelectorAll('.veldgroep').forEach(function (g) {
+        var aan = g.getAttribute('data-voor') === ond.value;
+        g.hidden = !aan;
+        g.querySelectorAll('select').forEach(function (s) { s.required = aan; });
+      });
+    }
+    ond.addEventListener('change', toon); toon();
+  })();
 })();

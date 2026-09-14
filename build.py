@@ -733,7 +733,7 @@ def formulier(bron, met_contact=True):
       <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
       <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
-        <input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off" aria-describedby="f-kenteken-check">
+        <div class="kentekenveld"><span class="kenteken__nl">NL</span><input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off" maxlength="9" aria-describedby="f-kenteken-check"></div>
         <div class="kentekencheck" id="f-kenteken-check" aria-live="polite" hidden></div>
         <small>Hiermee zien wij direct welke sleutel u nodig heeft. <button type="button" class="linkknop" id="f-geen-kenteken">Kenteken niet bij de hand?</button></small>
         <input type="hidden" name="voertuig_rdw" id="f-voertuig" value=""></div>
@@ -745,12 +745,21 @@ def formulier(bron, met_contact=True):
           <div class="veld"><label for="f-bouwjaar">Bouwjaar</label><input id="f-bouwjaar" name="bouwjaar" inputmode="numeric" placeholder="Bijv. 2016" maxlength="4"></div>
         </div>
       </div>
-      <div class="veld"><label for="type">Met of zonder afstandsbediening</label>
-        <select id="type" name="sleuteltype" required><option value="">Maak een keuze</option>
-          <option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Weet ik niet</option></select></div>
-      <div class="veld"><label for="start">Hoe start uw auto</label>
-        <select id="start" name="starten" required><option value="">Maak een keuze</option>
-          <option>Sleutel in contact / dashboard</option><option>Keyless — startknop</option><option>Weet ik niet</option></select></div>
+      <div class="veld veld--vol"><label for="f-onderwerp">Waarvoor komt u?</label>
+        <select id="f-onderwerp" name="onderwerp" required><option>Autosleutel bijmaken</option><option>Autosleutel repareren</option></select></div>
+      <div class="veldgroep" data-voor="Autosleutel bijmaken">
+        <div class="veld"><label for="f-start">Hoe start uw auto?</label>
+          <select id="f-start" name="starten" required><option value="">Maak een keuze</option><option>Sleutel in het contact of dashboard</option><option>Startknop, sleutel blijft in uw zak</option><option>Weet ik niet</option></select></div>
+        <div class="veld"><label for="f-ab">Afstandsbediening op de sleutel?</label>
+          <select id="f-ab" name="afstandsbediening" required><option value="">Maak een keuze</option><option>Met afstandsbediening</option><option>Zonder afstandsbediening</option><option>Allebei</option><option>Weet ik niet</option></select></div>
+        <div class="veld veld--vol"><label for="f-situatie">Wat is de situatie?</label>
+          <select id="f-situatie" name="situatie" required><option value="">Maak een keuze</option><option>Reserve autosleutel, ik heb nog een werkende sleutel</option><option>Alle sleutels kwijt</option></select></div>
+      </div>
+      <div class="veldgroep" data-voor="Autosleutel repareren" hidden>
+        <div class="veld veld--vol"><label for="f-reparatie">Wat is er kapot?</label>
+          <select id="f-reparatie" name="reparatie"><option value="">Maak een keuze</option><option>Autosleutel behuizing (gebroken, versleten, klapt niet meer uit)</option><option>Printplaat reparatie (knopjes doen niets, elektronica, waterschade)</option><option>Allebei</option><option>Weet ik niet</option></select>
+          <small>Twijfelt u? Kies "Weet ik niet" en stuur een foto van de sleutel via WhatsApp.</small></div>
+      </div>
       <div class="veld veld--vol"><label for="opm">Opmerkingen</label>
         <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
       <div class="veld veld--vol">
