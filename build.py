@@ -674,10 +674,10 @@ def kiezer(titel="Welke sleutel heeft u?", intro='Kies uw sleuteltype. U ziet me
 def vertrouwen():
     return f"""
 <div class="wrap vertrouwen">
-  <div>{icoon("sleutels")}<b>{PER_JAAR}+</b><span>autosleutels per jaar</span></div>
   <div>{icoon("kenteken")}<b>Tot 50%</b><span>goedkoper dan de dealer</span></div>
+  <div>{icoon("klok")}<b>20–30 min</b><span>klaar terwijl u wacht</span></div>
   <div>{icoon("kalender")}<b>Sinds 1995</b><span>autosleutels bij Westendorp, bedrijf sinds {SINDS}</span></div>
-  <div>{icoon("huis")}<b>Vanaf € {AAN_HUIS_VANAF}</b><span>aan huis in Hengelo</span></div>
+  <div>{icoon("sleutels")}<b>{PER_JAAR}+</b><span>autosleutels per jaar</span></div>
 </div>"""
 
 def contactblok():
