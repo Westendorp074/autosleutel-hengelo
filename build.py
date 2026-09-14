@@ -675,7 +675,7 @@ def vertrouwen():
     return f"""
 <div class="wrap vertrouwen">
   <div>{icoon("sleutels")}<b>{PER_JAAR}+</b><span>autosleutels per jaar</span></div>
-  <div>{icoon("kalender")}<b>Sinds {SINDS}</b><span>Westendorp in Twente</span></div>
+  <div>{icoon("kenteken")}<b>Tot 50%</b><span>goedkoper dan de dealer</span></div>
   <div>{icoon("schild")}<b>Levenslang</b><span>garantie op de chip</span></div>
   <div>{icoon("huis")}<b>Vanaf € {AAN_HUIS_VANAF}</b><span>aan huis in Hengelo</span></div>
 </div>"""
@@ -786,7 +786,7 @@ pagina("index.html",
     <div>
       <span class="label">{icoon("pin")}Werkplaats in Enschede · {REISTIJD} vanaf Hengelo</span>
       <h1>Autosleutel bijmaken in Hengelo, <em>vanmiddag klaar.</em></h1>
-      <p class="hero__lead">Reservesleutel laten maken, autosleutel kwijt of sleutel kapot? Klapsleutel, smartkey, sleutelkaart of transpondersleutel: wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. Vaste prijs vooraf op basis van uw kenteken, meestal klaar terwijl u wacht.</p>
+      <p class="hero__lead">Reservesleutel laten maken, autosleutel kwijt of sleutel kapot? Klapsleutel, smartkey, sleutelkaart of transpondersleutel: wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. Tot 50% goedkoper dan de dealer, prijs vooraf op basis van uw kenteken, meestal klaar terwijl u wacht.</p>
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
     </div>
@@ -941,7 +941,7 @@ BIJMAKEN_FAQ = [
     ("Kan ik een autosleutel laten bijmaken zonder originele sleutel?",
      "Ja, bij de meeste merken en bouwjaren. Wij maken dan een nieuwe sleutel en leren die in op de auto. Neem kentekenbewijs en identiteitsbewijs mee."),
     ("Moet ik naar de dealer voor een nieuwe autosleutel?",
-     "Nee. Wij maken en programmeren autosleutels voor vrijwel elk merk in onze eigen werkplaats, doorgaans voor een fractie van de dealerprijs en zonder wachttijd van weken."),
+     "Nee. Wij maken en programmeren autosleutels voor vrijwel elk merk in onze eigen werkplaats, tot 50% goedkoper dan de dealer en zonder wachttijd van weken."),
     ("Kan een autosleutel ook aan huis bijgemaakt worden?",
      f"Ja. In Hengelo komen wij aan huis vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; voor de omgeving hoort u de prijs vooraf."),
     ("Wat moet ik meenemen?",
