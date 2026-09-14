@@ -116,6 +116,7 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 .kies h3{margin:0}
 .kies p{font-size:.94rem;color:var(--stil);margin:0;flex-grow:1}
 .kies__prijs{font-weight:700;color:var(--groen)}
+.kies__prijs small{display:block;font-weight:400;font-size:.8rem;color:var(--stil);letter-spacing:.02em}
 .kiezer--klein{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .kies--klein{flex-direction:row;align-items:center;padding:14px 16px;gap:10px;font-weight:700;min-width:0}
 .kies--klein .ic{margin:0}
@@ -181,6 +182,9 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 .prijstabel th{font-family:var(--kop);font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;color:var(--stil);background:var(--zand)}
 .prijstabel td:nth-child(n+2){font-weight:700;white-space:nowrap}
 .prijstabel small{display:block;font-weight:400;color:var(--stil)}
+.prijstabel caption{caption-side:top;text-align:left;padding:14px 16px 6px;font-size:.9rem;color:var(--stil);background:var(--wit)}
+.prijstabel th small{text-transform:none;letter-spacing:0;font-size:.8rem;margin-top:2px}
+.prijstabel td.dealer{color:var(--stil);font-weight:600}
 @media(max-width:640px){.prijstabel{display:block;overflow-x:auto}}
 .prijs-kaart{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:34px}
 .prijs-kaart div{background:var(--wit);border:1px solid var(--lijn);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}

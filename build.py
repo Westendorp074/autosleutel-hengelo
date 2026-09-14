@@ -42,6 +42,9 @@ PLAATSEN = ["Hengelo", "Borne", "Delden", "Goor", "Haaksbergen", "Oldenzaal", "L
 # Richtprijzen (zelfde werkplaats en tarieven als de andere vestigingen, anders verwoord)
 # Alle sleutels kwijt (geen werkend exemplaar): GEEN prijs noemen, verschilt te sterk per merk/bouwjaar (eigenaar 13-9-2026).
 P_KOPIE, P_NIEUW, P_SMART, P_REP = "€ 60 – € 120", "Prijs op aanvraag", "€ 150 – € 300", "€ 30 – € 80"
+# Schatting wat de dealer meestal rekent (opgave eigenaar 14-09-2026). Altijd als schatting tonen.
+DEALER = {"transpondersleutel-bijmaken": "€ 150 of meer", "klapsleutel-bijmaken": "€ 400 – € 700", "smartkey-bijmaken": "€ 400 – € 1.500",
+          "sleutelkaart-bijmaken": "€ 400 – € 700", "autosleutel-reparatie": "nieuwe sleutel vanaf € 400"}
 P_KLAP, P_KAART = "€ 130 – € 200", "€ 130 – € 250"   # klapsleutel en sleutelkaart: vanaf € 130 (eigenaar 13-9-2026)
 
 # ============================================================
@@ -661,7 +664,7 @@ def knoppen(primair="Bel " + TEL_HTML):
 def kiezer(titel="Welke sleutel heeft u?", intro='Kies uw sleuteltype. U ziet meteen de richtprijs en leest wat wij ermee kunnen. Alles over <a href="/autosleutel-bijmaken">autosleutel bijmaken</a> op één pagina, of lees wat u doet als u <a href="/autosleutel-kwijt">alle sleutels kwijt</a> bent.'):
     kaarten = "".join(
         f'<a class="kies" href="/{t["slug"]}">{icoon(t["icoon"], "ic ic--groot")}<h3>{t["naam"]}</h3>'
-        f'<p>{t["kort"]}</p><span class="kies__prijs">vanaf {t["prijs_kopie"].split(" – ")[0]}</span></a>'
+        f'<p>{t["kort"]}</p><span class="kies__prijs">{t["prijs_kopie"]}<small>schatting</small></span></a>'
         for t in SLEUTELTYPEN)
     return f"""
 <section class="sectie" id="sleuteltypen">
@@ -852,7 +855,7 @@ pagina("index.html",
 # PRIJZEN
 # ============================================================
 rijen = "".join(
-    f'<tr><td><a href="/{t["slug"]}">{t["naam"]}</a><br><small>{t["kort"]}</small></td><td>{t["prijs_kopie"]}</td><td>{t["prijs_nieuw"]}</td></tr>'
+    f'<tr><td><a href="/{t["slug"]}">{t["naam"]}</a><br><small>{t["kort"]}</small></td><td>{t["prijs_kopie"]}</td><td class="dealer">{DEALER.get(t["slug"], "")}</td><td>{t["prijs_nieuw"]}</td></tr>'
     for t in SLEUTELTYPEN[:-1])
 pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
        f"Wat kost een autosleutel bijmaken in Hengelo? Richtprijzen per sleuteltype: transpondersleutel {P_KOPIE}, klapsleutel {P_KLAP}, "
@@ -867,12 +870,13 @@ pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
               f"Een reparatie kost {P_REP}. Alles inclusief programmeren en btw. Bent u alle sleutels kwijt, dan verschilt de prijs "
               f"sterk per merk en bouwjaar; die krijgt u vooraf op basis van uw kenteken. "
               f"Aan huis in Hengelo betaalt u vanaf € {AAN_HUIS_VANAF} extra.")}
-    <p>De prijs hangt niet af van hoe duur uw auto was, maar van het sleuteltype en van de vraag of u nog een werkende sleutel heeft. Uw kenteken maakt er één vaste prijs van, en die krijgt u vooraf.</p>
+    <p>De prijs hangt niet af van hoe duur uw auto was, maar van het sleuteltype en van de vraag of u nog een werkende sleutel heeft. Uw kenteken maakt er één prijs vooraf van.</p>
     <table class="prijstabel">
-      <thead><tr><th>Sleuteltype</th><th>Kopie (u heeft nog een sleutel)</th><th>Alle sleutels kwijt (geen werkend exemplaar)</th></tr></thead>
+      <caption><b>Schatting</b>, geen offerte: de bedragen zijn wat het bij ons en bij de dealer meestal kost. Uw werkelijke prijs hangt af van merk, model en bouwjaar en krijgt u vooraf op uw kenteken.</caption>
+      <thead><tr><th>Sleuteltype</th><th>Bij ons (schatting)<br><small>kopie, u heeft nog een werkende sleutel</small></th><th>Bij de dealer (schatting)</th><th>Alle sleutels kwijt</th></tr></thead>
       <tbody>{rijen}
-      <tr><td><a href="/autosleutel-reparatie">Reparatie</a><br><small>behuizing, knopjes, veer, chip terugsolderen</small></td><td colspan="2">{P_REP}</td></tr>
-      <tr><td><a href="/aan-huis">Aan huis in Hengelo</a><br><small>bovenop de sleutelprijs</small></td><td colspan="2">vanaf € {AAN_HUIS_VANAF}</td></tr>
+      <tr><td><a href="/autosleutel-reparatie">Reparatie</a><br><small>behuizing, knopjes, veer, chip terugsolderen</small></td><td>{P_REP}</td><td class="dealer">{DEALER["autosleutel-reparatie"]}</td><td>—</td></tr>
+      <tr><td><a href="/aan-huis">Aan huis in Hengelo</a><br><small>bovenop de sleutelprijs</small></td><td colspan="3">vanaf € {AAN_HUIS_VANAF}</td></tr>
       </tbody>
     </table>
     <h2>Waarom de dealer duurder is</h2>
