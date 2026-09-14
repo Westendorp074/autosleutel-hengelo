@@ -90,4 +90,16 @@
     }
     ond.addEventListener('change', toon); toon();
   })();
+
+  // Bedankt-pagina op het adres waar de site nu draait (vercel.app of eigen domein) en dubbel verzenden voorkomen.
+  document.querySelectorAll('form').forEach(function (f) {
+    var r = f.querySelector('input[name="redirect"]');
+    if (r) r.value = location.origin + (r.value.indexOf('/bedankt/') > -1 ? '/bedankt/' : '/bedankt');
+    f.addEventListener('submit', function () {
+      var b = f.querySelector('button[type=submit]');
+      if (f.dataset.bezig) return;
+      f.dataset.bezig = '1';
+      if (b) { b.disabled = true; b.textContent = 'Versturen…'; }
+    });
+  });
 })();
