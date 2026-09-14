@@ -42,6 +42,10 @@ small{color:var(--stil)}
 
 /* knoppen */
 .knoppen{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 18px}
+.tekstlink{margin:18px 0 0;font-weight:700}
+.tekstlink a{display:inline-flex;align-items:center;gap:6px;color:var(--groen);text-decoration:none}
+.tekstlink a:hover{text-decoration:underline}
+.tekstlink .ic{margin:0;width:18px;height:18px}
 /* cta-strook tussen de blokken */
 .cta{padding:0 0 8px}
 .cta__in{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--wit);border:1px solid var(--lijn);border-left:5px solid var(--groen);border-radius:var(--r-groot);padding:22px 28px;max-width:calc(var(--max) - 48px)}

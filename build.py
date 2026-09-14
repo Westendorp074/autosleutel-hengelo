@@ -817,7 +817,6 @@ pagina("index.html",
   {vertrouwen()}
 </section>
 {kiezer()}
-{cta()}
 <section class="sectie sectie--zand">
   <div class="wrap">
     <div class="sectie__kop"><h2>Zo gaat het, in drie stappen</h2></div>
@@ -840,7 +839,7 @@ pagina("index.html",
         <li>{icoon("vink")}Levenslange garantie op de chip, twee jaar op een nieuwe afstandsbediening</li>
         <li>{icoon("vink")}Gratis en overdekt parkeren bij de winkel</li>
       </ul>
-      <p><a class="knop knop--rand" href="/contact">{icoon("route")}Route vanuit Hengelo</a></p>
+      <p class="tekstlink"><a href="/contact">{icoon("route")}Route vanuit Hengelo</a></p>
     </div>
     <div class="media__fotos">
       <figure>{foto("werkplaats-voorraad-autosleutel-behuizingen.jpg", "Voorraadkasten met autosleutelbehuizingen en chips in de werkplaats", breed=900, hoog=1200)}<figcaption>De voorraad: behuizingen en chips per merk</figcaption></figure>
@@ -854,11 +853,12 @@ pagina("index.html",
       <span class="label">{icoon("huis")}Aan-huisservice</span>
       <h2>Auto start niet? Wij komen naar Hengelo.</h2>
       <p>Alle sleutels kwijt, of de auto is niet te verplaatsen? Dan komen wij naar u toe en leren wij de nieuwe sleutel ter plekke in via de diagnoseaansluiting. In Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; voor de omgeving hoort u de prijs vooraf.</p>
-      <p><a class="knop knop--vol" href="/aan-huis">{icoon("pijl")}Zo werkt aan huis</a></p>
+      <p class="tekstlink"><a href="/aan-huis">{icoon("pijl")}Zo werkt aan huis</a></p>
     </div>
     <figure class="media__foto">{foto("autosleutel-programmeren-hyundai.jpg", "Twee Hyundai-sleutels worden ingeleerd via de OBD-aansluiting")}<figcaption>Inleren via de OBD-aansluiting, ook bij u voor de deur</figcaption></figure>
   </div>
 </section>
+{cta("Liever eerst een prijs? Stuur uw kenteken of app een foto van uw sleutel.")}
 <section class="sectie">
   <div class="wrap">
     <div class="sectie__kop"><h2>Onlangs gemaakt</h2><p>Een greep uit de sleutels die wij de afgelopen tijd maakten of repareerden.</p></div>
@@ -866,7 +866,6 @@ pagina("index.html",
   </div>
 </section>
 {merkenstrip()}
-{cta("Liever eerst een prijs? Stuur uw kenteken of app een foto van uw sleutel.")}
 {faqblok(FAQ)}
 {formulier("home")}
 """)
@@ -911,7 +910,6 @@ pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
   </div>
 </section>
 {kiezer("Zoek uw sleuteltype", "Per type leest u wat het precies kost en wat wij ermee kunnen.")}
-{cta("Uw echte prijs weten? Stuur uw kenteken; de schatting wordt dan een prijs vooraf.")}
 {formulier("prijzen")}
 """)
 
@@ -1020,7 +1018,6 @@ pagina("autosleutel-bijmaken.html",
   <p>Een dealer bestelt de sleutel bij de fabriek, wacht twee tot zes weken en rekent daar werkplaatstarief overheen. Wij hebben behuizingen, chips en afstandsbedieningen voor vrijwel elk merk op voorraad en programmeren zelf. Daardoor betaalt u doorgaans de helft tot een derde en heeft u de sleutel dezelfde dag. U krijgt levenslange garantie op de chip en twee jaar op een nieuwe afstandsbediening.</p>
   <h2>Voor Hengelo en heel Twente</h2>
   <p>Klanten komen naar onze werkplaats vanuit Hengelo, {", ".join(PLAATSEN[1:-1])} en {PLAATSEN[-1]}. Kunt u niet komen, bijvoorbeeld omdat de auto niet start, dan komen wij naar u toe.</p>
-  {knoppen()}
 </div></section>
 {cta("Twee sleutels tegelijk is goedkoper. Stuur uw kenteken en vraag naar de prijs voor twee.")}
 {merkenstrip()}
@@ -1078,7 +1075,6 @@ pagina("autosleutel-kwijt.html",
   <p>Bij oudere Peugeot- en Citroën-modellen is soms een pincode nodig; bij een enkel zeer recent model moet een sleutel via de fabriek besteld worden. Dat hoort u vooraf, nooit achteraf.</p>
   <h2>Auto start niet en staat vast?</h2>
   <p>Dan hoeft u niet te slepen. Wij komen naar u toe in Hengelo (vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs) of in de omgeving, en leren de sleutel ter plekke in. <a href="/aan-huis">Zo werkt de aan-huisservice</a>.</p>
-  {knoppen()}
 </div></section>
 {cta()}
 {faqblok(KWIJT_FAQ, "Vragen over een verloren autosleutel")}
