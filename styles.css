@@ -84,7 +84,7 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 .hero__noot{color:var(--stil);font-size:.98rem}
 /* Herofoto: groot, loopt rechts en onder uit het beeld en vervaagt links en onderaan in de achtergrondkleur */
 .hero__foto{margin:0;position:absolute;top:-72px;bottom:0;left:44%;right:calc(50% - 50vw);z-index:1}
-.hero__foto img,.hero__foto .foto-plek{width:100%;height:100%;object-fit:cover;object-position:50% 72%;border-radius:0;display:block}
+.hero__foto img,.hero__foto .foto-plek{width:100%;height:100%;object-fit:cover;object-position:50% 68%;border-radius:0;display:block}
 .hero__foto::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,var(--bg) 0%,rgba(251,248,243,.85) 12%,rgba(251,248,243,0) 40%),
              linear-gradient(0deg,var(--bg) 0%,rgba(251,248,243,0) 22%),
@@ -92,7 +92,8 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 .hero__foto figcaption{position:absolute;right:max(24px,calc(50vw - 50% - 580px + 24px));bottom:18px;z-index:2;background:rgba(255,255,255,.92);padding:8px 13px;border-radius:10px;font-size:.85rem;font-weight:600}
 @media(max-width:920px){
   .hero__grid{grid-template-columns:1fr;gap:20px;min-height:0}.hero{padding-top:44px}
-  .hero__foto{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:0 -24px;aspect-ratio:4/3}
+  .hero__foto{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:0 -24px;aspect-ratio:1/1}
+  .hero__foto img{object-position:50% 75%}
   .hero__foto::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(251,248,243,0) 32%),linear-gradient(180deg,rgba(251,248,243,.4) 0%,rgba(251,248,243,0) 22%)}
   .hero__foto figcaption{right:auto;left:36px;bottom:14px}
 }
