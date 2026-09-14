@@ -893,7 +893,7 @@ pagina("prijzen.html", f"Prijzen autosleutel bijmaken Hengelo | {HANDELSNAAM}",
     <p>De prijs hangt niet af van hoe duur uw auto was, maar van het sleuteltype en van de vraag of u nog een werkende sleutel heeft. Uw kenteken maakt er één prijs vooraf van.</p>
     <table class="prijstabel">
       <caption><b>Schatting</b>, geen offerte: de bedragen zijn wat het bij ons en bij de dealer meestal kost. Uw werkelijke prijs hangt af van merk, model en bouwjaar en krijgt u vooraf op uw kenteken.</caption>
-      <thead><tr><th>Sleuteltype</th><th>Bij ons (schatting)<br><small>u heeft nog een werkende sleutel; wij programmeren de nieuwe in de software van uw auto</small></th><th>Bij de dealer (schatting)</th><th>Alle sleutels kwijt</th></tr></thead>
+      <thead><tr><th>Sleuteltype</th><th>Bij ons (schatting)</th><th>Bij de dealer (schatting)</th><th>Alle sleutels kwijt</th></tr></thead>
       <tbody>{rijen}
       <tr><td><a href="/autosleutel-reparatie">Reparatie</a><br><small>behuizing, knopjes, veer, chip terugsolderen</small></td><td>{P_REP}</td><td class="dealer">{DEALER["autosleutel-reparatie"]}</td><td>—</td></tr>
       <tr><td><a href="/aan-huis">Aan huis in Hengelo</a><br><small>bovenop de sleutelprijs</small></td><td colspan="3">vanaf € {AAN_HUIS_VANAF}</td></tr>
