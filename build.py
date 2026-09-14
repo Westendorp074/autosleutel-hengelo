@@ -724,7 +724,7 @@ def formulier(bron, met_contact=True):
     </div>
     <form action="https://api.web3forms.com/submit" method="POST" class="form" data-key="{WEB3FORMS_KEY}">
       <input type="hidden" name="access_key" value="{WEB3FORMS_KEY}">
-      <input type="hidden" name="subject" value="Prijsaanvraag via autosleutel-hengelo.nl">
+      <input type="hidden" name="subject" value="via autosleutel-hengelo.nl">
       <input type="hidden" name="from_name" value="{HANDELSNAAM}">
       <input type="hidden" name="redirect" value="{SITE}/bedankt">
       <input type="hidden" name="Pagina" value="{bron}">

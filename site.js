@@ -114,4 +114,20 @@
       });
     });
   });
+
+  // Onderwerpregel van de aanvraagmail: wat, welk kenteken en welke auto, zodat de mailbox in één oogopslag leesbaar is.
+  document.querySelectorAll('form').forEach(function (f) {
+    var sub = f.querySelector('input[name="subject"]');
+    if (!sub) return;
+    var basis = sub.value;
+    f.addEventListener('submit', function () {
+      var v = function (sel) { var el = f.querySelector(sel); return el && el.value ? String(el.value).trim() : ''; };
+      var kt = v('input[name="Kenteken"]').toUpperCase().replace(/[^A-Z0-9]/g, '');
+      var auto = v('input[name="Auto volgens RDW"]') || [v('input[name="Merk"]'), v('input[name="Model"]'), v('input[name="Bouwjaar"]')].filter(Boolean).join(' ');
+      var wat = v('select[name="Onderwerp"]') || 'Aanvraag';
+      var sit = v('select[name="Situatie"]'); if (sit) wat += sit.indexOf('kwijt') > -1 ? ' (alle sleutels kwijt)' : ' (reserve)';
+      var naam = v('input[name="Naam"]');
+      sub.value = [wat, kt, auto, naam].filter(Boolean).join(' · ') + ' · ' + basis;
+    });
+  });
 })();
