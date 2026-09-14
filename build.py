@@ -676,7 +676,7 @@ def vertrouwen():
 <div class="wrap vertrouwen">
   <div>{icoon("sleutels")}<b>{PER_JAAR}+</b><span>autosleutels per jaar</span></div>
   <div>{icoon("kenteken")}<b>Tot 50%</b><span>goedkoper dan de dealer</span></div>
-  <div>{icoon("schild")}<b>Levenslang</b><span>garantie op de chip</span></div>
+  <div>{icoon("kalender")}<b>Sinds 1995</b><span>autosleutels bij Westendorp, bedrijf sinds {SINDS}</span></div>
   <div>{icoon("huis")}<b>Vanaf € {AAN_HUIS_VANAF}</b><span>aan huis in Hengelo</span></div>
 </div>"""
 
