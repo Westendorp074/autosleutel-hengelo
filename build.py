@@ -590,8 +590,9 @@ def kop_html(titel, omschrijving, pad, jsonld, beeld=None, noindex=False):
   <div class="wrap top__in">
     <a class="top__merk" href="/" aria-label="Autosleutel Hengelo – naar de homepage"><img src="/img/logo-autosleutel-hengelo.png" alt="Autosleutel Hengelo" width="720" height="184" decoding="async"></a>
     <nav class="top__nav" aria-label="Hoofdmenu">
+      <a href="/autosleutel-bijmaken">Sleutel bijmaken</a>
+      <a href="/autosleutel-kwijt">Sleutel kwijt</a>
       <a href="/prijzen">Prijzen</a>
-      <a href="/klapsleutel-bijmaken">Sleuteltypen</a>
       <a href="/aan-huis">Aan huis</a>
       <a href="/kennis">Kennis</a>
       <a href="/merken">Merken</a>
@@ -657,7 +658,7 @@ def knoppen(primair="Bel " + TEL_HTML):
     return (f'<div class="knoppen"><a class="knop knop--vol" href="tel:{TEL_LINK}" data-conv="bellen">{icoon("tel")}{primair}</a>'
             f'<a class="knop knop--rand" href="/contact#kenteken">{icoon("kenteken")}Prijs via kenteken</a></div>')
 
-def kiezer(titel="Welke sleutel heeft u?", intro="Kies uw sleuteltype. U ziet meteen de richtprijs en leest wat wij ermee kunnen."):
+def kiezer(titel="Welke sleutel heeft u?", intro='Kies uw sleuteltype. U ziet meteen de richtprijs en leest wat wij ermee kunnen. Alles over <a href="/autosleutel-bijmaken">autosleutel bijmaken</a> op één pagina, of lees wat u doet als u <a href="/autosleutel-kwijt">alle sleutels kwijt</a> bent.'):
     kaarten = "".join(
         f'<a class="kies" href="/{t["slug"]}">{icoon(t["icoon"], "ic ic--groot")}<h3>{t["naam"]}</h3>'
         f'<p>{t["kort"]}</p><span class="kies__prijs">vanaf {t["prijs_kopie"].split(" – ")[0]}</span></a>'
@@ -784,8 +785,8 @@ pagina("index.html",
   <div class="wrap hero__grid">
     <div>
       <span class="label">{icoon("pin")}Werkplaats in Enschede · {REISTIJD} vanaf Hengelo</span>
-      <h1>Uw autosleutel, <em>vanmiddag klaar.</em></h1>
-      <p class="hero__lead">Klapsleutel, smartkey of sleutelkaart: wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. Vaste prijs vooraf op basis van uw kenteken, meestal klaar terwijl u wacht.</p>
+      <h1>Autosleutel bijmaken in Hengelo, <em>vanmiddag klaar.</em></h1>
+      <p class="hero__lead">Reservesleutel laten maken, autosleutel kwijt of sleutel kapot? Klapsleutel, smartkey, sleutelkaart of transpondersleutel: wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. Vaste prijs vooraf op basis van uw kenteken, meestal klaar terwijl u wacht.</p>
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
     </div>
@@ -922,8 +923,137 @@ for t in SLEUTELTYPEN:
   {secties}
 </div></section>
 {faqblok(t["faq"], f"Vragen over {t['naam'].lower()}s")}
-<section class="sectie sectie--kort"><div class="wrap"><div class="sectie__kop"><h2>Ander sleuteltype?</h2></div><div class="kiezer kiezer--klein">{anderen}</div></div></section>
+<section class="sectie sectie--kort"><div class="wrap"><div class="sectie__kop"><h2>Ander sleuteltype?</h2><p>Of lees alles over <a href="/autosleutel-bijmaken">autosleutel bijmaken in Hengelo</a>: werkwijze, prijzen en wat u meeneemt.</p></div><div class="kiezer kiezer--klein">{anderen}</div></div></section>
 {formulier(t["slug"])}
+""")
+
+# ============================================================
+# AUTOSLEUTEL BIJMAKEN (hoofdpagina voor de belangrijkste zoekterm)
+# ============================================================
+BIJMAKEN_FAQ = [
+    ("Wat kost een autosleutel bijmaken in Hengelo?",
+     f"Een kopie van een sleutel die u nog heeft: transpondersleutel {P_KOPIE}, klapsleutel {P_KLAP}, sleutelkaart {P_KAART}, "
+     f"smartkey {P_SMART}, inclusief programmeren en btw. Bent u alle sleutels kwijt, dan verschilt de prijs sterk per merk en "
+     "bouwjaar; u krijgt vooraf een vaste prijs op basis van uw kenteken."),
+    ("Hoe lang duurt een autosleutel bijmaken?",
+     "Meestal 20 tot 30 minuten, klaar terwijl u wacht. Alleen bij een enkel zeer recent model moet een sleutel besteld worden; dat hoort u vooraf."),
+    ("Kan ik een autosleutel laten bijmaken zonder originele sleutel?",
+     "Ja, bij de meeste merken en bouwjaren. Wij maken dan een nieuwe sleutel en leren die in op de auto. Neem kentekenbewijs en identiteitsbewijs mee."),
+    ("Moet ik naar de dealer voor een nieuwe autosleutel?",
+     "Nee. Wij maken en programmeren autosleutels voor vrijwel elk merk in onze eigen werkplaats, doorgaans voor een fractie van de dealerprijs en zonder wachttijd van weken."),
+    ("Kan een autosleutel ook aan huis bijgemaakt worden?",
+     f"Ja. In Hengelo komen wij aan huis vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; voor de omgeving hoort u de prijs vooraf."),
+    ("Wat moet ik meenemen?",
+     "Uw kenteken volstaat voor de prijs. Bij het maken: kentekenbewijs, een geldig identiteitsbewijs en, als u die nog heeft, een werkende sleutel."),
+]
+pagina("autosleutel-bijmaken.html",
+       f"Autosleutel bijmaken Hengelo | vanaf € 60, klaar terwijl u wacht",
+       f"Autosleutel bijmaken in Hengelo: reservesleutel, nieuwe sleutel of kopie voor vrijwel elk merk, inclusief programmeren. "
+       f"Vaste prijs via uw kenteken, meestal klaar in 20–30 minuten, {REISTIJD} vanaf Hengelo of aan huis vanaf € {AAN_HUIS_VANAF}.",
+       "/autosleutel-bijmaken",
+       jsonld=[faq_jsonld(BIJMAKEN_FAQ), kruimels_jsonld([("Home", "/"), ("Autosleutel bijmaken", "/autosleutel-bijmaken")])],
+       beeld="opel-astra-klapsleutel-bijmaken.jpg",
+       body=f"""
+{kruimels([("Home", "/"), ("Autosleutel bijmaken", "")])}
+<section class="sectie sectie--kort">
+  <div class="wrap media">
+    <div>
+      <span class="label">{icoon("sleutels")}Reservesleutel · nieuwe sleutel · kopie</span>
+      <h1>Autosleutel bijmaken in Hengelo</h1>
+      {antwoord(f"Wij maken, programmeren en repareren autosleutels voor vrijwel elk merk en bouwjaar: als reservesleutel, als kopie van "
+                f"uw huidige sleutel of als volledig nieuwe sleutel wanneer u alles kwijt bent. Vanaf {P_KOPIE.split(' – ')[0]}, inclusief "
+                f"programmeren en btw, meestal klaar terwijl u wacht. De werkplaats staat op {REISTIJD} van Hengelo; aan huis kan ook.")}
+      <p>Een autosleutel bijmaken is bij moderne auto's programmeerwerk: de transponderchip en de afstandsbediening moeten op uw auto worden ingeleerd, anders start hij niet. Dat doen wij in eigen huis met apparatuur per merk, zonder dealer en zonder wachttijd van weken.</p>
+      {knoppen()}
+    </div>
+    <figure class="media__foto">{foto("opel-astra-klapsleutel-bijmaken.jpg", "Twee bijgemaakte Opel-klapsleutels voor een Opel Astra", lazy=False)}<figcaption>Opel Astra: klapsleutel bijgemaakt en geprogrammeerd, klaar in één bezoek</figcaption></figure>
+  </div>
+</section>
+<section class="sectie sectie--zand"><div class="wrap wrap--tekst">
+  <h2>Welke autosleutel wilt u laten bijmaken?</h2>
+  <p>De prijs en de werkwijze hangen af van het sleuteltype, niet van het merk of hoe duur uw auto was. Kies het type dat op uw sleutel lijkt:</p>
+  <div class="kiezer kiezer--klein">{"".join(f'<a class="kies kies--klein" href="/{t["slug"]}">{icoon(t["icoon"])}<span>{t["naam"]}</span></a>' for t in SLEUTELTYPEN)}</div>
+  <h2>Reservesleutel laten maken: goedkoper nu dan later</h2>
+  <p>Heeft u nog een werkende sleutel? Dan kopiëren wij de chip en de afstandsbediening naar een nieuwe sleutel: dat is de goedkoopste en snelste route. Raakt u die ene sleutel later kwijt, dan moet er een nieuwe sleutel zonder werkend exemplaar komen. Dat kan bij de meeste auto's, maar het kost meer en de auto staat stil tot het geregeld is. Een tweede sleutel is daarom een kleine investering die veel gedoe voorkomt.</p>
+  <h2>Autosleutel kwijt of kapot?</h2>
+  <p>Bent u <a href="/autosleutel-kwijt">alle sleutels kwijt</a>, dan maken wij een nieuwe sleutel en wissen wij de oude uit de auto, zodat een gevonden of gestolen sleutel niet meer werkt. Is de sleutel kapot (gebroken behuizing, knopjes doen niets, klapt niet meer uit), dan is <a href="/autosleutel-reparatie">repareren</a> meestal genoeg: uw eigen chip en zender gaan over in een nieuwe behuizing, zonder programmeren.</p>
+  <h2>Zo werkt autosleutel bijmaken bij ons</h2>
+  <ol class="stappen stappen--lijst">
+    <li>{icoon("kenteken")}<h3>Kenteken doorgeven</h3><p>Via het formulier, WhatsApp of telefoon. Uit het kenteken zien wij welk sleuteltype, welke chip en welke procedure uw auto heeft.</p></li>
+    <li>{icoon("vink")}<h3>Vaste prijs vooraf</h3><p>U hoort dezelfde werkdag wat het kost, of het terwijl u wacht kan en of wij bij u langs kunnen komen.</p></li>
+    <li>{icoon("winkel")}<h3>Maken en programmeren</h3><p>In de werkplaats in Enschede ({REISTIJD} vanaf Hengelo) of <a href="/aan-huis">aan huis in Hengelo</a>. De baard wordt gefreesd, de chip en afstandsbediening ingeleerd, en u test de sleutel voordat u betaalt.</p></li>
+  </ol>
+  <h2>Wat u meeneemt</h2>
+  <ul class="vinkjes">
+    <li>{icoon("vink")}Kentekenbewijs (of het kenteken vooraf via het formulier)</li>
+    <li>{icoon("vink")}Geldig identiteitsbewijs, zodat wij weten dat de auto van u is</li>
+    <li>{icoon("vink")}Uw huidige sleutel, als u die nog heeft: dan is het goedkoper en sneller</li>
+  </ul>
+  <h2>Waarom niet naar de dealer?</h2>
+  <p>Een dealer bestelt de sleutel bij de fabriek, wacht twee tot zes weken en rekent daar werkplaatstarief overheen. Wij hebben behuizingen, chips en afstandsbedieningen voor vrijwel elk merk op voorraad en programmeren zelf. Daardoor betaalt u doorgaans de helft tot een derde en heeft u de sleutel dezelfde dag. U krijgt levenslange garantie op de chip en twee jaar op een nieuwe afstandsbediening.</p>
+  <h2>Voor Hengelo en heel Twente</h2>
+  <p>Klanten komen naar onze werkplaats vanuit Hengelo, {", ".join(PLAATSEN[1:-1])} en {PLAATSEN[-1]}. Kunt u niet komen, bijvoorbeeld omdat de auto niet start, dan komen wij naar u toe.</p>
+  {knoppen()}
+</div></section>
+{merkenstrip()}
+{faqblok(BIJMAKEN_FAQ, "Vragen over autosleutel bijmaken")}
+{formulier("autosleutel-bijmaken")}
+""")
+
+# ============================================================
+# AUTOSLEUTEL KWIJT (situatiepagina, geen prijs: verschilt te sterk)
+# ============================================================
+KWIJT_FAQ = [
+    ("Ik ben al mijn autosleutels kwijt. Kan er nog een nieuwe gemaakt worden?",
+     "Bij de meeste merken en bouwjaren wel. Wij maken een nieuwe sleutel op basis van uw kenteken en leren die in op de auto, ook zonder werkend exemplaar."),
+    ("Wat kost een nieuwe autosleutel als ik alles kwijt ben?",
+     "Dat verschilt sterk per merk, model en bouwjaar, daarom noemen wij daar geen vast bedrag voor. Geef uw kenteken door en u krijgt vooraf een vaste prijs."),
+    ("Kan iemand met mijn verloren sleutel mijn auto stelen?",
+     "Zolang de oude sleutel nog geprogrammeerd staat wel. Bij het maken van de nieuwe sleutel wissen wij de verloren sleutel uit de auto, zodat die niet meer start."),
+    ("Wat als de auto niet naar Enschede kan?",
+     f"Dan komen wij naar u toe: in Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs. Wij leren de sleutel ter plekke in via de diagnoseaansluiting."),
+    ("Wat heb ik nodig?",
+     "Kentekenbewijs en een geldig identiteitsbewijs. Zonder die papieren maken wij geen sleutel voor een auto zonder werkend exemplaar."),
+]
+pagina("autosleutel-kwijt.html",
+       f"Autosleutel kwijt in Hengelo? Nieuwe sleutel, ook zonder reserve",
+       f"Autosleutel kwijt of gestolen in Hengelo? Wij maken een nieuwe sleutel op basis van uw kenteken en wissen de oude uit de auto. "
+       f"Werkplaats op {REISTIJD} van Hengelo, of aan huis vanaf € {AAN_HUIS_VANAF}. Bel {TEL_TONEN}.",
+       "/autosleutel-kwijt",
+       jsonld=[faq_jsonld(KWIJT_FAQ), kruimels_jsonld([("Home", "/"), ("Autosleutel kwijt", "/autosleutel-kwijt")])],
+       beeld="jeep-compass-smartkey-bijmaken.jpg",
+       body=f"""
+{kruimels([("Home", "/"), ("Autosleutel kwijt", "")])}
+<section class="sectie sectie--kort">
+  <div class="wrap media">
+    <div>
+      <span class="label">{icoon("sleutels")}Alle sleutels kwijt of gestolen</span>
+      <h1>Autosleutel kwijt in Hengelo</h1>
+      {antwoord("Geen enkele werkende sleutel meer? Voor de meeste merken en bouwjaren maken wij een volledig nieuwe autosleutel op basis van uw "
+                "kenteken en leren die in op de auto. De verloren sleutel wissen wij, zodat niemand er nog mee kan rijden. De prijs hangt sterk af "
+                "van merk en bouwjaar; u krijgt hem vooraf, vast, via uw kenteken.")}
+      <p>Heeft u nog wél een reservesleutel? Dan is het eenvoudiger en goedkoper: wij <a href="/autosleutel-bijmaken">kopiëren die sleutel</a> (vanaf {P_KOPIE.split(' – ')[0]}) en u heeft er weer twee.</p>
+      {knoppen("Bel direct " + TEL_HTML)}
+    </div>
+    <figure class="media__foto">{foto("jeep-compass-smartkey-bijmaken.jpg", "Sleutelspecialist met twee nieuwe smartkeys voor een Jeep Compass waarvan alle sleutels kwijt waren", lazy=False)}<figcaption>Jeep Compass: oude sleutels gewist, twee nieuwe ingeleerd</figcaption></figure>
+  </div>
+</section>
+<section class="sectie sectie--zand"><div class="wrap wrap--tekst">
+  <h2>Eerst dit, voordat u iets laat maken</h2>
+  <ol class="stappen stappen--lijst">
+    <li>{icoon("vink")}<h3>Zoek nog één keer goed</h3><p>Jaszakken, de wasmachine, de auto zelf, de vorige parkeerplaats. Duikt de sleutel binnen een dag op, dan bespaart u het hele bedrag.</p></li>
+    <li>{icoon("schild")}<h3>Gestolen? Doe aangifte en bel uw verzekeraar</h3><p>Bij diefstal vergoeden veel beperkt-casco- en allriskpolissen de nieuwe sleutel. Bij gewoon verlies meestal niet, maar vragen kost niets.</p></li>
+    <li>{icoon("kenteken")}<h3>Geef uw kenteken door</h3><p>U hoort dezelfde werkdag wat een nieuwe sleutel kost, of het bij uw bouwjaar zonder werkende sleutel kan, en of wij naar Hengelo kunnen komen.</p></li>
+  </ol>
+  <h2>Zo maken wij een sleutel zonder werkend exemplaar</h2>
+  <p>Uit het kenteken halen wij het sleutelprofiel en de chipgeneratie van uw auto. De baard wordt op code gefreesd, zodat hij in het slot past. Daarna koppelen wij de nieuwe transponderchip en de afstandsbediening aan de startonderbreker via de diagnoseaansluiting van de auto. Bij dezelfde handeling wissen wij alle sleutels die niet aanwezig zijn: de verloren sleutel start de auto daarna niet meer.</p>
+  <p>Bij oudere Peugeot- en Citroën-modellen is soms een pincode nodig; bij een enkel zeer recent model moet een sleutel via de fabriek besteld worden. Dat hoort u vooraf, nooit achteraf.</p>
+  <h2>Auto start niet en staat vast?</h2>
+  <p>Dan hoeft u niet te slepen. Wij komen naar u toe in Hengelo (vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs) of in de omgeving, en leren de sleutel ter plekke in. <a href="/aan-huis">Zo werkt de aan-huisservice</a>.</p>
+  {knoppen()}
+</div></section>
+{faqblok(KWIJT_FAQ, "Vragen over een verloren autosleutel")}
+{formulier("autosleutel-kwijt")}
 """)
 
 # ============================================================
@@ -1159,7 +1289,7 @@ pagina("privacy.html", f"Privacyverklaring | {HANDELSNAAM}",
 # ============================================================
 # sitemap, robots, llms.txt
 # ============================================================
-paden = ["/", "/prijzen", "/aan-huis", "/contact", "/kennis", "/merken", "/privacy"] + \
+paden = ["/", "/autosleutel-bijmaken", "/autosleutel-kwijt", "/prijzen", "/aan-huis", "/contact", "/kennis", "/merken", "/privacy"] + \
         ["/" + t["slug"] for t in SLEUTELTYPEN] + ["/" + k["slug"] for k in KENNIS] + ["/" + m[1] for m in MERKEN]
 urls = "".join(f"<url><loc>{SITE}{p}</loc><changefreq>monthly</changefreq><priority>{'1.0' if p == '/' else '0.7'}</priority></url>" for p in paden)
 (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>', encoding="utf-8")

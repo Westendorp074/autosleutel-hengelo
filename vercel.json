@@ -6,7 +6,7 @@
     { "source": "/", "has": [{ "type": "host", "value": "autosleutel-hengelo.vercel.app" }], "destination": "https://autosleutel-hengelo.nl/", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "www.autosleutel-hengelo.nl" }], "destination": "https://autosleutel-hengelo.nl/:path*", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "autosleutel-hengelo.vercel.app" }], "destination": "https://autosleutel-hengelo.nl/:path*", "permanent": true },
-    { "source": "/services", "destination": "/prijzen", "permanent": true },
+    { "source": "/services", "destination": "/autosleutel-bijmaken", "permanent": true },
     { "source": "/appointment", "destination": "/contact", "permanent": true },
     { "source": "/about", "destination": "/autosleutel-reparatie", "permanent": true }
   ],
