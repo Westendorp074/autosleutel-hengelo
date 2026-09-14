@@ -67,7 +67,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .top__tel .ic{margin:0}
 .top__wa{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--groen-licht);color:var(--groen)}
 .top__wa .ic{margin:0;width:22px;height:22px}
-.top__wa:hover{background:var(--groen);color:#fff}
+.top__wa:hover,.top__wa:focus-visible{background:var(--groen);color:#fff}
+.top__wa:hover .ic,.top__wa:focus-visible .ic{color:#fff}
 @media(max-width:960px){.top__nav{display:none}}
 @media(max-width:560px){.top__merk img{height:38px}.top__tel span{display:none}.top__tel .ic{width:26px;height:26px;padding:6px;box-sizing:content-box;background:var(--groen-licht);border-radius:10px}}
 
