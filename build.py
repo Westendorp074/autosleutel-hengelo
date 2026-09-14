@@ -653,8 +653,20 @@ VOET = f"""
 </html>
 """
 
+
+# Elk los telefoonnummer in lopende tekst automatisch klikbaar maken (tel:-link), behalve waar het al in een link,
+# tag, script of <title> staat. Zo blijft het nummer altijd aanklikbaar, ook in nieuwe teksten.
+import re as _re
+_TEL_RE = _re.compile(r"0(?:53| )?[\s ]?-?[\s ]?478[\s ]?42[\s ]?45")
+_SEG_RE = _re.compile(r"(<a.*?</a>|<script.*?</script>|<style.*?</style>|<title>.*?</title>|<textarea.*?</textarea>|<[^>]+>)", _re.S)
+def tel_links(doc):
+    delen = _SEG_RE.split(doc)
+    for i in range(0, len(delen), 2):
+        delen[i] = _TEL_RE.sub(lambda m: f'<a href="tel:{TEL_LINK}" data-conv="bellen">{m.group(0)}</a>', delen[i])
+    return "".join(delen)
+
 def pagina(bestand, titel, omschrijving, pad, body, jsonld=(), beeld=None, noindex=False):
-    (OUT / bestand).write_text(kop_html(titel, omschrijving, pad, jsonld, beeld, noindex) + body + VOET, encoding="utf-8")
+    (OUT / bestand).write_text(tel_links(kop_html(titel, omschrijving, pad, jsonld, beeld, noindex) + body + VOET), encoding="utf-8")
 
 # ---------- herbruikbare blokken ----------
 def knoppen(primair="Bel " + TEL_HTML):
