@@ -275,3 +275,6 @@ img.is-staand{object-position:center 80%}   /* sleutel (onderin) altijd volledig
 .belbalk__bel{background:var(--groen);color:#fff}
 .belbalk__wa{background:#1E7A46;color:#fff}
 @media(max-width:900px){.belbalk{display:flex}body{padding-bottom:76px}}
+
+/* Mobiel: homepage-titel iets groter (wens eigenaar) */
+@media(max-width:600px){.hero h1{font-size:2.6rem;line-height:1.06}}
