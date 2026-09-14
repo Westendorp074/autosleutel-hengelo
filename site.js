@@ -11,7 +11,7 @@
   });
 
   // Kenteken netjes in hoofdletters.
-  document.querySelectorAll('input[name=kenteken]').forEach(function (i) {
+  document.querySelectorAll('#kenteken-veld, #kenteken, #f-kenteken').forEach(function (i) {
     i.addEventListener('input', function () { i.value = i.value.toUpperCase(); });
   });
 
@@ -100,6 +100,18 @@
       if (f.dataset.bezig) return;
       f.dataset.bezig = '1';
       if (b) { b.disabled = true; b.textContent = 'Versturen…'; }
+    });
+  });
+
+  // Lege velden niet meesturen: de aanvraagmail toont dan alleen wat is ingevuld.
+  document.querySelectorAll('form').forEach(function (f) {
+    f.addEventListener('submit', function () {
+      f.querySelectorAll('input, select, textarea').forEach(function (el) {
+        if (el.type === 'submit' || el.type === 'checkbox' || el.name === 'access_key' || el.name === 'redirect' || el.name === 'subject' || el.name === 'from_name') return;
+        var leeg = !String(el.value || '').trim();
+        var verborgen = el.closest('[hidden]');
+        if (leeg || verborgen) el.disabled = true;
+      });
     });
   });
 })();

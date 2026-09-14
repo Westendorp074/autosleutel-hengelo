@@ -68,39 +68,39 @@
       <input type="hidden" name="subject" value="Prijsaanvraag via autosleutel-hengelo.nl">
       <input type="hidden" name="from_name" value="Autosleutel Hengelo">
       <input type="hidden" name="redirect" value="https://autosleutel-hengelo.nl/bedankt">
-      <input type="hidden" name="bron" value="kennis-afstandsbediening-werkt-niet">
+      <input type="hidden" name="Pagina" value="kennis-afstandsbediening-werkt-niet">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
       <div class="veld veld--kenteken"><label for="kenteken-veld">Kenteken</label>
-        <div class="kentekenveld"><span class="kenteken__nl">NL</span><input id="kenteken-veld" name="kenteken" required placeholder="XX-123-X" autocomplete="off" maxlength="9" aria-describedby="f-kenteken-check"></div>
+        <div class="kentekenveld"><span class="kenteken__nl">NL</span><input id="kenteken-veld" name="Kenteken" required placeholder="XX-123-X" autocomplete="off" maxlength="9" aria-describedby="f-kenteken-check"></div>
         <div class="kentekencheck" id="f-kenteken-check" aria-live="polite" hidden></div>
         <small>Hiermee zien wij direct welke sleutel u nodig heeft. <button type="button" class="linkknop" id="f-geen-kenteken">Kenteken niet bij de hand?</button></small>
-        <input type="hidden" name="voertuig_rdw" id="f-voertuig" value=""></div>
+        <input type="hidden" name="Auto volgens RDW" id="f-voertuig" value=""></div>
       <div class="veld autovelden" id="f-autovelden" hidden>
         <p class="autovelden__kop">Vul dan merk, model en bouwjaar in</p>
         <div class="autovelden__grid">
-          <div class="veld"><label for="f-merk">Merk</label><input id="f-merk" name="merk" placeholder="Bijv. Volkswagen"></div>
-          <div class="veld"><label for="f-model">Model</label><input id="f-model" name="model" placeholder="Bijv. Polo"></div>
-          <div class="veld"><label for="f-bouwjaar">Bouwjaar</label><input id="f-bouwjaar" name="bouwjaar" inputmode="numeric" placeholder="Bijv. 2016" maxlength="4"></div>
+          <div class="veld"><label for="f-merk">Merk</label><input id="f-merk" name="Merk" placeholder="Bijv. Volkswagen"></div>
+          <div class="veld"><label for="f-model">Model</label><input id="f-model" name="Model" placeholder="Bijv. Polo"></div>
+          <div class="veld"><label for="f-bouwjaar">Bouwjaar</label><input id="f-bouwjaar" name="Bouwjaar" inputmode="numeric" placeholder="Bijv. 2016" maxlength="4"></div>
         </div>
       </div>
       <div class="veld veld--vol"><label for="f-onderwerp">Waarvoor komt u?</label>
-        <select id="f-onderwerp" name="onderwerp" required><option>Autosleutel bijmaken</option><option>Autosleutel repareren</option></select></div>
+        <select id="f-onderwerp" name="Onderwerp" required><option>Autosleutel bijmaken</option><option>Autosleutel repareren</option></select></div>
       <div class="veldgroep" data-voor="Autosleutel bijmaken">
         <div class="veld"><label for="f-start">Hoe start uw auto?</label>
-          <select id="f-start" name="starten" required><option value="">Maak een keuze</option><option>Sleutel in het contact of dashboard</option><option>Keyless (start-stopknop)</option><option>Weet ik niet</option></select></div>
+          <select id="f-start" name="Hoe start de auto" required><option value="">Maak een keuze</option><option>Sleutel in het contact of dashboard</option><option>Keyless (start-stopknop)</option><option>Weet ik niet</option></select></div>
           <div class="veld"><label for="f-situatie">Wat is de situatie?</label>
-          <select id="f-situatie" name="situatie" required><option value="">Maak een keuze</option><option>Reserve autosleutel, ik heb nog een werkende sleutel</option><option>Alle sleutels kwijt</option></select></div>
+          <select id="f-situatie" name="Situatie" required><option value="">Maak een keuze</option><option>Reserve autosleutel, ik heb nog een werkende sleutel</option><option>Alle sleutels kwijt</option></select></div>
       </div>
       <div class="veldgroep" data-voor="Autosleutel repareren" hidden>
         <div class="veld veld--vol"><label for="f-reparatie">Wat is er kapot?</label>
-          <select id="f-reparatie" name="reparatie"><option value="">Maak een keuze</option><option>Autosleutel behuizing (gebroken, versleten, klapt niet meer uit)</option><option>Printplaat reparatie (knopjes doen niets, elektronica, waterschade)</option><option>Allebei</option><option>Weet ik niet</option></select>
+          <select id="f-reparatie" name="Wat is er kapot"><option value="">Maak een keuze</option><option>Autosleutel behuizing (gebroken, versleten, klapt niet meer uit)</option><option>Printplaat reparatie (knopjes doen niets, elektronica, waterschade)</option><option>Allebei</option><option>Weet ik niet</option></select>
           <small>Twijfelt u? Kies "Weet ik niet" en stuur een foto van de sleutel via WhatsApp.</small></div>
       </div>
-      <div class="veld"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
-      <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="telefoon" type="tel" required autocomplete="tel"></div>
+      <div class="veld"><label for="naam">Naam</label><input id="naam" name="Naam" required autocomplete="name"></div>
+      <div class="veld"><label for="tel">Telefoon</label><input id="tel" name="Telefoon" type="tel" required autocomplete="tel"></div>
       <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
       <div class="veld veld--vol"><label for="opm">Opmerkingen</label>
-        <textarea id="opm" name="opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
+        <textarea id="opm" name="Opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
       <div class="veld veld--vol">
         <p class="form-uit" hidden>Het aanvraagformulier is nog niet actief. Bel <a href="tel:+31534784245" data-conv="bellen">053 - 478 42 45</a> of stuur een <a href="https://wa.me/31534784245" rel="noopener" data-conv="whatsapp">WhatsApp-bericht</a> — dan heeft u meteen antwoord.</p>
         <button class="knop knop--geel" type="submit" data-conv="formulier">Vraag mijn prijs aan</button>
@@ -167,6 +167,6 @@
   <a class="belbalk__bel" href="tel:+31534784245" data-conv="bellen"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v4a1.5 1.5 0 0 1-1.6 1.5C10.9 20 4 13.1 4 5.6A1.5 1.5 0 0 1 5 4z"/></svg>Bel 053 - 478 42 45</a>
   <a class="belbalk__wa" href="https://wa.me/31534784245" rel="noopener" data-conv="whatsapp"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20l1.3-4A7.5 7.5 0 1 1 8 18.7L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1l-.2-1.2-1.6-.6-.8.9c-1-.4-1.8-1.2-2.2-2.2l.9-.8-.6-1.6L9.8 8c-.5 0-1 .4-1 1z"/></svg>WhatsApp</a>
 </div>
-<script src="/site.js?v=9cd3e7e3" defer></script>
+<script src="/site.js?v=8c3d80db" defer></script>
 </body>
 </html>
