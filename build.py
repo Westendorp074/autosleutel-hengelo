@@ -772,14 +772,14 @@ galerij = "".join(
         ("jeep-compass-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jeep Compass", "Jeep Compass · smartkey"),
         ("jaguar-xf-smartkey-bijmaken.jpg", "Twee smartkeys bijgemaakt voor een Jaguar XF", "Jaguar XF · smartkey"),
         ("ford-mustang-autosleutel-bijmaken.jpg", "Bijgemaakte autosleutel voor een Ford Mustang", "Ford Mustang · smartkey"),
-        ("bmw-x1-smartkey-bijmaken.jpg", "Twee BMW-smartkeys bijgemaakt voor een BMW X1", "BMW X1 · smartkey"),
+        ("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten bijgemaakt voor een Renault Kadjar", "Renault Kadjar · sleutelkaart"),
         ("opel-astra-klapsleutel-bijmaken.jpg", "Twee bijgemaakte Opel-klapsleutels voor een Opel Astra", "Opel Astra · klapsleutel"),
     ])
 pagina("index.html",
        f"Autosleutel bijmaken Hengelo | vanmiddag klaar, vanaf € 60",
        f"Autosleutel kwijt, kapot of een reservesleutel nodig in Hengelo? Klapsleutel, smartkey of sleutelkaart voor vrijwel elk merk. "
        f"Vaste prijs via uw kenteken, {REISTIJD} vanaf Hengelo, of aan huis vanaf € {AAN_HUIS_VANAF}. Bel {TEL_TONEN}.",
-       "/", jsonld=[faq_jsonld(FAQ)], beeld="renault-kadjar-sleutelkaart-bijmaken.jpg",
+       "/", jsonld=[faq_jsonld(FAQ)], beeld="bmw-x1-smartkey-bijmaken.jpg",
        body=f"""
 <section class="hero">
   <div class="wrap hero__grid">
@@ -790,8 +790,8 @@ pagina("index.html",
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}.</strong></p>
     </div>
-    <figure class="hero__foto">{foto("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten bijgemaakt voor een Renault Kadjar", lazy=False)}
-      <figcaption>Renault Kadjar, twee sleutelkaarten, klaar in één bezoek</figcaption></figure>
+    <figure class="hero__foto">{foto("bmw-x1-smartkey-bijmaken.jpg", "Twee BMW-smartkeys bijgemaakt voor een BMW X1", lazy=False)}
+      <figcaption>BMW X1, twee smartkeys, klaar in één bezoek</figcaption></figure>
   </div>
   {vertrouwen()}
 </section>
