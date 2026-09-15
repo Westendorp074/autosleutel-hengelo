@@ -201,8 +201,8 @@ def cta(tekst="Wilt u weten wat uw sleutel kost? Stuur uw kenteken; u hoort het 
 
 def situaties():
     items = [
-        ("sleutels", "Reserve autosleutel", "Eén werkende sleutel over? Wij maken er een tweede naast, geprogrammeerd op uw auto.", "/autosleutel-bijmaken", SCHATTING["transpondersleutel-bijmaken"][0] + "<small>schatting</small>"),
-        ("rep", "Sleutel kapot", "Behuizing gebroken, knopjes dood of de baard klapt niet meer uit: de chip gaat mee, de rest wordt nieuw.", "/autosleutel-reparatie", SCHATTING["autosleutel-reparatie"][0] + "<small>schatting</small>"),
+        ("sleutels", "Reserve autosleutel", "Eén werkende sleutel over? Wij maken er een tweede naast, geprogrammeerd op uw auto.", "/autosleutel-bijmaken", "vanaf € 60<small>afhankelijk van uw sleuteltype</small>"),
+        ("rep", "Sleutel kapot", "Behuizing gebroken, knopjes dood of de baard klapt niet meer uit: de chip gaat mee, de rest wordt nieuw.", "/autosleutel-reparatie", "vanaf € 30<small>afhankelijk van de reparatie</small>"),
         ("kwijt", "Alle sleutels kwijt", "Een nieuwe sleutel op basis van uw kenteken; de verloren sleutels werken daarna niet meer.", "/autosleutel-kwijt", "prijs op aanvraag<small>vooraf via uw kenteken</small>"),
     ]
     k = "".join(f'<a class="situatie" href="{h}">{icoon(i, "ic ic--groot")}<h3>{t}</h3><p>{o}</p><span class="situatie__prijs">{p}</span></a>' for i, t, o, h, p in items)

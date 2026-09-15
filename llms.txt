@@ -68,7 +68,6 @@ Werkplaats: Wesseler-Nering 32, 7544 JC Enschede (Winkelcentrum Enschede Zuid), 
 - https://autosleutel-hengelo.nl/skoda
 - https://autosleutel-hengelo.nl/smart
 - https://autosleutel-hengelo.nl/suzuki
-- https://autosleutel-hengelo.nl/tesla
 - https://autosleutel-hengelo.nl/toyota
 - https://autosleutel-hengelo.nl/volkswagen
 - https://autosleutel-hengelo.nl/volvo

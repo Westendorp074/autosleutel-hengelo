@@ -51,7 +51,7 @@ def bouw(g):
         ("Wat betaal ik als er geen sleutel meer is?", "Dat verschilt per merk, model en bouwjaar te veel om een bedrag te noemen. Stuur uw kenteken, dan krijgt u de prijs vooraf."),
         ("Moet de auto mee?", f"De nieuwe sleutel wordt op de auto zelf aangemeld, dus de auto moet erbij zijn. Start hij niet, dan komen wij naar u toe: in Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs."),
         ("Werkt de verloren sleutel daarna nog?", "Nee. Bij het aanmelden wissen wij alle sleutels die er niet bij zijn."),
-        ("Heb ik een pincode nodig?", "Alleen bij Peugeot en Citroën tot ongeveer 2005. Zonder code vragen wij hem op, vanaf € 35."),
+        ("Wat heb ik nodig?", "Het kentekenbewijs en een geldig identiteitsbewijs van de eigenaar. Zo weten wij zeker dat de auto van u is. Bij Peugeot en Citroën tot ongeveer 2005 ook de pincode uit de autopapieren; zonder code vragen wij hem op, vanaf € 35."),
     ]
     pagina("/autosleutel-kwijt", "Autosleutel kwijt Hengelo | nieuwe sleutel zonder reserve",
            "Alle autosleutels kwijt? Wij maken een nieuwe sleutel op uw kenteken, melden hem aan en wissen de oude. In de werkplaats of bij u aan huis in Hengelo.",
@@ -83,6 +83,8 @@ def bouw(g):
   <h2>Wat u klaarlegt</h2>
   <ul class="vinkjes">
     <li>{icoon("vink")}De auto, in de werkplaats of bij u voor de deur</li>
+    <li>{icoon("vink")}Kentekenbewijs</li>
+    <li>{icoon("vink")}Geldig identiteitsbewijs van de eigenaar</li>
     <li>{icoon("vink")}Bij Peugeot of Citroën tot ongeveer 2005: de pincode uit de autopapieren</li>
   </ul>
 </div></section>

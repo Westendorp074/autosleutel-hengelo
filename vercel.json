@@ -8,7 +8,8 @@
     { "source": "/:path*", "has": [{ "type": "host", "value": "autosleutel-hengelo.vercel.app" }], "destination": "https://autosleutel-hengelo.nl/:path*", "permanent": true },
     { "source": "/services", "destination": "/autosleutel-bijmaken", "permanent": true },
     { "source": "/appointment", "destination": "/contact", "permanent": true },
-    { "source": "/about", "destination": "/autosleutel-reparatie", "permanent": true }
+    { "source": "/about", "destination": "/autosleutel-reparatie", "permanent": true },
+    { "source": "/tesla", "destination": "/overige-merken", "permanent": true }
   ],
   "headers": [
     { "source": "/(.*).css", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
