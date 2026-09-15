@@ -10,6 +10,12 @@
     f.addEventListener('submit', function (e) { e.preventDefault(); });
   });
 
+  // Mobiel menu (hamburger in de header).
+  var menuKnop = document.querySelector('.top__menu'), menu = document.getElementById('mobielmenu');
+  if (menuKnop && menu) menuKnop.addEventListener('click', function () {
+    var open = menu.hidden; menu.hidden = !open; menuKnop.setAttribute('aria-expanded', String(open));
+  });
+
   // Kenteken netjes in hoofdletters.
   document.querySelectorAll('#kenteken-veld, #kenteken, #f-kenteken').forEach(function (i) {
     i.addEventListener('input', function () { i.value = i.value.toUpperCase(); });

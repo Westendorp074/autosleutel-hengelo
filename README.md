@@ -4,7 +4,8 @@ Statische site voor Autosleutel Hengelo (Westendorp Groep VOF). Geen framework: 
 
 | Bestand | Wat |
 |---|---|
-| `build.py` | Alle teksten, prijzen, sleuteltypen, merken en kennisartikelen staan bovenin in CONFIG. Draai `python build.py`. |
+| `build.py` | CONFIG (NAP, prijzen, werkgebied), componenten en pagina-omhulsel. Draai `python build.py`. |
+| `data_typen.py`, `data_merken*.py`, `data_kennis.py`, `data_paginas*.py` | Teksten per sleuteltype, merk, kennisartikel en pagina (opbouw gelijk aan autosleutel-enschede.nl, eigen teksten). |
 | `styles.css`, `site.js` | Opmaak en het beetje script (formulier, belbalk). |
 | `fotos.py` | Verkleint originelen uit `foto-origineel/` naar `img/`. Niet-verkleinde originelen horen niet in git. |
 | `vercel.json` | Redirects (www → kaal domein, oude one.com-URL's) en cache. |
