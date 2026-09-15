@@ -218,7 +218,7 @@ def kiezer(titel="Welke sleutel heeft u?", intro=None, zand=False):
     intro = intro or "Kies het type dat op uw sleutel lijkt. U ziet een schatting en leest wat wij ermee kunnen. Geen idee welk type het is? Uw kenteken zegt het ons."
     kaarten = "".join(
         f'<a class="kies" href="/{t["slug"]}">{icoon(t["icoon"], "ic ic--groot")}<h3>{t["naam"]}</h3>'
-        f'<p>{t["kort"]}</p><span class="kies__prijs">{SCHATTING[t["slug"]][0]}<small>schatting</small></span></a>'
+        f'<p>{t["kort"]}</p><span class="kies__prijs">{"vanaf € " + {"transpondersleutel-bijmaken": "60", "klapsleutel-bijmaken": "130", "smartkey-bijmaken": "150", "sleutelkaart-bijmaken": "130", "autosleutel-reparatie": "30"}[t["slug"]]}<small>{"afhankelijk van de reparatie" if t["slug"] == "autosleutel-reparatie" else "afhankelijk van merk en bouwjaar"}</small></span></a>'
         for t in SLEUTELTYPEN)
     return f"""
 <section class="sectie{" sectie--zand" if zand else ""}" id="sleuteltypen">
