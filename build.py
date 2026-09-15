@@ -36,6 +36,7 @@ ROUTE_LINK = "https://maps.app.goo.gl/1DX8q4eZJTdBvAbd8"   # Maps-vermelding wer
 GBP_SCORE, GBP_AANTAL = "", 0   # invullen zodra er reviews zijn; leeg = nergens een score of reviewblok
 WEB3FORMS_KEY = "a64f80df-574c-43c9-b15c-f67332fd1a3f"   # eigen key voor deze site (web3forms.com, 13-9-2026)
 PRIVACY_DATUM = "15 september 2026"
+MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"]
 
 OPENING = [("Maandag", "gesloten"), ("Dinsdag", "09:00 – 17:30"), ("Woensdag", "09:00 – 17:30"),
            ("Donderdag", "09:00 – 17:30"), ("Vrijdag", "09:00 – 17:30"),
@@ -48,10 +49,10 @@ PLAATSEN = ["Hengelo", "Borne", "Delden", "Goor", "Haaksbergen", "Oldenzaal", "L
 # Prijzen: altijd "vanaf". Exacte prijs volgt op kenteken. Alle sleutels kwijt: nooit een prijs noemen.
 P_TRANS, P_KLAP, P_KAART, P_SMART, P_REP = "60", "130", "130", "150", "30"
 P_BEHUIZING_VAST, P_BEHUIZING_KLAP = "35", "49,95"
-P_PINCODE = "35"          # Peugeot/Citroën t/m ±2005
+P_PINCODE = "35"          # Peugeot/Citroën tot ongeveer 2005
 P_UP = "129"              # VW Up, Škoda Citigo, Seat Mii
 P_BMW_NIEUW = "249"       # kopie originele BMW-sleutel 2019 en nieuwer
-GARANTIE_CHIP, GARANTIE_AB = "levenslang", "2 jaar"
+GARANTIE_CHIP, GARANTIE_AB = "levenslange garantie", "2 jaar"
 MERCEDES_REGEL = "Mercedes-Benz personenwagens vanaf 2015 maken wij niet; de Sprinter W906 tot en met 2017 wel."
 
 # Schattingen (opgave eigenaar 14-09-2026): alleen tonen in blokken die als "schatting" gelabeld zijn.
@@ -215,7 +216,7 @@ def situaties():
 </section>"""
 
 def kiezer(titel="Welke sleutel heeft u?", intro=None, zand=False):
-    intro = intro or "Kies het type dat op uw sleutel lijkt. U ziet een schatting en leest wat wij ermee kunnen. Geen idee welk type het is? Uw kenteken zegt het ons."
+    intro = intro or "Kies het type dat op uw sleutel lijkt. U ziet de vanaf-prijs en leest wat wij ermee kunnen. Geen idee welk type het is? Uw kenteken zegt het ons."
     kaarten = "".join(
         f'<a class="kies" href="/{t["slug"]}">{icoon(t["icoon"], "ic ic--groot")}<h3>{t["naam"]}</h3>'
         f'<p>{t["kort"]}</p><span class="kies__prijs">{"vanaf € " + {"transpondersleutel-bijmaken": "60", "klapsleutel-bijmaken": "130", "smartkey-bijmaken": "150", "sleutelkaart-bijmaken": "130", "autosleutel-reparatie": "30"}[t["slug"]]}<small>{"afhankelijk van de reparatie" if t["slug"] == "autosleutel-reparatie" else "afhankelijk van merk en bouwjaar"}</small></span></a>'
@@ -257,13 +258,13 @@ def uitzonderingen():
 <h2>Uitzonderingen per merk</h2>
 <ul class="lijst">
   <li><b>Jongere bouwjaren</b>: nieuwere auto's hebben een zwaarder beveiligde chip, en dat ziet u terug in de prijs. Het bouwjaar lezen wij uit uw kenteken, dus u weet het vooraf.</li>
-  <li><b>Volkswagen, Audi, Seat en Škoda</b>: vanaf-prijzen, omdat een enkel model afwijkt. VW Up, Škoda Citigo en Seat Mii: {prijs(P_UP)}.</li>
+  <li><b>Volkswagen, Audi, Seat en Škoda</b>: de prijs kan per model afwijken van de vanaf-prijs. VW Up, Škoda Citigo en Seat Mii: {prijs(P_UP)}.</li>
   <li><b>BMW en Mini</b>: prijs op aanvraag per model. Kopie van een originele BMW-sleutel van 2019 of nieuwer: {prijs(P_BMW_NIEUW)}.</li>
-  <li><b>Mercedes-Benz</b>: {MERCEDES_REGEL}</li>
+  <li><b>Mercedes-Benz</b> personenwagens vanaf 2015 maken wij niet; de Sprinter W906 tot en met 2017 wel.</li>
   <li><b>Peugeot en Citroën tot ongeveer 2005</b>: de auto vraagt om de pincode uit de autopapieren. Kwijt? Wij vragen hem op, {prijs(P_PINCODE)}.</li>
   <li><b>Twee sleutels in één keer</b>: korting op de tweede sleutel, in overleg.</li>
   <li><b>Alle sleutels kwijt</b>: prijs op aanvraag, vooraf via uw kenteken.</li>
-  <li><b>Reparatie</b>: nieuwe behuizing voor een vaste sleutel {prijs(P_BEHUIZING_VAST)}, voor een klapsleutel {prijs(P_BEHUIZING_KLAP)}. Printplaat of soldeerwerk: prijs na een foto via WhatsApp.</li>
+  <li><b>Reparatie</b>: nieuwe behuizing voor een vaste sleutel {prijs(P_BEHUIZING_VAST)}, voor een klapsleutel {prijs(P_BEHUIZING_KLAP)}. Printplaat- of soldeerwerk: prijs na een foto via WhatsApp.</li>
   <li><b>Aan huis</b>: in Hengelo {prijs(AAN_HUIS_VANAF)} bovenop de sleutelprijs; daarbuiten een kilometervergoeding, die in de prijsopgave staat.</li>
 </ul>"""
 
@@ -273,7 +274,7 @@ def dealerblok():
   <div class="wrap media">
     <div>
       <h2>Wij of de dealer</h2>
-      <p>De dealer bestelt uw sleutel bij de fabriek. Daar zit doorgaans twee tot zes weken tussen, en daarna betaalt u ook nog werkplaatsuren. Wij hebben behuizingen, chips en afstandsbedieningen op voorraad en programmeren zelf. U bent tot 50% goedkoper uit en rijdt dezelfde dag met de nieuwe sleutel.</p>
+      <p>De dealer bestelt uw sleutel bij de fabriek. Daar zit doorgaans twee tot zes weken tussen, en daarna betaalt u ook nog werkplaatsuren. Wij hebben behuizingen, chips en afstandsbedieningen op voorraad en programmeren zelf. Zo bent u tot 50% goedkoper dan de dealer, en u rijdt dezelfde dag met de nieuwe sleutel.</p>
       <ul class="vinkjes">
         <li>{icoon("vink")}Meestal klaar terwijl u wacht, in {DOORLOOPTIJD}</li>
         <li>{icoon("vink")}Prijs vooraf, op basis van uw kenteken</li>
@@ -483,9 +484,29 @@ VOET = f"""
 </html>
 """
 
+
+# Lange samenstellingen in koppen: zachte afbreking (&shy;), zodat een smalle kaart of telefoon
+# nooit midden in een woord afbreekt. Alleen binnen <h1>-<h3>; zichtbaar pas als het nodig is.
+import re as _re_afbreek
+_AFBREEK = {"Transpondersleutels": "Transponder&shy;sleutels", "Transpondersleutel": "Transponder&shy;sleutel",
+            "transpondersleutels": "transponder&shy;sleutels", "transpondersleutel": "transponder&shy;sleutel",
+            "Afstandsbediening": "Afstands&shy;bediening", "afstandsbediening": "afstands&shy;bediening",
+            "Privacyverklaring": "Privacy&shy;verklaring", "Reserveautosleutel": "Reserve&shy;autosleutel",
+            "Sleutelkaarten": "Sleutel&shy;kaarten", "Sleutelkaart": "Sleutel&shy;kaart",
+            "autosleutelprijzen": "autosleutel&shy;prijzen", "Autosleutelprijzen": "Autosleutel&shy;prijzen",
+            "startonderbreker": "start&shy;onderbreker", "Winkelcentrum": "Winkel&shy;centrum"}
+def afbreken(doc):
+    def kop(m):
+        s = m.group(0)
+        for a, b in _AFBREEK.items():
+            s = _re_afbreek.sub(r"(?<![\w/-])" + a + r"(?![\w-])", b, s)
+        return s
+    doc = _re_afbreek.sub(r"(?s)<h([1-3])\b[^>]*>.*?</h\1>", kop, doc)
+    return _re_afbreek.sub(r'(?s)<a class="kies kies--klein"[^>]*>.*?</a>', kop, doc)
+
 def pagina(pad, titel, omschrijving, body, jsonld=(), beeld=None, noindex=False):
     bestand = "index.html" if pad == "/" else pad.strip("/") + ".html"
-    (OUT / bestand).write_text(kop_html(titel, omschrijving, pad, jsonld, beeld, noindex) + body + VOET, encoding="utf-8")
+    (OUT / bestand).write_text(afbreken(kop_html(titel, omschrijving, pad, jsonld, beeld, noindex) + body + VOET), encoding="utf-8")
     PAGINAS.append((pad, noindex))
 
 # ============================================================
@@ -519,16 +540,16 @@ Werkplaats: {STRAAT}, {POSTCODE} {PLAATS} ({WINKELCENTRUM}), {REISTIJD} vanaf He
 ## Feiten
 - Telefoon {TEL_TONEN}, WhatsApp wa.me/31534784245, e-mail {MAIL}. Open di–vr 09:00–17:30, za 09:00–17:00, ma en zo gesloten.
 - Bedrijf sinds {SINDS_BEDRIJF}, autosleutels sinds {SINDS_AUTOSLEUTELS}, meer dan {PER_JAAR} autosleutels per jaar.
-- Maakt, programmeert en repareert transpondersleutels, klapsleutels, smart keys (keyless), sleutelkaarten voor vrijwel elk merk.
-- Vanaf-prijzen incl. programmeren en btw: transpondersleutel vanaf € {P_TRANS}; klapsleutel vanaf € {P_KLAP}; sleutelkaart vanaf € {P_KAART}; smart key vanaf € {P_SMART}; reparatie vanaf € {P_REP}. Exacte prijs vooraf op kenteken.
+- Maakt, programmeert en repareert transpondersleutels, klapsleutels, smartkeys (keyless), sleutelkaarten voor vrijwel elk merk.
+- Vanaf-prijzen incl. programmeren en btw: transpondersleutel vanaf € {P_TRANS}; klapsleutel vanaf € {P_KLAP}; sleutelkaart vanaf € {P_KAART}; smartkey vanaf € {P_SMART}; reparatie vanaf € {P_REP}. Exacte prijs vooraf op kenteken.
 - Reparatie: nieuwe behuizing vaste sleutel vanaf € {P_BEHUIZING_VAST}, klapsleutel vanaf € {P_BEHUIZING_KLAP}.
-- Uitzonderingen: VW Up/Škoda Citigo/Seat Mii vanaf € {P_UP}; BMW/Mini prijs op aanvraag (kopie originele BMW-sleutel 2019 en nieuwer vanaf € {P_BMW_NIEUW}); {MERCEDES_REGEL} Peugeot/Citroën t/m ±2005 pincode nodig (opvragen vanaf € {P_PINCODE}); twee sleutels tegelijk: korting op de tweede, in overleg.
+- Uitzonderingen: VW Up/Škoda Citigo/Seat Mii vanaf € {P_UP}; BMW/Mini prijs op aanvraag (kopie originele BMW-sleutel 2019 en nieuwer vanaf € {P_BMW_NIEUW}); {MERCEDES_REGEL} Peugeot/Citroën tot ongeveer 2005 pincode nodig (opvragen vanaf € {P_PINCODE}); twee sleutels tegelijk: korting op de tweede, in overleg.
 - Alle sleutels kwijt: nieuwe sleutel op kenteken, oude sleutels worden gewist; prijs op aanvraag.
 - Aan-huisservice in Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; buiten Hengelo kilometervergoeding in de prijsopgave.
 - Meestal klaar terwijl u wacht in {DOORLOOPTIJD}. Tot 50% goedkoper dan de dealer; de dealer doet er doorgaans twee tot zes weken over.
 - Programmeren in de software van de auto, net als de dealer; Westendorp werkt ook met dealers samen.
 - Garantie: {GARANTIE_CHIP} op de transponderchip, {GARANTIE_AB} op een nieuwe afstandsbediening.
-- Schatting bij ons / bij de dealer (geen offerte): transpondersleutel € 60 – € 120 / € 150 of meer; klapsleutel € 130 – € 200 / € 400 – € 700; smart key € 150 – € 300 / € 400 – € 1.500; sleutelkaart € 130 – € 250 / € 400 – € 700; reparatie € 30 – € 80 / nieuwe sleutel vanaf € 400.
+- Schatting bij ons / bij de dealer (geen offerte): transpondersleutel € 60 – € 120 / € 150 of meer; klapsleutel € 130 – € 200 / € 400 – € 700; smartkey € 150 – € 300 / € 400 – € 1.500; sleutelkaart € 130 – € 250 / € 400 – € 700; reparatie € 30 – € 80 / nieuwe sleutel vanaf € 400.
 - Benodigd: kenteken (voor de prijs), kentekenbewijs en identiteitsbewijs (bij het maken).
 
 ## Pagina's

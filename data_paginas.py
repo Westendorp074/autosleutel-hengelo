@@ -11,11 +11,11 @@ def bouw_paginas(g):
         return f"""
 <section class="sectie sectie--zand" id="zo-werkt-het">
   <div class="wrap">
-    <div class="sectie__kop"><h2>Zo werkt het</h2><p>Drie stappen, en meestal staat u binnen {DOORLOOPTIJD} weer buiten. Op afspraak ligt de juiste sleutel al klaar.</p></div>
+    <div class="sectie__kop"><h2>Zo werkt het</h2><p>Drie stappen, en meestal staat u binnen {DOORLOOPTIJD} weer buiten. Op afspraak staat alles voor uw auto al klaar.</p></div>
     <ol class="stappen">
       <li>{icoon("kenteken")}<h3>Kenteken doorgeven</h3><p>Bel, app of vul het formulier in. Wij zien welk sleuteltype, welke chip en welke procedure uw auto heeft, en u hoort de prijs vooraf.</p></li>
       <li>{icoon("winkel")}<h3>Werkplaats of aan huis</h3><p>U rijdt in {REISTIJD} naar de werkplaats in Enschede Zuid, gratis parkeren. Kan dat niet, dan komen wij naar u toe in Hengelo.</p></li>
-      <li>{icoon("vink")}<h3>Klaar terwijl u wacht</h3><p>Baard frezen, chip en afstandsbediening inleren, en u test de sleutel op uw eigen auto voordat u betaalt.</p></li>
+      <li>{icoon("vink")}<h3>Klaar terwijl u wacht</h3><p>Wij maken, programmeren of repareren uw sleutel, en u test hem op uw eigen auto voordat u betaalt.</p></li>
     </ol>
     {knoppen(midden=True)}
   </div>
@@ -28,7 +28,7 @@ def bouw_paginas(g):
     <div>
       <h2>Eigen werkplaats in {WINKELCENTRUM}</h2>
       <p>Geen busje met één universeel apparaat, maar een vaste werkplaats: kasten vol behuizingen, chips en afstandsbedieningen voor vrijwel elk merk, sleutelmachines die op code frezen en programmeerapparatuur per merk. Daardoor is uw sleutel meestal klaar terwijl u wacht.</p>
-      <p>Wij programmeren in de software van uw auto, net zoals de dealer dat doet, en werken ook met dealers samen. Het verschil zit in de voorraad en de wachttijd: de dealer bestelt en doet er doorgaans twee tot zes weken over. U betaalt bij ons tot 50% minder.</p>
+      <p>Wij programmeren in de software van uw auto, net zoals de dealer dat doet, en werken ook met dealers samen. Het verschil zit in de voorraad en de wachttijd: de dealer bestelt en doet er doorgaans twee tot zes weken over. Zo bent u bij ons tot 50% goedkoper dan de dealer.</p>
       <ul class="vinkjes">
         <li>{icoon("vink")}Prijs vooraf op basis van uw kenteken, inclusief programmeren en btw</li>
         <li>{icoon("vink")}Levenslange garantie op de transponderchip, {GARANTIE_AB} op een nieuwe afstandsbediening</li>
@@ -64,7 +64,7 @@ def bouw_paginas(g):
         ("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten in de hand, met de Renault Kadjar op de achtergrond", "Renault Kadjar · sleutelkaart"),
         ("fiat-500-klapsleutel-bijmaken.jpg", "Twee Fiat-klapsleutels in de hand, met de witte Fiat 500 op de achtergrond", "Fiat 500 · klapsleutel"),
         ("jeep-compass-smartkey-bijmaken.jpg", "Twee smartkeys in de hand, met de witte Jeep Compass op de achtergrond", "Jeep Compass · smartkey"),
-        ("citroen-c4-picasso-smartkey-bijmaken.jpg", "Twee Citroën-sleutels in de hand, met de Citroën C4 Picasso op de achtergrond", "Citroën C4 Picasso"),
+        ("citroen-c4-picasso-smartkey-bijmaken.jpg", "Twee Citroën-sleutels in de hand, met de Citroën C4 Picasso op de achtergrond", "Citroën C4 Picasso · smartkey"),
         ("jaguar-xf-smartkey-bijmaken.jpg", "Twee Jaguar-smartkeys in de hand, met de Jaguar XF op de achtergrond", "Jaguar XF · smartkey"),
         ("opel-astra-klapsleutel-bijmaken.jpg", "Twee Opel-klapsleutels in de hand, met de Opel Astra op de achtergrond", "Opel Astra · klapsleutel"),
     ]
@@ -91,7 +91,7 @@ def bouw_paginas(g):
 
     # ---------- Home ----------
     HOME_FAQ = [
-        ("Wat kost een autosleutel bijmaken in Hengelo?", f"Een transpondersleutel vanaf € {P_TRANS}, een klapsleutel vanaf € {P_KLAP}, een sleutelkaart vanaf € {P_KAART} en een smart key vanaf € {P_SMART}, inclusief programmeren en btw. Tot 50% goedkoper dan de dealer. Met uw kenteken maken wij er vooraf één prijs van."),
+        ("Wat kost een autosleutel bijmaken in Hengelo?", f"Een transpondersleutel vanaf € {P_TRANS}, een klapsleutel vanaf € {P_KLAP}, een sleutelkaart vanaf € {P_KAART} en een smartkey vanaf € {P_SMART}, inclusief programmeren en btw. Tot 50% goedkoper dan de dealer. Met uw kenteken maken wij er vooraf één prijs van."),
         ("Hoe ver is de werkplaats vanaf Hengelo?", f"Ongeveer {REISTIJD} rijden via de A35 naar Enschede Zuid. U parkeert gratis bij het overdekte winkelcentrum."),
         ("Wat kost de aan-huisservice?", f"In Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs. Buiten Hengelo komt er een kilometervergoeding bij; die staat in de prijsopgave."),
         ("Geen enkele sleutel meer over. Kan dat ook?", "Dan maken wij een nieuwe sleutel op basis van uw kenteken en wissen wij de verloren sleutels uit de auto. De prijs verschilt per merk en bouwjaar te veel om hier te noemen; u krijgt hem vooraf op aanvraag."),
@@ -106,7 +106,7 @@ def bouw_paginas(g):
     <div>
       <span class="label">{icoon("pin")}Werkplaats in Enschede Zuid · {REISTIJD} vanaf Hengelo</span>
       <h1>Autosleutel bijmaken in Hengelo, <em>klaar terwijl u wacht.</em></h1>
-      <p class="hero__lead">Wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. U betaalt tot 50% minder dan bij de dealer, weet de prijs voordat u komt, en rijdt meestal na {DOORLOOPTIJD} weer weg.</p>
+      <p class="hero__lead">Wij maken, programmeren en repareren autosleutels voor vrijwel elk merk. U bent tot 50% goedkoper dan de dealer, weet de prijs voordat u komt en rijdt meestal na {DOORLOOPTIJD} weer weg.</p>
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}</strong></p>
     </div>
@@ -154,7 +154,7 @@ def bouw_paginas(g):
     <h1>{t["kop"]} in Hengelo</h1>
     {antwoord(t["antwoord"])}
     {knoppen()}
-    <ul class="hero__feiten"><li>{icoon("vink")}{prijs(p)}, inclusief programmeren en btw</li><li>{icoon("vink")}Meestal klaar in {DOORLOOPTIJD}</li><li>{icoon("vink")}Aan huis in Hengelo {prijs(AAN_HUIS_VANAF)} extra</li></ul>
+    <ul class="hero__feiten"><li>{icoon("vink")}{prijs(p)}, inclusief {"btw" if rep else "programmeren en btw"}</li><li>{icoon("vink")}Meestal klaar in {DOORLOOPTIJD}</li><li>{icoon("vink")}Aan huis in Hengelo {prijs(AAN_HUIS_VANAF)} extra</li></ul>
   </div>
   <figure class="figuur">{foto(t["foto"][0], t["foto"][1], lazy=False)}<figcaption>{t["foto"][1]}</figcaption></figure>
 </div></section>
@@ -173,7 +173,7 @@ def bouw_paginas(g):
   <div class="kiezer kiezer--klein">{andere}</div>
 </div></section>
 {stappen()}
-{faqblok(t["faq"], f"Vragen over {'reparatie' if rep else t['naam'].lower() + 's'}")}
+{faqblok(t["faq"], f"Vragen over {'reparatie' if rep else t['naam'].lower() + ('en' if t['naam'].endswith('kaart') else 's')}")}
 {formulier(t["slug"])}
 """)
 

@@ -5,7 +5,7 @@ def bouw(g):
 
     # ---------- Autosleutel bijmaken ----------
     BIJ_FAQ = [
-        ("Wat kost een reservesleutel?", f"Een transpondersleutel vanaf € {P_TRANS}, een klapsleutel vanaf € {P_KLAP}, een sleutelkaart vanaf € {P_KAART} en een smart key vanaf € {P_SMART}. Inclusief programmeren en btw; uw kenteken bepaalt de precieze prijs."),
+        ("Wat kost een reservesleutel?", f"Een transpondersleutel vanaf € {P_TRANS}, een klapsleutel vanaf € {P_KLAP}, een sleutelkaart vanaf € {P_KAART} en een smartkey vanaf € {P_SMART}. Inclusief programmeren en btw; uw kenteken bepaalt de precieze prijs."),
         ("Kan het ook zonder mijn huidige sleutel?", "Ja, maar dan maken wij geen kopie meer: het wordt een nieuwe sleutel die op de auto wordt aangemeld. De prijs daarvan krijgt u op aanvraag. Lees meer bij autosleutel kwijt."),
         ("Hoe lang duurt het?", f"Meestal {DOORLOOPTIJD}, terwijl u wacht."),
         ("Werkt een bijgemaakte sleutel even goed als het origineel?", f"Chip en zender werken hetzelfde en worden op dezelfde manier ingeleerd. U krijgt levenslange garantie op de transponderchip en {GARANTIE_AB} op een nieuwe afstandsbediening."),
@@ -21,7 +21,7 @@ def bouw(g):
   <div>
     <span class="label">{icoon("sleutels")}Reservesleutel · kopie · nieuwe sleutel</span>
     <h1>Autosleutel bijmaken in Hengelo</h1>
-    {antwoord(f"Heeft u nog een werkende sleutel, dan zetten wij de chip en de afstandsbediening over op een nieuwe sleutel. Dat kost vanaf € {P_TRANS}, inclusief frezen, programmeren en btw; per sleuteltype ziet u hieronder een schatting. Meestal bent u in {DOORLOOPTIJD} klaar, in de werkplaats op {REISTIJD} van Hengelo of aan huis. Met uw kenteken krijgt u de prijs vooraf.")}
+    {antwoord(f"Heeft u nog een werkende sleutel, dan zetten wij de chip en de afstandsbediening over op een nieuwe sleutel. Dat kost vanaf € {P_TRANS}, inclusief frezen, programmeren en btw; per sleuteltype ziet u hieronder de vanaf-prijs. Meestal bent u in {DOORLOOPTIJD} klaar, in de werkplaats op {REISTIJD} van Hengelo of aan huis. Met uw kenteken krijgt u de prijs vooraf.")}
     {knoppen()}
   </div>
   <figure class="figuur">{foto("opel-astra-klapsleutel-bijmaken.jpg", "Twee bijgemaakte Opel-klapsleutels in de hand, met de Opel Astra op de achtergrond", lazy=False)}<figcaption>Opel Astra: klapsleutel bijgemaakt en geprogrammeerd</figcaption></figure>
@@ -37,7 +37,7 @@ def bouw(g):
     <li>{icoon("vink")}De auto, zodat wij de nieuwe sleutel meteen testen</li>
   </ul>
   <h2>Bij ons of bij de dealer</h2>
-  <p>De dealer bestelt uw sleutel bij de fabriek en doet er doorgaans twee tot zes weken over. Wij hebben behuizingen, chips en afstandsbedieningen op voorraad en programmeren in de software van uw auto, net als de dealer. U betaalt tot 50% minder en rijdt dezelfde dag met twee sleutels.</p>
+  <p>De dealer bestelt uw sleutel bij de fabriek en doet er doorgaans twee tot zes weken over. Wij hebben behuizingen, chips en afstandsbedieningen op voorraad en programmeren in de software van uw auto, net als de dealer. Zo bent u tot 50% goedkoper dan de dealer en rijdt u dezelfde dag met twee sleutels.</p>
   <p>Is uw sleutel niet kwijt maar kapot? Dan is <a href="/autosleutel-reparatie">repareren</a> vaak genoeg. Alle bedragen op een rij staan bij <a href="/prijzen">prijzen</a>, en per merk leest u meer via <a href="/merken">merken</a>.</p>
 </div></section>
 {stappen()}
@@ -98,23 +98,23 @@ def bouw(g):
         ("Waarom zijn het vanaf-prijzen?", "Merk, model en bouwjaar maken het verschil. Met uw kenteken zien wij welke sleutel uw auto heeft, en krijgt u de prijs voordat u komt."),
         ("Zit programmeren bij de prijs in?", "Ja. In elk bedrag zitten het programmeren, het frezen en de btw."),
         ("Waarom is een nieuwere auto duurder?", "Jongere auto's hebben zwaarder beveiligde chips. De sleutel kost meer en het programmeren vraagt meer werk."),
-        ("Wat kost het als alle sleutels kwijt zijn?", "Dan noemen wij vooraf geen bedrag op de site, omdat merk en bouwjaar het te sterk laten wisselen. Stuur uw kenteken, dan krijgt u de prijs vooraf."),
+        ("Wat kost het als alle sleutels kwijt zijn?", "Dan noemen wij op de site geen bedrag, omdat merk en bouwjaar het te sterk laten wisselen. Stuur uw kenteken, dan krijgt u de prijs vooraf."),
         ("Wat kost aan huis?", f"In Hengelo vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; daarbuiten een kilometervergoeding, die in de prijsopgave staat."),
     ]
     pagina("/prijzen", f"Autosleutel prijzen Hengelo | vanaf € {P_TRANS}, incl. btw",
-           f"Wat kost een autosleutel? Transponder vanaf € {P_TRANS}, klapsleutel en sleutelkaart vanaf € {P_KLAP}, smart key vanaf € {P_SMART}, reparatie vanaf € {P_REP}. Incl. btw.",
+           f"Wat kost een autosleutel? Transponder vanaf € {P_TRANS}, klapsleutel en sleutelkaart vanaf € {P_KLAP}, smartkey vanaf € {P_SMART}, reparatie vanaf € {P_REP}. Incl. btw.",
            jsonld=[faq_jsonld(PRIJS_FAQ), kruimels_jsonld([("Home", "/"), ("Prijzen", "/prijzen")])], body=f"""
 {kruimels([("Home", "/"), ("Prijzen", "")])}
 <section class="sectie sectie--kort"><div class="wrap wrap--tekst">
   <h1>Wat kost een autosleutel bijmaken?</h1>
-  {antwoord(f"Een transpondersleutel kost vanaf € {P_TRANS}, een klapsleutel vanaf € {P_KLAP}, een sleutelkaart vanaf € {P_KAART} en een smart key vanaf € {P_SMART}. Een reparatie kost vanaf € {P_REP}. Programmeren, frezen en btw zitten erbij. Met uw kenteken maken wij er vooraf één prijs van. Zijn alle sleutels kwijt, dan is de prijs op aanvraag. Aan huis in Hengelo komt er vanaf € {AAN_HUIS_VANAF} bij.")}
+  {antwoord(f"Een transpondersleutel kost vanaf € {P_TRANS}, een klapsleutel vanaf € {P_KLAP}, een sleutelkaart vanaf € {P_KAART} en een smartkey vanaf € {P_SMART}. Een reparatie kost vanaf € {P_REP}. Programmeren, frezen en btw zitten erbij. Met uw kenteken maken wij er vooraf één prijs van. Zijn alle sleutels kwijt, dan is de prijs op aanvraag. Aan huis in Hengelo komt er vanaf € {AAN_HUIS_VANAF} bij.")}
   <p>Wat u betaalt, wordt bepaald door het sleuteltype en het bouwjaar, niet door de nieuwprijs van uw auto. Het bouwjaar bepaalt welke chip erin zit, en daarmee de sleutel en het programmeerwerk.</p>
   {prijstabel()}
   {uitzonderingen()}
   <h2>Twee sleutels tegelijk</h2>
   <p>Laat u twee sleutels in één bezoek maken, dan krijgt u korting op de tweede, in overleg. Zet het bij uw aanvraag, dan staan beide in de prijsopgave.</p>
   <h2>Garantie</h2>
-  <p>Op de transponderchip krijgt u levenslang garantie, op een nieuwe afstandsbediening {GARANTIE_AB}.</p>
+  <p>U krijgt levenslange garantie op de transponderchip, {GARANTIE_AB} op een nieuwe afstandsbediening.</p>
   {knoppen()}
 </div></section>
 {kiezer("Welke sleutel heeft u?", "Per sleuteltype leest u wat wij doen, wat u meeneemt en waar u op uitkomt.")}
@@ -183,12 +183,12 @@ def bouw(g):
 </div></section>
 <section class="sectie sectie--zand"><div class="wrap wrap--tekst">
   <h2>Wat u bij ons vindt</h2>
-  <p>Een werkplaats met voorraad: behuizingen, chips en afstandsbedieningen voor vrijwel elk merk, sleutelmachines die op code frezen en programmeerapparatuur per merk. Wij programmeren in de software van uw auto, net als de dealer, en werken ook met dealers samen. Daardoor is uw sleutel meestal in {DOORLOOPTIJD} klaar en betaalt u tot 50% minder dan bij de dealer.</p>
+  <p>Een werkplaats met voorraad: behuizingen, chips en afstandsbedieningen voor vrijwel elk merk, sleutelmachines die op code frezen en programmeerapparatuur per merk. Wij programmeren in de software van uw auto, net als de dealer, en werken ook met dealers samen. Daardoor is uw sleutel meestal in {DOORLOOPTIJD} klaar en bent u tot 50% goedkoper dan de dealer.</p>
   <p>Westendorp doet ook huis- en fietssleutels, sloten en beveiliging. Daarvoor kijkt u op <a href="{MOEDER_URL}" rel="noopener">westendorpslotenspecialist.nl</a>; deze site gaat alleen over autosleutels.</p>
   <h2>Eerlijk over wat kan en wat niet</h2>
   <p>Wat bij uw auto mogelijk is, hoort u vooraf. {MERCEDES_REGEL} Een enkel zeer recent keyless-systeem is soms alleen via de dealer te krijgen. Een duidelijk nee vooraf is beter dan een sleutel die niet werkt.</p>
   <h2>Garantie</h2>
-  <p>De transponderchip heeft levenslang garantie, een nieuwe afstandsbediening {GARANTIE_AB}.</p>
+  <p>U krijgt levenslange garantie op de transponderchip, {GARANTIE_AB} op een nieuwe afstandsbediening.</p>
 </div></section>
 <section class="sectie"><div class="wrap">
   <div class="sectie__kop"><h2>Uit de werkplaats</h2></div>
@@ -233,7 +233,7 @@ def bouw(g):
 <section class="sectie sectie--zand"><div class="wrap twee twee--boven">
   <div>
     <h2>Route vanuit Hengelo</h2>
-    <p>Neem vanuit Hengelo de A35 richting Enschede en volg de borden naar Enschede-Zuid. De werkplaats zit in het overdekte winkelcentrum aan de Wesseler-Nering; reken op ongeveer {REISTIJD}. Vanuit Borne, Delden en Oldenzaal is het vergelijkbaar. U parkeert gratis.</p>
+    <p>Neem vanuit Hengelo de A35 richting Enschede en volg de borden naar Enschede Zuid. De werkplaats zit in het overdekte winkelcentrum aan de Wesseler-Nering; reken op ongeveer {REISTIJD}. Vanuit Borne, Delden en Oldenzaal is het vergelijkbaar. U parkeert gratis.</p>
     <p>Kom op afspraak, dan ligt de juiste sleutel klaar. Start de auto niet? Dan hoeft u niet te komen: <a href="/aan-huis">wij komen naar Hengelo</a>.</p>
     <div class="winkelgegevens">
       <div>
@@ -281,7 +281,7 @@ def bouw(g):
 {kruimels([("Home", "/"), ("Kennis", "/kennis"), (k["titel"], "")])}
 <article class="sectie sectie--kort"><div class="wrap wrap--tekst artikel">
   <h1>{k["titel"]}</h1>
-  <p class="artikel__meta">Geschreven door {HANDELSNAAM}, onderdeel van {MOEDER} · {k["datum"][8:10]}-{k["datum"][5:7]}-{k["datum"][:4]}</p>
+  <p class="artikel__meta">Geschreven door {HANDELSNAAM}, onderdeel van {MOEDER} · {int(k["datum"][8:10])} {MAANDEN[int(k["datum"][5:7]) - 1]} {k["datum"][:4]}</p>
   {antwoord(k["intro"])}
   {fig}
   {secties}

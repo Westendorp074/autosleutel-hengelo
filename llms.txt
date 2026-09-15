@@ -6,16 +6,16 @@ Werkplaats: Wesseler-Nering 32, 7544 JC Enschede (Winkelcentrum Enschede Zuid), 
 ## Feiten
 - Telefoon 053 - 478 42 45, WhatsApp wa.me/31534784245, e-mail autosleutel@westendorpgroep.nl. Open di–vr 09:00–17:30, za 09:00–17:00, ma en zo gesloten.
 - Bedrijf sinds 1985, autosleutels sinds 1995, meer dan 1.500 autosleutels per jaar.
-- Maakt, programmeert en repareert transpondersleutels, klapsleutels, smart keys (keyless), sleutelkaarten voor vrijwel elk merk.
-- Vanaf-prijzen incl. programmeren en btw: transpondersleutel vanaf € 60; klapsleutel vanaf € 130; sleutelkaart vanaf € 130; smart key vanaf € 150; reparatie vanaf € 30. Exacte prijs vooraf op kenteken.
+- Maakt, programmeert en repareert transpondersleutels, klapsleutels, smartkeys (keyless), sleutelkaarten voor vrijwel elk merk.
+- Vanaf-prijzen incl. programmeren en btw: transpondersleutel vanaf € 60; klapsleutel vanaf € 130; sleutelkaart vanaf € 130; smartkey vanaf € 150; reparatie vanaf € 30. Exacte prijs vooraf op kenteken.
 - Reparatie: nieuwe behuizing vaste sleutel vanaf € 35, klapsleutel vanaf € 49,95.
-- Uitzonderingen: VW Up/Škoda Citigo/Seat Mii vanaf € 129; BMW/Mini prijs op aanvraag (kopie originele BMW-sleutel 2019 en nieuwer vanaf € 249); Mercedes-Benz personenwagens vanaf 2015 maken wij niet; de Sprinter W906 tot en met 2017 wel. Peugeot/Citroën t/m ±2005 pincode nodig (opvragen vanaf € 35); twee sleutels tegelijk: korting op de tweede, in overleg.
+- Uitzonderingen: VW Up/Škoda Citigo/Seat Mii vanaf € 129; BMW/Mini prijs op aanvraag (kopie originele BMW-sleutel 2019 en nieuwer vanaf € 249); Mercedes-Benz personenwagens vanaf 2015 maken wij niet; de Sprinter W906 tot en met 2017 wel. Peugeot/Citroën tot ongeveer 2005 pincode nodig (opvragen vanaf € 35); twee sleutels tegelijk: korting op de tweede, in overleg.
 - Alle sleutels kwijt: nieuwe sleutel op kenteken, oude sleutels worden gewist; prijs op aanvraag.
 - Aan-huisservice in Hengelo vanaf € 45 bovenop de sleutelprijs; buiten Hengelo kilometervergoeding in de prijsopgave.
 - Meestal klaar terwijl u wacht in 20 tot 30 minuten. Tot 50% goedkoper dan de dealer; de dealer doet er doorgaans twee tot zes weken over.
 - Programmeren in de software van de auto, net als de dealer; Westendorp werkt ook met dealers samen.
-- Garantie: levenslang op de transponderchip, 2 jaar op een nieuwe afstandsbediening.
-- Schatting bij ons / bij de dealer (geen offerte): transpondersleutel € 60 – € 120 / € 150 of meer; klapsleutel € 130 – € 200 / € 400 – € 700; smart key € 150 – € 300 / € 400 – € 1.500; sleutelkaart € 130 – € 250 / € 400 – € 700; reparatie € 30 – € 80 / nieuwe sleutel vanaf € 400.
+- Garantie: levenslange garantie op de transponderchip, 2 jaar op een nieuwe afstandsbediening.
+- Schatting bij ons / bij de dealer (geen offerte): transpondersleutel € 60 – € 120 / € 150 of meer; klapsleutel € 130 – € 200 / € 400 – € 700; smartkey € 150 – € 300 / € 400 – € 1.500; sleutelkaart € 130 – € 250 / € 400 – € 700; reparatie € 30 – € 80 / nieuwe sleutel vanaf € 400.
 - Benodigd: kenteken (voor de prijs), kentekenbewijs en identiteitsbewijs (bij het maken).
 
 ## Pagina's
@@ -44,8 +44,8 @@ Werkplaats: Wesseler-Nering 32, 7544 JC Enschede (Winkelcentrum Enschede Zuid), 
 - https://autosleutel-hengelo.nl/audi
 - https://autosleutel-hengelo.nl/bmw
 - https://autosleutel-hengelo.nl/citroen
-- https://autosleutel-hengelo.nl/ds
 - https://autosleutel-hengelo.nl/dacia
+- https://autosleutel-hengelo.nl/ds
 - https://autosleutel-hengelo.nl/fiat
 - https://autosleutel-hengelo.nl/ford
 - https://autosleutel-hengelo.nl/honda

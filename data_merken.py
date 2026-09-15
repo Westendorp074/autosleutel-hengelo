@@ -1,10 +1,13 @@
 # Merkpagina's: opbouw zoals autosleutel-enschede.nl (antwoord + foto, sleuteltypen per periode, prijsblok, extra,
 # modellenlijst, stappen, cta, faq, formulier), teksten en URL's eigen voor Hengelo (/bmw, /merken, /overige-merken).
-import html
+import html, unicodedata
 from data_merken_1 import MERKEN_1
 from data_merken_2 import MERKEN_2
 
-MERKEN = sorted(MERKEN_1 + MERKEN_2, key=lambda m: m["naam"])
+def _sorteer(naam):   # alfabetisch zonder hoofdletters of accenten: Dacia vóór DS, Škoda bij de S
+    return "".join(c for c in unicodedata.normalize("NFD", naam) if not unicodedata.combining(c)).casefold()
+
+MERKEN = sorted(MERKEN_1 + MERKEN_2, key=lambda m: _sorteer(m["naam"]))
 
 OVERIGE_MERKEN = ['Abarth', 'Bentley', 'BYD', 'Cadillac', 'Chevrolet', 'Chrysler', 'Cupra', 'Daewoo', 'Daihatsu', 'Ferrari', 'Infiniti', 'Isuzu', 'Lamborghini', 'Lancia', 'Lotus', 'Lynk & Co', 'Maserati', 'MG', 'Polestar', 'Rover', 'Saab', 'SsangYong', 'Subaru', 'Tesla']
 
@@ -14,7 +17,7 @@ FALLBACK_FOTO = [("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspeci
 def _vanaf(g, m):
     r = m["prijsregel"]
     if r in ("bmw", "aanvraag"): return "prijs op aanvraag"
-    if r == "mercedes": return "t/m 2014"
+    if r == "mercedes": return "tot en met 2014"
     return f"vanaf € {g['P_TRANS']}"
 
 def _prijsblok(g, m):
@@ -22,23 +25,23 @@ def _prijsblok(g, m):
     aanhuis = f"Aan huis in Hengelo komt daar vanaf € {g['AAN_HUIS_VANAF']} bij; buiten Hengelo een kilometervergoeding, die in de prijsopgave staat."
     if r == "bmw":
         return f"""<div class="prijs-kaart"><div><small>Alle {naam}-sleutels</small><b>prijs op aanvraag</b><span>per model en generatie, vooraf op uw kenteken</span></div>
-      <div><small>Kopie originele BMW-sleutel 2019 en nieuwer</small><b>vanaf € {g['P_BMW_NIEUW']}</b><span>nieuwste generatie</span></div>
+      {f'<div><small>Kopie originele BMW-sleutel 2019 en nieuwer</small><b>vanaf € {g["P_BMW_NIEUW"]}</b><span>nieuwste generatie</span></div>' if naam == "BMW" else ""}
       <div><small>Reparatie</small><b>vanaf € {g['P_REP']}</b><span>uw chip en zender blijven</span></div></div>
     <p class="noot">{aanhuis}</p>"""
     if r == "aanvraag":
         return f"""<div class="prijs-kaart"><div><small>{naam}-kaart of keyfob</small><b>prijs op aanvraag</b><span>per model, vooraf op uw kenteken</span></div></div>"""
     if r == "mercedes":
-        return f"""<div class="prijs-kaart"><div><small>Personenwagens t/m 2014</small><b>prijs vooraf</b><span>op basis van uw kenteken</span></div>
-      <div><small>Sprinter W906</small><b>t/m 2017</b><span>maken wij ook</span></div>
+        return f"""<div class="prijs-kaart"><div><small>Personenwagens tot en met 2014</small><b>prijs vooraf</b><span>op basis van uw kenteken</span></div>
+      <div><small>Sprinter W906</small><b>tot en met 2017</b><span>maken wij ook</span></div>
       <div><small>Personenwagens vanaf 2015</small><b>maken wij niet</b><span>daarvoor verwijzen wij naar de dealer</span></div></div>
-    <p class="noot">{g['MERCEDES_REGEL']} {aanhuis}</p>"""
+    <p class="noot">{aanhuis}</p>"""
     extra = ""
-    if r == "vag": extra = f"Bij {naam} kan de prijs per model afwijken van deze vanaf-prijzen. "
+    if r == "vag": extra = f"Bij {naam} kan de prijs per model afwijken van de vanaf-prijs. "
     if r == "psa": extra = f"Tot ongeveer 2005 is de pincode uit de autopapieren nodig; opvragen kost vanaf € {g['P_PINCODE']}. "
     return f"""<div class="prijs-kaart">
       <div><small>Transpondersleutel</small><b>vanaf € {g['P_TRANS']}</b><span>chip in de kop, met of zonder knopjes</span></div>
       <div><small>Klapsleutel of sleutelkaart</small><b>vanaf € {g['P_KLAP']}</b><span>met afstandsbediening</span></div>
-      <div><small>Smart key / keyless</small><b>vanaf € {g['P_SMART']}</b><span>startknop in de auto</span></div>
+      <div><small>Smartkey / keyless</small><b>vanaf € {g['P_SMART']}</b><span>startknop in de auto</span></div>
     </div>
     <p class="noot">Inclusief programmeren, frezen en btw; jongere bouwjaren zijn duurder. {extra}Alle sleutels kwijt: prijs op aanvraag. {aanhuis}</p>"""
 
@@ -49,8 +52,10 @@ def merkpagina(g, m, i):
     pad = "/" + slug
     vanaf = _vanaf(g, m)
     titel = f"{naam} autosleutel bijmaken Hengelo | {vanaf}"
-    omschr = f"{naam}-sleutel kwijt, kapot of een reserve nodig? Bijmaken en programmeren voor Hengelo, {vanaf}. Werkplaats op {g['REISTIJD']} of aan huis."
-    if len(omschr) > 160: omschr = f"{naam}-sleutel kwijt, kapot of reserve nodig? Bijmaken en programmeren voor Hengelo, {vanaf}, of aan huis."
+    vanaf_zin = "personenwagens tot en met 2014" if m["prijsregel"] == "mercedes" else vanaf
+    vraag = f"{naam}-sleutel kwijt of kapot?" if m["prijsregel"] == "mercedes" else f"{naam}-sleutel kwijt, kapot of een reserve nodig?"
+    omschr = f"{vraag} Bijmaken en programmeren voor Hengelo, {vanaf_zin}. Werkplaats op {g['REISTIJD']} of aan huis."
+    if len(omschr) > 160: omschr = f"{naam}-sleutel kwijt, kapot of reserve nodig? Bijmaken en programmeren voor Hengelo, {vanaf_zin}, of aan huis."
     typen = "".join(f"<li><b>{p}</b>{t}</li>" for p, t in m["typen"])
     extra = "".join(f"<h2>{k}</h2><p>{a}</p>" for k, a in m["extra"])
     modellen = "".join(f"<li>{html.escape(x)}</li>" for x in m["modellen"])
