@@ -443,3 +443,6 @@ h1,h2,h3{overflow-wrap:break-word}
 /* controle 15-09: knop "Routebeschrijving" niet afbreken op contact (±960–1100px) */
 .winkelgegevens .knop{white-space:nowrap;overflow-wrap:normal}
 @media(max-width:1100px) and (min-width:861px){.winkelgegevens{grid-template-columns:1fr}}
+
+/* controle 15-09: sleuteltype-kaarten op kleine laptops/tablets liggend in 3 kolommen i.p.v. 5 (te smal) */
+@media(min-width:1001px) and (max-width:1180px){.kiezer:not(.kiezer--klein){grid-template-columns:repeat(3,minmax(0,1fr))}}
