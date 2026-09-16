@@ -38,6 +38,48 @@ WEB3FORMS_KEY = "a64f80df-574c-43c9-b15c-f67332fd1a3f"   # eigen key voor deze s
 PRIVACY_DATUM = "15 september 2026"
 MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"]
 
+# ---------- Meten: Google Analytics 4 ----------
+# Leeg of "G-XXXX" = geen tag, geen cookiemelding en de privacytekst zegt dat er niet gemeten wordt.
+GA_ID = "G-60VCGF9LL1"                        # property "Autosleutel Hengelo" (aangemaakt 16-09-2026)
+MEET_ACTIEF = GA_ID.startswith("G-") and "XXXX" not in GA_ID
+TAG_HEAD = (f"""<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('consent','default',{{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500}});</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script><script>gtag('js',new Date());gtag('config','{GA_ID}');</script>""") if MEET_ACTIEF else ""
+COOKIE_HTML = """<div class="cookie" id="cookiebalk" hidden>
+  <div class="cookie__venster" role="dialog" aria-modal="true" aria-labelledby="cookie-titel">
+    <div class="cookie__kop"><img src="/img/logo-autosleutel-hengelo.png" alt="Autosleutel Hengelo" width="720" height="240"></div>
+    <div class="cookie__tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-tab="toestemming">Toestemming</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="details">Details</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="over">Over</button>
+    </div>
+    <div class="cookie__inhoud">
+      <div data-paneel="toestemming">
+        <p class="cookie__titel" id="cookie-titel">Autosleutel Hengelo maakt gebruik van cookies</p>
+        <p>Onze website gebruikt cookies en vergelijkbare technieken. Zo werkt de website goed en kunnen wij hem blijven verbeteren. Via Aanpassen kiest u zelf welke cookies u toestaat. Meer informatie leest u in onze <a href="/privacy">privacyverklaring</a>.</p>
+      </div>
+      <div data-paneel="details" hidden>
+        <div class="cookie__rij">
+          <div><strong>Noodzakelijk</strong><p>Nodig om de website goed te laten werken en uw keuze te onthouden.</p></div>
+          <span class="cookie__altijd">Altijd aan</span>
+        </div>
+        <div class="cookie__rij">
+          <div><strong>Statistieken</strong><p>Cookies van Google waarmee wij kunnen zien hoe bezoekers onze website gebruiken.</p></div>
+          <label class="schakel"><input type="checkbox" id="cookie-ads" aria-label="Statistieken"><span></span></label>
+        </div>
+      </div>
+      <div data-paneel="over" hidden>
+        <p>Cookies zijn kleine tekstbestanden die een website op uw computer of telefoon opslaat. Wij verkopen geen gegevens aan anderen. Uw keuze kunt u altijd wijzigen via &quot;Cookie-instellingen&quot; onderaan de pagina.</p>
+        <p>Autosleutel Hengelo is onderdeel van Westendorp Sleutel- en Slotenspecialist. Meer over cookies en persoonsgegevens leest u in onze <a href="/privacy">privacyverklaring</a>.</p>
+      </div>
+    </div>
+    <div class="cookie__knoppen" id="cookie-knoppen">
+      <button type="button" class="cookie__knop cookie__knop--licht" data-consent="denied" hidden>Weigeren</button>
+      <button type="button" class="cookie__knop cookie__knop--licht" data-cookie="aanpassen">Aanpassen</button>
+      <button type="button" class="cookie__knop" data-consent="granted">Alle cookies toestaan</button>
+    </div>
+  </div>
+</div>""" if MEET_ACTIEF else ""
+
 OPENING = [("Maandag", "gesloten"), ("Dinsdag", "09:00 – 17:30"), ("Woensdag", "09:00 – 17:30"),
            ("Donderdag", "09:00 – 17:30"), ("Vrijdag", "09:00 – 17:30"),
            ("Zaterdag", "09:00 – 17:00"), ("Zondag", "gesloten")]
@@ -423,6 +465,7 @@ def kop_html(titel, omschrijving, pad, jsonld, beeld=None, noindex=False):
 <link rel="icon" href="/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 {ld}
+{TAG_HEAD}
 </head>
 <body>
 <a class="skip" href="#inhoud">Naar de inhoud</a>
@@ -469,7 +512,7 @@ VOET = f"""
       </ul>
       <ul class="voet__lijst voet__lijst--klein">
         <li><a href="/prijzen">Prijzen</a></li><li><a href="/aan-huis">Aan huis</a></li><li><a href="/merken">Merken</a></li>
-        <li><a href="/kennis">Kennis</a></li><li><a href="/over-ons">Over ons</a></li><li><a href="/contact">Contact</a></li><li><a href="/privacy">Privacy</a></li>
+        <li><a href="/kennis">Kennis</a></li><li><a href="/over-ons">Over ons</a></li><li><a href="/contact">Contact</a></li><li><a href="/privacy">Privacy</a></li>{'<li><button type="button" class="voet__cookie" data-cookie="open">Cookie-instellingen</button></li>' if MEET_ACTIEF else ''}
       </ul>
     </div>
   </div>
@@ -479,6 +522,7 @@ VOET = f"""
   <a class="belbalk__bel" href="tel:{TEL_LINK}" data-conv="bellen" aria-label="Bel {TEL_TONEN}">{icoon("tel")}Bel</a>
   <a class="belbalk__wa" href="{WA_LINK}" rel="noopener" data-conv="whatsapp">{icoon("wa")}WhatsApp</a>
 </div>
+{COOKIE_HTML}
 <script src="/site.js?v={JS_V}" defer></script>
 </body>
 </html>

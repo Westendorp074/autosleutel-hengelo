@@ -1,4 +1,4 @@
-// Autosleutel Hengelo — geen frameworks, geen cookies, geen trackers.
+// Autosleutel Hengelo — geen frameworks. Meten alleen met toestemming van de bezoeker.
 (function () {
   // Formulier uit zolang de Web3Forms-key een placeholder is.
   document.querySelectorAll('form[data-key]').forEach(function (f) {
@@ -135,5 +135,65 @@
       var naam = v('input[name="Naam"]');
       sub.value = [wat, kt, auto, naam].filter(Boolean).join(' · ') + ' · ' + basis;
     });
+  });
+
+  // ---------- Toestemming (Consent Mode v2) en gebeurtenissen ----------
+  // Zonder toestemming meet Google niets. De keuze onthouden wij in de browser van de bezoeker.
+  var heeftTag = typeof window.gtag === 'function';
+  var cb = document.getElementById('cookiebalk');
+  if (heeftTag && cb) {
+    var keuze = null; try { keuze = localStorage.getItem('consent'); } catch (e) {}
+    var adsVink = document.getElementById('cookie-ads');
+    var aanpassen = cb.querySelector('[data-cookie="aanpassen"]');
+    var huidigTab = 'toestemming';
+    var consent = function (c) {
+      var v = c === 'granted' ? 'granted' : 'denied';
+      gtag('consent', 'update', { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+    };
+    var tab = function (naam) {
+      huidigTab = naam;
+      cb.querySelectorAll('[data-tab]').forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-tab') === naam ? 'true' : 'false'); });
+      cb.querySelectorAll('[data-paneel]').forEach(function (p) { p.hidden = p.getAttribute('data-paneel') !== naam; });
+      aanpassen.textContent = naam === 'details' ? 'Keuze opslaan' : 'Aanpassen';
+      cb.querySelector('[data-consent="denied"]').hidden = naam !== 'details';
+      document.getElementById('cookie-knoppen').classList.toggle('met-weigeren', naam === 'details');
+    };
+    var openen = function () {
+      adsVink.checked = keuze === 'granted';
+      tab('toestemming');
+      cb.hidden = false;
+      document.documentElement.classList.add('cookie-open');
+    };
+    var kies = function (c) {
+      keuze = c;
+      try { localStorage.setItem('consent', c); } catch (e) {}
+      consent(c);
+      cb.hidden = true;
+      document.documentElement.classList.remove('cookie-open');
+    };
+    if (keuze === 'granted') consent('granted');
+    if (!keuze) openen();
+    cb.querySelectorAll('[data-tab]').forEach(function (t) { t.addEventListener('click', function () { tab(t.getAttribute('data-tab')); }); });
+    cb.querySelectorAll('button[data-consent]').forEach(function (b) { b.addEventListener('click', function () { kies(b.getAttribute('data-consent')); }); });
+    aanpassen.addEventListener('click', function () {
+      if (huidigTab === 'details') kies(adsVink.checked ? 'granted' : 'denied'); else tab('details');
+    });
+    document.querySelectorAll('[data-cookie="open"]').forEach(function (b) { b.addEventListener('click', openen); });
+  }
+
+  // Aanvraag: telt op de bedanktpagina, één keer per bezoek.
+  if (heeftTag && /^\/bedankt(\.html)?\/?$/.test(location.pathname)) {
+    var alGeteld = false;
+    try { alGeteld = sessionStorage.getItem('conv_formulier') === '1'; sessionStorage.setItem('conv_formulier', '1'); } catch (e) {}
+    if (!alGeteld) gtag('event', 'formulier_verzonden');
+  }
+
+  // Klikken op bellen, WhatsApp, route en kenteken.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-conv]');
+    if (!el || !window.gtag) return;
+    var soort = el.getAttribute('data-conv');
+    gtag('event', soort === 'bellen' ? 'tel_klik' : soort === 'whatsapp' ? 'whatsapp_klik'
+      : soort === 'route' ? 'route_klik' : soort === 'kenteken' ? 'kenteken_klik' : 'klik_' + soort);
   });
 })();

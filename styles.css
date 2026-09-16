@@ -446,3 +446,42 @@ h1,h2,h3{overflow-wrap:break-word}
 
 /* controle 15-09: sleuteltype-kaarten op kleine laptops/tablets liggend in 3 kolommen i.p.v. 5 (te smal) */
 @media(min-width:1001px) and (max-width:1180px){.kiezer:not(.kiezer--klein){grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- Cookiemelding (venster met tabbladen, zelfde opzet als autosleutel-enschede) ---------- */
+.cookie-open,.cookie-open body{overflow:hidden}
+.cookie{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(20,24,28,.55)}
+.cookie__venster{background:#fff;border-radius:var(--r-groot);box-shadow:0 24px 60px rgba(20,24,28,.35);width:100%;max-width:680px;max-height:calc(100dvh - 32px);display:flex;flex-direction:column;overflow:hidden;font-size:.95rem;line-height:1.6;color:var(--tekst)}
+.cookie__kop{padding:18px 28px;border-bottom:1px solid var(--lijn)}
+.cookie__kop img{display:block;height:52px;width:auto}
+.cookie__tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--lijn)}
+.cookie__tabs button{font-family:var(--kop);font-weight:700;font-size:1rem;background:none;border:0;padding:16px 8px;color:var(--stil);cursor:pointer;box-shadow:inset 0 -3px 0 transparent}
+.cookie__tabs button[aria-selected="true"]{color:var(--groen);box-shadow:inset 0 -3px 0 var(--groen)}
+.cookie__tabs button:hover{color:var(--tekst)}
+.cookie__inhoud{padding:22px 28px;overflow-y:auto}
+.cookie__inhoud p{margin:0 0 10px}
+.cookie__titel{font-family:var(--kop);font-weight:800;font-size:1.08rem}
+.cookie__rij{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid var(--lijn)}
+.cookie__rij:last-child{border-bottom:0}
+.cookie__rij p{margin:2px 0 0;font-size:.9rem;color:var(--stil)}
+.cookie__altijd{flex:none;font-size:.85rem;font-weight:700;color:var(--stil)}
+.schakel{position:relative;flex:none;width:50px;height:28px;cursor:pointer}
+.schakel input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.schakel span{position:absolute;inset:0;border-radius:99px;background:var(--lijn);transition:background .2s}
+.schakel span::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.schakel input:checked+span{background:var(--groen)}
+.schakel input:checked+span::after{transform:translateX(22px)}
+.schakel input:focus-visible+span{outline:3px solid var(--groen);outline-offset:2px}
+.cookie__knoppen{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;padding:16px 28px;border-top:1px solid var(--lijn)}
+.cookie__knop{font-family:var(--kop);font-weight:800;font-size:.98rem;padding:13px 22px;border-radius:var(--r);border:2px solid var(--groen);background:var(--groen);color:#fff;cursor:pointer}
+.cookie__knop--licht{background:#fff;color:var(--tekst);border-color:#D9D0C2}
+.cookie__knop:hover{filter:brightness(.94)}
+.voet__cookie{font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(max-width:560px){
+  .cookie{padding:10px;align-items:flex-end}
+  .cookie__kop{padding:14px 18px}.cookie__kop img{height:42px}
+  .cookie__tabs button{padding:13px 4px;font-size:.95rem}
+  .cookie__inhoud{padding:16px 18px}
+  .cookie__knoppen{display:grid;grid-template-columns:1fr 1fr;padding:14px 18px}
+  .cookie__knop{padding:13px 10px}
+  .cookie__knop[data-consent="granted"]{grid-column:1/-1;order:-1}
+}
