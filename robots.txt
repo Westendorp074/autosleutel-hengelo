@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /bedankt
 
 Sitemap: https://autosleutel-hengelo.nl/sitemap.xml

@@ -575,7 +575,7 @@ bouw_paginas(globals())
 indexeerbaar = [p for p, ni in PAGINAS if not ni]
 urls = "".join(f"<url><loc>{SITE}{p}</loc><changefreq>monthly</changefreq><priority>{'1.0' if p == '/' else '0.7'}</priority></url>" for p in indexeerbaar)
 (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>', encoding="utf-8")
-(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bedankt\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 (OUT / "llms.txt").write_text(f"""# {HANDELSNAAM}
 
 Autosleutelservice voor Hengelo en omgeving ({", ".join(PLAATSEN)}). Onderdeel van {MOEDER} ({RECHTSPERSOON}, KvK {KVK}), {MOEDER_URL}
