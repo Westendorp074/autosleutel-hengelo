@@ -327,12 +327,12 @@ def bouw(g):
   </ul>
   <p>Wij verkopen uw gegevens niet en gebruiken ze niet voor andere doelen.</p>
   <h2>Cookies</h2>
-  <p>Deze website plaatst geen statistiekcookies zonder uw toestemming. Bij uw eerste bezoek vragen wij toestemming via de cookiemelding. Geeft u toestemming, dan gebruiken wij Google Analytics om te zien hoe bezoekers onze website gebruiken: welke pagina&#39;s worden bekeken en of iemand contact opneemt (bijvoorbeeld een klik op het telefoonnummer, WhatsApp of het versturen van het formulier). Uw keuze onthouden wij in uw eigen browser en u kunt die altijd wijzigen via &quot;Cookie-instellingen&quot; onderaan elke pagina.</p>
+  <p>Deze website plaatst geen statistiekcookies zonder uw toestemming. Bij uw eerste bezoek vragen wij toestemming via de cookiemelding. Geeft u toestemming, dan gebruiken wij Google Analytics en Google Ads om te zien hoe bezoekers op onze website komen en hoe zij onze website gebruiken: welke pagina&#39;s worden bekeken en of iemand contact opneemt (bijvoorbeeld een klik op het telefoonnummer, WhatsApp of het versturen van het formulier). Uw keuze onthouden wij in uw eigen browser en u kunt die altijd wijzigen via &quot;Cookie-instellingen&quot; onderaan elke pagina.</p>
   <h2>Met wie wij gegevens delen</h2>
   <ul>
     <li><strong>Vercel</strong>: hosting van deze website.</li>
     <li><strong>Web3Forms</strong>: verzendt uw formulieraanvraag per e-mail naar ons.</li>
-    <li><strong>Google</strong>: lettertypen van deze website (Google Fonts), en met uw toestemming Google Analytics.</li>
+    <li><strong>Google</strong>: lettertypen van deze website (Google Fonts), en met uw toestemming Google Analytics en Google Ads.</li>
     <li><strong>WhatsApp (Meta)</strong>: alleen als u ons zelf via WhatsApp benadert.</li>
   </ul>
   <p>Sommige van deze partijen zijn gevestigd buiten de EU. Doorgifte gebeurt op basis van de waarborgen die de AVG voorschrijft. Daarnaast verstrekken wij gegevens als de wet ons daartoe verplicht.</p>
@@ -340,7 +340,7 @@ def bouw(g):
   <ul>
     <li>Aanvragen die niet tot een opdracht leiden: uiterlijk 12 maanden.</li>
     <li>Gegevens van opdrachten en facturen: 7 jaar (fiscale bewaarplicht).</li>
-    <li>Bezoekstatistieken: maximaal 14 maanden in Google Analytics.</li>
+    <li>Bezoekstatistieken: maximaal 14 maanden in Google Analytics; meetgegevens van advertenties volgens de bewaartermijnen van Google Ads.</li>
   </ul>
   <h2>Uw rechten</h2>
   <p>U kunt uw gegevens inzien, laten corrigeren of verwijderen, bezwaar maken, de verwerking laten beperken en uw gegevens opvragen. Stuur uw verzoek naar <a href="mailto:{MAIL}">{MAIL}</a>; wij reageren binnen een maand. Klachten kunt u indienen bij de <a href="https://autoriteitpersoonsgegevens.nl" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>

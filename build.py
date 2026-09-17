@@ -41,9 +41,11 @@ MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augu
 # ---------- Meten: Google Analytics 4 ----------
 # Leeg of "G-XXXX" = geen tag, geen cookiemelding en de privacytekst zegt dat er niet gemeten wordt.
 GA_ID = "G-60VCGF9LL1"                        # property "Autosleutel Hengelo" (aangemaakt 16-09-2026)
+ADS_ID = "AW-17596975114"                     # Google Ads 239-515-4586, zelfde tag als Enschede
+CONVERSIE = {"bellen": "ZE3GCOnRqfscEIqQ8sZB", "whatsapp": "CJmUCOzRqfscEIqQ8sZB", "formulier": "6k_QCO_RqfscEIqQ8sZB"}   # acties "Hengelo - ..." (17-09-2026)
 MEET_ACTIEF = GA_ID.startswith("G-") and "XXXX" not in GA_ID
 TAG_HEAD = (f"""<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('consent','default',{{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500}});</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script><script>gtag('js',new Date());gtag('config','{GA_ID}');</script>""") if MEET_ACTIEF else ""
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script><script>gtag('js',new Date());gtag('config','{GA_ID}');gtag('config','{ADS_ID}');</script>""") if MEET_ACTIEF else ""
 COOKIE_HTML = """<div class="cookie" id="cookiebalk" hidden>
   <div class="cookie__venster" role="dialog" aria-modal="true" aria-labelledby="cookie-titel">
     <div class="cookie__kop"><img src="/img/logo-autosleutel-hengelo.png" alt="Autosleutel Hengelo" width="720" height="240"></div>
@@ -63,8 +65,8 @@ COOKIE_HTML = """<div class="cookie" id="cookiebalk" hidden>
           <span class="cookie__altijd">Altijd aan</span>
         </div>
         <div class="cookie__rij">
-          <div><strong>Statistieken</strong><p>Cookies van Google waarmee wij kunnen zien hoe bezoekers onze website gebruiken.</p></div>
-          <label class="schakel"><input type="checkbox" id="cookie-ads" aria-label="Statistieken"><span></span></label>
+          <div><strong>Statistieken en marketing</strong><p>Cookies van Google waarmee wij kunnen zien hoe bezoekers op onze website komen en hoe zij de website gebruiken.</p></div>
+          <label class="schakel"><input type="checkbox" id="cookie-ads" aria-label="Statistieken en marketing"><span></span></label>
         </div>
       </div>
       <div data-paneel="over" hidden>
@@ -119,6 +121,14 @@ from data_kennis import KENNIS, KENNIS_FOTO
 def versie(bestand):
     p = OUT / bestand
     return hashlib.md5(p.read_bytes()).hexdigest()[:8] if p.exists() else "0"
+
+# De conversielabels uit CONFIG in site.js zetten, zodat alleen CONFIG onderhouden hoeft te worden.
+_jsp = OUT / "site.js"
+_js = _jsp.read_text(encoding="utf-8")
+_nieuw = "var LABELS = " + json.dumps({k: (f"{ADS_ID}/{v}" if v else "") for k, v in CONVERSIE.items()}) + ";"
+_js2 = re.sub(r"var LABELS = \{[^}]*\};", _nieuw, _js, count=1)
+if _js2 != _js:
+    _jsp.write_text(_js2, encoding="utf-8")
 
 CSS_V, JS_V = versie("styles.css"), versie("site.js")
 TEL_HTML = html.escape(TEL_TONEN)

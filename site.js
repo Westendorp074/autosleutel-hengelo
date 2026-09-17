@@ -138,6 +138,7 @@
   });
 
   // ---------- Toestemming (Consent Mode v2) en gebeurtenissen ----------
+  var LABELS = {"bellen": "AW-17596975114/ZE3GCOnRqfscEIqQ8sZB", "whatsapp": "AW-17596975114/CJmUCOzRqfscEIqQ8sZB", "formulier": "AW-17596975114/6k_QCO_RqfscEIqQ8sZB"};   // conversielabels; build.py vult ze
   // Zonder toestemming meet Google niets. De keuze onthouden wij in de browser van de bezoeker.
   var heeftTag = typeof window.gtag === 'function';
   var cb = document.getElementById('cookiebalk');
@@ -185,7 +186,10 @@
   if (heeftTag && /^\/bedankt(\.html)?\/?$/.test(location.pathname)) {
     var alGeteld = false;
     try { alGeteld = sessionStorage.getItem('conv_formulier') === '1'; sessionStorage.setItem('conv_formulier', '1'); } catch (e) {}
-    if (!alGeteld) gtag('event', 'formulier_verzonden');
+    if (!alGeteld) {
+      gtag('event', 'formulier_verzonden');
+      if (LABELS.formulier) gtag('event', 'conversion', { send_to: LABELS.formulier });
+    }
   }
 
   // Klikken op bellen, WhatsApp, route en kenteken.
@@ -211,6 +215,7 @@
       : soort === 'route' ? 'route_klik' : soort === 'kenteken' ? 'kenteken_klik' : 'klik_' + soort;
     metMeting(e, el, function (klaar) {
       gtag('event', naam, klaar ? { event_callback: klaar, event_timeout: 600 } : {});
+      if (LABELS[soort]) gtag('event', 'conversion', klaar ? { send_to: LABELS[soort], event_callback: klaar, event_timeout: 600 } : { send_to: LABELS[soort] });
     });
   });
 })();
