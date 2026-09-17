@@ -189,11 +189,28 @@
   }
 
   // Klikken op bellen, WhatsApp, route en kenteken.
+  // Wacht kort tot de meting is aangekomen voordat de browser wegspringt (WhatsApp, bellen, route).
+  function metMeting(e, el, verstuur) {
+    var url = el.getAttribute('href') || '';
+    var mag = false; try { mag = localStorage.getItem('consent') === 'granted'; } catch (f) {}
+    var spring = mag && url && url.charAt(0) !== '#' && !e.defaultPrevented && !e.ctrlKey && !e.metaKey
+      && !e.shiftKey && !e.altKey && e.button === 0 && el.getAttribute('target') !== '_blank';
+    if (!spring) { verstuur(null); return; }
+    e.preventDefault();
+    var weg = false;
+    var ga = function () { if (!weg) { weg = true; window.location.href = url; } };
+    setTimeout(ga, 600);
+    verstuur(ga);
+  }
+
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-conv]');
     if (!el || !window.gtag) return;
     var soort = el.getAttribute('data-conv');
-    gtag('event', soort === 'bellen' ? 'tel_klik' : soort === 'whatsapp' ? 'whatsapp_klik'
-      : soort === 'route' ? 'route_klik' : soort === 'kenteken' ? 'kenteken_klik' : 'klik_' + soort);
+    var naam = soort === 'bellen' ? 'tel_klik' : soort === 'whatsapp' ? 'whatsapp_klik'
+      : soort === 'route' ? 'route_klik' : soort === 'kenteken' ? 'kenteken_klik' : 'klik_' + soort;
+    metMeting(e, el, function (klaar) {
+      gtag('event', naam, klaar ? { event_callback: klaar, event_timeout: 600 } : {});
+    });
   });
 })();
