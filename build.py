@@ -6,7 +6,7 @@ eigen huisstijl en platte URL's (/prijzen, /bmw) met cleanUrls.
 Wijzigen = CONFIG of een data-module aanpassen → `python build.py` → commit. HTML nooit met de hand bewerken.
 Foto's: leg originelen in foto-origineel/ en draai python fotos.py; build.py gebruikt alleen img/.
 """
-import hashlib, html, json, pathlib, re
+import hashlib, html, json, pathlib, re, datetime
 
 # ============================================================
 # CONFIG
@@ -573,7 +573,32 @@ bouw_paginas(globals())
 """ + VOET, encoding="utf-8")
 
 indexeerbaar = [p for p, ni in PAGINAS if not ni]
-urls = "".join(f"<url><loc>{SITE}{p}</loc><changefreq>monthly</changefreq><priority>{'1.0' if p == '/' else '0.7'}</priority></url>" for p in indexeerbaar)
+# ---------- Datum van de laatste echte wijziging per pagina ----------
+# De hash negeert de versienummers van css/js, anders zou elke stijlwijziging
+# alle pagina's als gewijzigd markeren. Datum blijft staan zolang de inhoud gelijk is.
+def _paginabestand(pad):
+    if pad == "/":
+        return OUT / "index.html"
+    kaal = pad.strip("/")
+    return OUT / (kaal + "/index.html") if False else OUT / (kaal + ".html")
+
+def _kerninhoud(tekst):
+    tekst = re.sub(r"(styles|site)\.[0-9a-f]+\.(css|js)", r"\1.\2", tekst)
+    return re.sub(r"\?v=[0-9a-f]+", "", tekst)
+
+_LM = OUT / "lastmod.json"
+_vorige = json.loads(_LM.read_text(encoding="utf-8")) if _LM.exists() else {}
+_vandaag = datetime.date.today().isoformat()
+LASTMOD = {}
+for _pad in indexeerbaar:
+    _b = _paginabestand(_pad)
+    _h = hashlib.sha1(_kerninhoud(_b.read_text(encoding="utf-8")).encode("utf-8")).hexdigest()[:12] if _b.exists() else ""
+    _oud = _vorige.get(_pad)
+    LASTMOD[_pad] = {"hash": _h, "datum": _oud["datum"] if _oud and _oud.get("hash") == _h else _vandaag}
+_LM.write_text(json.dumps(LASTMOD, ensure_ascii=False, sort_keys=True, indent=1), encoding="utf-8")
+_gewijzigd = sum(1 for _p in LASTMOD if LASTMOD[_p]["datum"] == _vandaag)
+print(f"Sitemap: {len(LASTMOD)} pagina's, {_gewijzigd} met datum van vandaag")
+urls = "".join(f"<url><loc>{SITE}{p}</loc><lastmod>{LASTMOD[p]['datum']}</lastmod><priority>{'1.0' if p == '/' else '0.7'}</priority></url>" for p in indexeerbaar)
 (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>', encoding="utf-8")
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 (OUT / "llms.txt").write_text(f"""# {HANDELSNAAM}
