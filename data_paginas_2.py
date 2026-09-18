@@ -15,7 +15,7 @@ def bouw(g):
     pagina("/autosleutel-bijmaken", f"Autosleutel bijmaken Hengelo | reservesleutel vanaf € {P_TRANS}",
            f"Reservesleutel of nieuwe autosleutel voor Hengelo: vanaf € {P_TRANS} inclusief programmeren, meestal in {DOORLOOPTIJD} klaar. Prijs vooraf via uw kenteken.",
            jsonld=[faq_jsonld(BIJ_FAQ), kruimels_jsonld([("Home", "/"), ("Autosleutel bijmaken", "/autosleutel-bijmaken")])],
-           beeld="opel-astra-klapsleutel-bijmaken.jpg", body=f"""
+           beeld="renault-kadjar-sleutelkaart-bijmaken.jpg", body=f"""
 {kruimels([("Home", "/"), ("Autosleutel bijmaken", "")])}
 <section class="sectie sectie--kort"><div class="wrap twee">
   <div>
@@ -24,7 +24,7 @@ def bouw(g):
     {antwoord(f"Heeft u nog een werkende sleutel, dan zetten wij de chip en de afstandsbediening over op een nieuwe sleutel. Dat kost vanaf € {P_TRANS}, inclusief frezen, programmeren en btw; per sleuteltype ziet u hieronder de vanaf-prijs. Meestal bent u in {DOORLOOPTIJD} klaar, in de werkplaats op {REISTIJD} van Hengelo of aan huis. Met uw kenteken krijgt u de prijs vooraf.")}
     {knoppen()}
   </div>
-  <figure class="figuur">{foto("opel-astra-klapsleutel-bijmaken.jpg", "Twee bijgemaakte Opel-klapsleutels in de hand, met de Opel Astra op de achtergrond", lazy=False)}<figcaption>Opel Astra: klapsleutel bijgemaakt en geprogrammeerd</figcaption></figure>
+  <figure class="figuur">{foto("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten in de hand, met de zwarte Renault Kadjar op de achtergrond", lazy=False)}<figcaption>Renault Kadjar: twee sleutelkaarten bijgemaakt en ingeleerd</figcaption></figure>
 </div></section>
 {kiezer("Welke sleutel heeft u?", "Het sleuteltype bepaalt de prijs, niet hoe duur uw auto was. Kies het type dat op uw sleutel lijkt. Wij gaan bij geen enkel merk uit van één type; twijfelt u, stuur dan een foto of uw kenteken.", zand=True)}
 {cta("Twee sleutels tegelijk? Op de tweede krijgt u korting. Stuur uw kenteken en vraag naar de prijs voor twee.")}
