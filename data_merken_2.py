@@ -32,7 +32,7 @@ dict(naam="Mazda", slug="mazda", prijsregel="staffel", foto=("mazda-cx-5-smartke
      faq=[("Wat kost een smartkey voor een CX-5?", "Vanaf € 150, inclusief programmeren. Uw kenteken geeft de exacte prijs."),
           ("Mijn Mazda-sleutel is kapot, maar de auto start nog.", "Dan is de chip in orde. Meestal volstaat een reparatie of een nieuwe behuizing met uw eigen elektronica.")]),
 
-dict(naam="Mercedes-Benz", slug="mercedes-benz", prijsregel="mercedes", foto=None,
+dict(naam="Mercedes-Benz", slug="mercedes-benz", prijsregel="mercedes", foto=("mercedes-slk-autosleutel-hengelo.jpg", "Mercedes-sleutel met sleutelhanger in de hand, met de zwarte Mercedes SLK op de achtergrond", "Mercedes SLK: sleutel bijgemaakt en ingeleerd"),
      intro="Mercedes-Benz personenwagens vanaf 2015 maken wij niet; de Sprinter W906 tot en met 2017 wel. Voor Mercedes tot en met bouwjaar 2014 kunt u bij ons terecht: de vaste sleutel met chip van de oudere modellen en de bekende infraroodsleutel met chroomrand. Wij zeggen het liever vooraf dan dat u voor niets komt; op uw kenteken ziet u meteen of het bij uw Mercedes kan.",
      typen=[("Tot ongeveer 1997", "Vaste sleutel met chip, bij de W124 en vroege W202 en W210. Kopie van uw werkende sleutel."),
             ("1997 – 2014", "Infraroodsleutel met chroomrand, met of zonder keyless, bij de A-, B-, C-, E- en S-klasse, CLK, CLS, ML, GLK, Vito en Sprinter. Prijs vooraf op uw kenteken."),
