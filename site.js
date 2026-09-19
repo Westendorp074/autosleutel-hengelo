@@ -218,4 +218,77 @@
       if (LABELS[soort]) gtag('event', 'conversion', klaar ? { send_to: LABELS[soort], event_callback: klaar, event_timeout: 600 } : { send_to: LABELS[soort] });
     });
   });
+
+  // ---------- Tikfout in het e-mailadres opvangen ----------
+  // Vergelijkt het domein met de bekende aanbieders; bij één of twee tekens verschil
+  // stelt de site de juiste schrijfwijze voor. Er gaat niets naar buiten.
+  (function () {
+    var veld = document.querySelector('form input[type="email"]');
+    if (!veld) return;
+    var DOMEINEN = ['gmail.com', 'hotmail.com', 'hotmail.nl', 'outlook.com', 'outlook.nl', 'live.nl',
+      'icloud.com', 'ziggo.nl', 'kpnmail.nl', 'home.nl', 'planet.nl', 'upcmail.nl', 'telfort.nl',
+      'xs4all.nl', 'me.com', 'yahoo.com', 'protonmail.com', 'caiway.nl', 'online.nl', 'chello.nl'];
+    var hint = document.createElement('small');
+    hint.hidden = true;
+    hint.style.display = 'block';
+    hint.style.marginTop = '.35rem';
+    veld.parentNode.appendChild(hint);
+
+    function afstand(a, b) {
+      var m = a.length, n = b.length, i, j, rij = [], vorig;
+      for (j = 0; j <= n; j++) rij[j] = j;
+      for (i = 1; i <= m; i++) {
+        vorig = rij[0]; rij[0] = i;
+        for (j = 1; j <= n; j++) {
+          var tmp = rij[j];
+          rij[j] = Math.min(rij[j] + 1, rij[j - 1] + 1, vorig + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
+          vorig = tmp;
+        }
+      }
+      return rij[n];
+    }
+
+    function voorstel(adres) {
+      var deel = adres.split('@');
+      if (deel.length !== 2 || !deel[1]) return null;
+      var domein = deel[1].toLowerCase(), beste = null, besteAfstand = 3;
+      if (DOMEINEN.indexOf(domein) > -1) return null;
+      for (var k = 0; k < DOMEINEN.length; k++) {
+        var d = afstand(domein, DOMEINEN[k]);
+        if (d < besteAfstand) { besteAfstand = d; beste = DOMEINEN[k]; }
+      }
+      return beste ? deel[0] + '@' + beste : null;
+    }
+
+    function toon() {
+      hint.hidden = true;
+      hint.textContent = '';
+      var waarde = veld.value.trim();
+      if (!waarde || waarde.indexOf('@') < 0) return;
+      var goed = voorstel(waarde);
+      if (!goed) return;
+      hint.textContent = 'Bedoelde u ';
+      var knop = document.createElement('button');
+      knop.type = 'button';
+      knop.textContent = goed;
+      knop.style.background = 'none';
+      knop.style.border = '0';
+      knop.style.padding = '0';
+      knop.style.font = 'inherit';
+      knop.style.color = 'inherit';
+      knop.style.textDecoration = 'underline';
+      knop.style.cursor = 'pointer';
+      knop.addEventListener('click', function () {
+        veld.value = goed;
+        hint.hidden = true;
+        veld.focus();
+      });
+      hint.appendChild(knop);
+      hint.appendChild(document.createTextNode('?'));
+      hint.hidden = false;
+    }
+
+    veld.addEventListener('blur', toon);
+    veld.addEventListener('input', function () { if (!hint.hidden) { hint.hidden = true; } });
+  })();
 })();

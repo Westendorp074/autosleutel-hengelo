@@ -421,7 +421,7 @@ def formulier(bron):
       </div>
       <div class="veld"><label for="naam">Naam</label><input id="naam" name="Naam" required autocomplete="name"></div>
       <div class="veld"><label for="tel">Telefoon <small>(niet verplicht)</small></label><input id="tel" name="Telefoon" type="tel" autocomplete="tel"></div>
-      <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required autocomplete="email"></div>
+      <div class="veld"><label for="mail">E-mail</label><input id="mail" name="email" type="email" required pattern="[^@\\s]+@[^@\\s]+\\.[a-zA-Z]{{2,}}" title="Vul een volledig e-mailadres in, bijvoorbeeld naam@voorbeeld.nl" autocomplete="email"></div>
       <div class="veld veld--vol"><label for="opm">Opmerkingen</label>
         <textarea id="opm" name="Opmerkingen" placeholder="Bijvoorbeeld: ik ben alle sleutels kwijt, de knopjes werken niet meer, of ik wil graag aan huis geholpen worden."></textarea></div>
       <div class="veld veld--vol">
