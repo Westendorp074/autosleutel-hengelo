@@ -43,7 +43,7 @@ c.resize((180, 180), Image.LANCZOS).save(IMG / "apple-touch-icon.png", optimize=
 
 # 3. OG-afbeelding
 og = Image.new("RGB", (1200, 630), BG)
-foto = Image.open(IMG / "bmw-x1-smartkey-bijmaken.jpg").convert("RGB")
+foto = Image.open(IMG / "bmw-x1-smartkey-hengelo.jpg").convert("RGB")
 r = max(520 / foto.width, 630 / foto.height)
 foto = foto.resize((round(foto.width * r), round(foto.height * r)), Image.LANCZOS)
 l, t = (foto.width - 520) // 2, (foto.height - 630) // 2

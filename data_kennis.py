@@ -69,10 +69,10 @@ KENNIS = [
 
 # Foto per kennisartikel (bestand, alt, onderschrift)
 KENNIS_FOTO = {
-    "autosleutel-nat-geworden": ("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspecialist repareert de elektronica van een autosleutel aan de werkbank", "Natte elektronica repareren wij op de printplaat zelf"),
-    "klapsleutel-veer-kapot": ("fiat-500-klapsleutel-bijmaken.jpg", "Twee Fiat-klapsleutels in de hand, met de witte Fiat 500 op de achtergrond", "Nieuwe behuizing, eigen chip en zender: Fiat 500"),
-    "tweedehands-auto-een-sleutel": ("jaguar-xf-smartkey-bijmaken.jpg", "Twee smartkeys in de hand, met de Jaguar XF op de achtergrond", "Tweede sleutel bijgemaakt voor een Jaguar XF"),
-    "autosleutel-gestolen": ("jeep-compass-smartkey-bijmaken.jpg", "Twee nieuwe smartkeys in een gehandschoende hand, met de witte Jeep Compass op de achtergrond", "Oude sleutels gewist, twee nieuwe ingeleerd: Jeep Compass"),
-    "afstandsbediening-werkt-niet": ("ford-mustang-autosleutel-bijmaken.jpg", "Twee Ford-sleutels met afstandsbediening in de hand, met de Ford Mustang op de achtergrond", "Afstandsbediening opnieuw ingeleerd: Ford Mustang"),
-    "zelf-autosleutel-programmeren": ("autosleutel-programmeren-hyundai.jpg", "Hyundai-sleutels worden ingeleerd met een programmeertablet via de diagnoseaansluiting", "Inleren via de diagnoseaansluiting met apparatuur per merk"),
+    "autosleutel-nat-geworden": ("werkplaats-reparatie-werkbank-hengelo.jpg", "Sleutelspecialist repareert de elektronica van een autosleutel aan de werkbank", "Natte elektronica repareren wij op de printplaat zelf"),
+    "klapsleutel-veer-kapot": ("fiat-500-klapsleutel-hengelo.jpg", "Twee Fiat-klapsleutels in de hand, met de witte Fiat 500 op de achtergrond", "Nieuwe behuizing, eigen chip en zender: Fiat 500"),
+    "tweedehands-auto-een-sleutel": ("jaguar-xf-smartkey-hengelo.jpg", "Twee smartkeys in de hand, met de Jaguar XF op de achtergrond", "Tweede sleutel bijgemaakt voor een Jaguar XF"),
+    "autosleutel-gestolen": ("jeep-compass-smartkey-hengelo.jpg", "Twee nieuwe smartkeys in een gehandschoende hand, met de witte Jeep Compass op de achtergrond", "Oude sleutels gewist, twee nieuwe ingeleerd: Jeep Compass"),
+    "afstandsbediening-werkt-niet": ("ford-mustang-autosleutel-hengelo.jpg", "Twee Ford-sleutels met afstandsbediening in de hand, met de Ford Mustang op de achtergrond", "Afstandsbediening opnieuw ingeleerd: Ford Mustang"),
+    "zelf-autosleutel-programmeren": ("hyundai-autosleutel-programmeren-hengelo.jpg", "Hyundai-sleutels worden ingeleerd met een programmeertablet via de diagnoseaansluiting", "Inleren via de diagnoseaansluiting met apparatuur per merk"),
 }

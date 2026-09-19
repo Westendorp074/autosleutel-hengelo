@@ -334,7 +334,7 @@ def dealerblok():
         <li>{icoon("vink")}Wat niet kan, zeggen wij vooraf: {MERCEDES_REGEL}</li>
       </ul>
     </div>
-    <figure class="media__foto">{foto("werkplaats-voorraad-autosleutel-behuizingen.jpg", "Voorraadkasten met autosleutelbehuizingen en chips per merk in de werkplaats")}<figcaption>Voorraad per merk in de werkplaats</figcaption></figure>
+    <figure class="media__foto">{foto("werkplaats-voorraad-behuizingen-hengelo.jpg", "Voorraadkasten met autosleutelbehuizingen en chips per merk in de werkplaats")}<figcaption>Voorraad per merk in de werkplaats</figcaption></figure>
   </div>
 </section>"""
 
@@ -362,7 +362,7 @@ def werkgebiedblok(wit=False):
       <p class="noot">Uw plaats staat er niet bij? Bel even; in de werkplaats bent u altijd welkom.</p>
     </div>
     <div class="adreskaart">
-      {foto("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspecialist aan de werkbank in de werkplaats van Westendorp in Enschede", klas="adreskaart__foto")}
+      {foto("werkplaats-reparatie-werkbank-hengelo.jpg", "Sleutelspecialist aan de werkbank in de werkplaats van Westendorp in Enschede", klas="adreskaart__foto")}
       <div class="adreskaart__in">
         <h3>Werkplaats {MOEDER}</h3>
         <ul class="feiten feiten--kolom">

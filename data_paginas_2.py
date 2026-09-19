@@ -15,7 +15,7 @@ def bouw(g):
     pagina("/autosleutel-bijmaken", f"Autosleutel bijmaken Hengelo | reservesleutel vanaf € {P_TRANS}",
            f"Reservesleutel of nieuwe autosleutel voor Hengelo: vanaf € {P_TRANS} inclusief programmeren, meestal in {DOORLOOPTIJD} klaar. Prijs vooraf via uw kenteken.",
            jsonld=[faq_jsonld(BIJ_FAQ), kruimels_jsonld([("Home", "/"), ("Autosleutel bijmaken", "/autosleutel-bijmaken")])],
-           beeld="renault-kadjar-sleutelkaart-bijmaken.jpg", body=f"""
+           beeld="renault-kadjar-sleutelkaart-hengelo.jpg", body=f"""
 {kruimels([("Home", "/"), ("Autosleutel bijmaken", "")])}
 <section class="sectie sectie--kort"><div class="wrap twee">
   <div>
@@ -24,7 +24,7 @@ def bouw(g):
     {antwoord(f"Heeft u nog een werkende sleutel, dan zetten wij de chip en de afstandsbediening over op een nieuwe sleutel. Dat kost vanaf € {P_TRANS}, inclusief frezen, programmeren en btw; per sleuteltype ziet u hieronder de vanaf-prijs. Meestal bent u in {DOORLOOPTIJD} klaar, in de werkplaats op {REISTIJD} van Hengelo of aan huis. Met uw kenteken krijgt u de prijs vooraf.")}
     {knoppen()}
   </div>
-  <figure class="figuur">{foto("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten in de hand, met de zwarte Renault Kadjar op de achtergrond", lazy=False)}<figcaption>Renault Kadjar: twee sleutelkaarten bijgemaakt en ingeleerd</figcaption></figure>
+  <figure class="figuur">{foto("renault-kadjar-sleutelkaart-hengelo.jpg", "Twee Renault-sleutelkaarten in de hand, met de zwarte Renault Kadjar op de achtergrond", lazy=False)}<figcaption>Renault Kadjar: twee sleutelkaarten bijgemaakt en ingeleerd</figcaption></figure>
 </div></section>
 {kiezer("Welke sleutel heeft u?", "Het sleuteltype bepaalt de prijs, niet hoe duur uw auto was. Kies het type dat op uw sleutel lijkt. Wij gaan bij geen enkel merk uit van één type; twijfelt u, stuur dan een foto of uw kenteken.", zand=True)}
 {cta("Twee sleutels tegelijk? Op de tweede krijgt u korting. Stuur uw kenteken en vraag naar de prijs voor twee.")}
@@ -56,7 +56,7 @@ def bouw(g):
     pagina("/autosleutel-kwijt", "Autosleutel kwijt Hengelo | nieuwe sleutel zonder reserve",
            "Alle autosleutels kwijt? Wij maken een nieuwe sleutel op uw kenteken, melden hem aan en wissen de oude. In de werkplaats of bij u aan huis in Hengelo.",
            jsonld=[faq_jsonld(KWIJT_FAQ), kruimels_jsonld([("Home", "/"), ("Autosleutel kwijt", "/autosleutel-kwijt")])],
-           beeld="jeep-compass-smartkey-bijmaken.jpg", body=f"""
+           beeld="jeep-compass-smartkey-hengelo.jpg", body=f"""
 {kruimels([("Home", "/"), ("Autosleutel kwijt", "")])}
 <section class="sectie sectie--kort"><div class="wrap twee">
   <div>
@@ -66,7 +66,7 @@ def bouw(g):
     <p>Heeft u nog wel een reservesleutel? Dan is het eenvoudiger: een <a href="/autosleutel-bijmaken">kopie van die sleutel</a> kost vanaf € {P_TRANS}.</p>
     {knoppen('Bel direct <span class="tel-nr">' + TEL_HTML + '</span>')}
   </div>
-  <figure class="figuur">{foto("jeep-compass-smartkey-bijmaken.jpg", "Twee nieuwe smartkeys in een gehandschoende hand, met de Jeep Compass waarvan alle sleutels kwijt waren op de achtergrond", lazy=False)}<figcaption>Jeep Compass: oude sleutels gewist, twee nieuwe ingeleerd</figcaption></figure>
+  <figure class="figuur">{foto("jeep-compass-smartkey-hengelo.jpg", "Twee nieuwe smartkeys in een gehandschoende hand, met de Jeep Compass waarvan alle sleutels kwijt waren op de achtergrond", lazy=False)}<figcaption>Jeep Compass: oude sleutels gewist, twee nieuwe ingeleerd</figcaption></figure>
 </div></section>
 <section class="sectie sectie--zand"><div class="wrap wrap--tekst">
   <h2>Eerst dit</h2>
@@ -134,7 +134,7 @@ def bouw(g):
     pagina("/aan-huis", f"Autosleutel aan huis Hengelo | vanaf € {AAN_HUIS_VANAF} extra",
            f"Auto start niet of alle sleutels kwijt? Wij komen naar u toe in Hengelo en melden de sleutel ter plekke aan. Vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs.",
            jsonld=[faq_jsonld(AANHUIS_FAQ), kruimels_jsonld([("Home", "/"), ("Aan huis", "/aan-huis")])],
-           beeld="autosleutel-programmeren-hyundai.jpg", body=f"""
+           beeld="hyundai-autosleutel-programmeren-hengelo.jpg", body=f"""
 {kruimels([("Home", "/"), ("Aan huis", "")])}
 <section class="sectie sectie--kort"><div class="wrap twee">
   <div>
@@ -143,7 +143,7 @@ def bouw(g):
     {antwoord(f"Kunt u niet naar de werkplaats komen, dan komen wij naar u. In Hengelo kost dat vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; daarbuiten komt er een kilometervergoeding bij, die in de prijsopgave staat. Wij nemen de juiste sleutel mee, melden hem ter plekke aan via de diagnoseaansluiting, en u rijdt weer.")}
     {knoppen("Bel voor een afspraak")}
   </div>
-  <figure class="figuur">{foto("autosleutel-programmeren-hyundai.jpg", "Hyundai-sleutels in de hand terwijl ze met een programmeertablet via de diagnoseaansluiting worden ingeleerd", lazy=False)}<figcaption>Inleren via de diagnoseaansluiting, ook bij u voor de deur</figcaption></figure>
+  <figure class="figuur">{foto("hyundai-autosleutel-programmeren-hengelo.jpg", "Hyundai-sleutels in de hand terwijl ze met een programmeertablet via de diagnoseaansluiting worden ingeleerd", lazy=False)}<figcaption>Inleren via de diagnoseaansluiting, ook bij u voor de deur</figcaption></figure>
 </div></section>
 <section class="sectie sectie--zand"><div class="wrap wrap--tekst">
   <h2>Wanneer aan huis handig is</h2>
@@ -171,7 +171,7 @@ def bouw(g):
     # ---------- Over ons ----------
     pagina("/over-ons", "Over ons | Autosleutel Hengelo, onderdeel van Westendorp",
            f"Autosleutel Hengelo is de autosleuteldienst van Westendorp Sleutel- en Slotenspecialist: bedrijf sinds {SINDS_BEDRIJF}, autosleutels sinds {SINDS_AUTOSLEUTELS}.",
-           jsonld=[kruimels_jsonld([("Home", "/"), ("Over ons", "/over-ons")])], beeld="werkplaats-autosleutel-reparatie-werkbank.jpg", body=f"""
+           jsonld=[kruimels_jsonld([("Home", "/"), ("Over ons", "/over-ons")])], beeld="werkplaats-reparatie-werkbank-hengelo.jpg", body=f"""
 {kruimels([("Home", "/"), ("Over ons", "")])}
 <section class="sectie sectie--kort"><div class="wrap twee">
   <div>
@@ -179,7 +179,7 @@ def bouw(g):
     {antwoord(f"{HANDELSNAAM} is geen los bedrijf, maar de autosleuteldienst van {MOEDER}. Dat familiebedrijf bestaat sinds {SINDS_BEDRIJF} en maakt sinds {SINDS_AUTOSLEUTELS} autosleutels, inmiddels meer dan {PER_JAAR} per jaar. De werkplaats zit aan de {STRAAT} in {WINKELCENTRUM}, {REISTIJD} vanaf Hengelo. Kunt u niet komen, dan komen wij aan huis.")}
     {knoppen(tweede="Naar de hoofdsite", tweede_href=MOEDER_URL, tweede_icoon="pijl")}
   </div>
-  <figure class="figuur">{foto("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspecialist aan de werkbank in de werkplaats van Westendorp in Enschede", lazy=False)}<figcaption>De werkbank in {WINKELCENTRUM}</figcaption></figure>
+  <figure class="figuur">{foto("werkplaats-reparatie-werkbank-hengelo.jpg", "Sleutelspecialist aan de werkbank in de werkplaats van Westendorp in Enschede", lazy=False)}<figcaption>De werkbank in {WINKELCENTRUM}</figcaption></figure>
 </div></section>
 <section class="sectie sectie--zand"><div class="wrap wrap--tekst">
   <h2>Wat u bij ons vindt</h2>
@@ -193,10 +193,10 @@ def bouw(g):
 <section class="sectie"><div class="wrap">
   <div class="sectie__kop"><h2>Uit de werkplaats</h2></div>
   <div class="galerij">
-    <figure>{foto("werkplaats-voorraad-autosleutel-behuizingen.jpg", "Sleutelspecialist bij de voorraadkasten met sleutelbehuizingen per merk")}<figcaption>Behuizingen en chips op voorraad</figcaption></figure>
-    <figure>{foto("autosleutel-programmeren-hyundai.jpg", "Hyundai-sleutels worden met een programmeertablet via de diagnoseaansluiting ingeleerd")}<figcaption>Inleren via de diagnoseaansluiting</figcaption></figure>
-    <figure>{foto("ford-mustang-autosleutel-bijmaken.jpg", "Twee Ford-sleutels in de hand, met de Ford Mustang op de achtergrond")}<figcaption>Ford Mustang</figcaption></figure>
-    <figure>{foto("mini-clubman-smartkey-bijmaken.jpg", "Twee Mini-smartkeys in de hand, met de Mini Clubman op de achtergrond")}<figcaption>Mini Clubman</figcaption></figure>
+    <figure>{foto("werkplaats-voorraad-behuizingen-hengelo.jpg", "Sleutelspecialist bij de voorraadkasten met sleutelbehuizingen per merk")}<figcaption>Behuizingen en chips op voorraad</figcaption></figure>
+    <figure>{foto("hyundai-autosleutel-programmeren-hengelo.jpg", "Hyundai-sleutels worden met een programmeertablet via de diagnoseaansluiting ingeleerd")}<figcaption>Inleren via de diagnoseaansluiting</figcaption></figure>
+    <figure>{foto("ford-mustang-autosleutel-hengelo.jpg", "Twee Ford-sleutels in de hand, met de Ford Mustang op de achtergrond")}<figcaption>Ford Mustang</figcaption></figure>
+    <figure>{foto("mini-clubman-smartkey-hengelo.jpg", "Twee Mini-smartkeys in de hand, met de Mini Clubman op de achtergrond")}<figcaption>Mini Clubman</figcaption></figure>
   </div>
 </div></section>
 {cta()}
@@ -248,7 +248,7 @@ def bouw(g):
       </div>
     </div>
   </div>
-  <figure class="figuur">{foto("werkplaats-voorraad-autosleutel-behuizingen.jpg", "Sleutelspecialist bij de voorraadkasten in de werkplaats van Westendorp in Enschede Zuid", lazy=False)}<figcaption>De werkplaats: hier wordt uw sleutel gemaakt</figcaption></figure>
+  <figure class="figuur">{foto("werkplaats-voorraad-behuizingen-hengelo.jpg", "Sleutelspecialist bij de voorraadkasten in de werkplaats van Westendorp in Enschede Zuid", lazy=False)}<figcaption>De werkplaats: hier wordt uw sleutel gemaakt</figcaption></figure>
 </div></section>
 {werkgebiedblok(wit=True)}
 {formulier("contact")}

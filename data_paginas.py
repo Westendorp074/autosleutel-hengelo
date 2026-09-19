@@ -38,8 +38,8 @@ def bouw_paginas(g):
       <p class="tekstlink"><a href="{ROUTE_LINK}" rel="noopener" data-conv="route">{icoon("route")}Route vanuit Hengelo</a></p>
     </div>
     <div class="media__fotos">
-      <figure>{foto("werkplaats-voorraad-autosleutel-behuizingen.jpg", "Sleutelspecialist bij de voorraadkasten met autosleutelbehuizingen en chips in de werkplaats")}<figcaption>Behuizingen en chips per merk op voorraad</figcaption></figure>
-      <figure>{foto("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspecialist repareert een autosleutel aan de werkbank in de werkplaats in Enschede")}<figcaption>Programmeren en repareren aan de werkbank</figcaption></figure>
+      <figure>{foto("werkplaats-voorraad-behuizingen-hengelo.jpg", "Sleutelspecialist bij de voorraadkasten met autosleutelbehuizingen en chips in de werkplaats")}<figcaption>Behuizingen en chips per merk op voorraad</figcaption></figure>
+      <figure>{foto("werkplaats-reparatie-werkbank-hengelo.jpg", "Sleutelspecialist repareert een autosleutel aan de werkbank in de werkplaats in Enschede")}<figcaption>Programmeren en repareren aan de werkbank</figcaption></figure>
     </div>
   </div>
 </section>"""
@@ -54,19 +54,19 @@ def bouw_paginas(g):
       <p>Alle sleutels kwijt of staat de auto vast? Dan komen wij naar u toe en melden de nieuwe sleutel ter plekke aan via de diagnoseaansluiting. In Hengelo kost dat vanaf € {AAN_HUIS_VANAF} bovenop de sleutelprijs; daarbuiten rekenen wij een kilometervergoeding, die in de prijsopgave staat.</p>
       <p class="tekstlink"><a href="/aan-huis">{icoon("pijl")}Zo werkt aan huis</a></p>
     </div>
-    <figure class="media__foto">{foto("autosleutel-programmeren-hyundai.jpg", "Hyundai-sleutels in de hand terwijl ze met een programmeertablet via de diagnoseaansluiting worden ingeleerd")}<figcaption>Inleren via de diagnoseaansluiting, ook bij u voor de deur</figcaption></figure>
+    <figure class="media__foto">{foto("hyundai-autosleutel-programmeren-hengelo.jpg", "Hyundai-sleutels in de hand terwijl ze met een programmeertablet via de diagnoseaansluiting worden ingeleerd")}<figcaption>Inleren via de diagnoseaansluiting, ook bij u voor de deur</figcaption></figure>
   </div>
 </section>"""
 
     GALERIJ = [
-        ("bmw-x1-smartkey-bijmaken.jpg", "Twee BMW-smartkeys in de hand, met de BMW X1 op de achtergrond", "BMW X1 · smartkey"),
-        ("mini-clubman-smartkey-bijmaken.jpg", "Twee Mini-smartkeys in de hand, met de Mini Clubman op de achtergrond", "Mini Clubman · smartkey"),
-        ("renault-kadjar-sleutelkaart-bijmaken.jpg", "Twee Renault-sleutelkaarten in de hand, met de Renault Kadjar op de achtergrond", "Renault Kadjar · sleutelkaart"),
-        ("fiat-500-klapsleutel-bijmaken.jpg", "Twee Fiat-klapsleutels in de hand, met de witte Fiat 500 op de achtergrond", "Fiat 500 · klapsleutel"),
-        ("jeep-compass-smartkey-bijmaken.jpg", "Twee smartkeys in de hand, met de witte Jeep Compass op de achtergrond", "Jeep Compass · smartkey"),
-        ("citroen-c4-picasso-smartkey-bijmaken.jpg", "Twee Citroën-sleutels in de hand, met de Citroën C4 Picasso op de achtergrond", "Citroën C4 Picasso · smartkey"),
-        ("jaguar-xf-smartkey-bijmaken.jpg", "Twee Jaguar-smartkeys in de hand, met de Jaguar XF op de achtergrond", "Jaguar XF · smartkey"),
-        ("opel-astra-klapsleutel-bijmaken.jpg", "Twee Opel-klapsleutels in de hand, met de Opel Astra op de achtergrond", "Opel Astra · klapsleutel"),
+        ("bmw-x1-smartkey-hengelo.jpg", "Twee BMW-smartkeys in de hand, met de BMW X1 op de achtergrond", "BMW X1 · smartkey"),
+        ("mini-clubman-smartkey-hengelo.jpg", "Twee Mini-smartkeys in de hand, met de Mini Clubman op de achtergrond", "Mini Clubman · smartkey"),
+        ("renault-kadjar-sleutelkaart-hengelo.jpg", "Twee Renault-sleutelkaarten in de hand, met de Renault Kadjar op de achtergrond", "Renault Kadjar · sleutelkaart"),
+        ("fiat-500-klapsleutel-hengelo.jpg", "Twee Fiat-klapsleutels in de hand, met de witte Fiat 500 op de achtergrond", "Fiat 500 · klapsleutel"),
+        ("jeep-compass-smartkey-hengelo.jpg", "Twee smartkeys in de hand, met de witte Jeep Compass op de achtergrond", "Jeep Compass · smartkey"),
+        ("citroen-c4-picasso-smartkey-hengelo.jpg", "Twee Citroën-sleutels in de hand, met de Citroën C4 Picasso op de achtergrond", "Citroën C4 Picasso · smartkey"),
+        ("jaguar-xf-smartkey-hengelo.jpg", "Twee Jaguar-smartkeys in de hand, met de Jaguar XF op de achtergrond", "Jaguar XF · smartkey"),
+        ("opel-astra-klapsleutel-hengelo.jpg", "Twee Opel-klapsleutels in de hand, met de Opel Astra op de achtergrond", "Opel Astra · klapsleutel"),
     ]
     def galerijblok():
         figs = "".join(f"<figure>{foto(n, a)}<figcaption>{c}</figcaption></figure>" for n, a, c in GALERIJ)
@@ -100,7 +100,7 @@ def bouw_paginas(g):
     ]
     pagina("/", "Autosleutel bijmaken Hengelo | klaar terwijl u wacht",
            f"Autosleutel kwijt, kapot of een reserve nodig? Bijmaken en programmeren vanaf € {P_TRANS}, meestal in {DOORLOOPTIJD}. Werkplaats op {REISTIJD} of aan huis.",
-           jsonld=[faq_jsonld(HOME_FAQ)], beeld="bmw-x1-smartkey-bijmaken.jpg", body=f"""
+           jsonld=[faq_jsonld(HOME_FAQ)], beeld="bmw-x1-smartkey-hengelo.jpg", body=f"""
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
@@ -110,7 +110,7 @@ def bouw_paginas(g):
       {knoppen()}
       <p class="hero__noot">Liever niet rijden? <strong>Aan huis in Hengelo vanaf € {AAN_HUIS_VANAF}</strong></p>
     </div>
-    <figure class="hero__foto">{foto("bmw-x1-smartkey-bijmaken-hero.jpg", "Twee bijgemaakte BMW-smartkeys in de hand, met de BMW X1 op de achtergrond", lazy=False)}<figcaption>BMW X1: twee smartkeys, klaar in één bezoek</figcaption></figure>
+    <figure class="hero__foto">{foto("bmw-x1-smartkey-hero-hengelo.jpg", "Twee bijgemaakte BMW-smartkeys in de hand, met de BMW X1 op de achtergrond", lazy=False)}<figcaption>BMW X1: twee smartkeys, klaar in één bezoek</figcaption></figure>
   </div>
   {vertrouwen()}
 </section>

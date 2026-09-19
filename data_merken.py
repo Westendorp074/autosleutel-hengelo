@@ -11,8 +11,8 @@ MERKEN = sorted(MERKEN_1 + MERKEN_2, key=lambda m: _sorteer(m["naam"]))
 
 OVERIGE_MERKEN = ['Abarth', 'Bentley', 'BYD', 'Cadillac', 'Chevrolet', 'Chrysler', 'Cupra', 'Daewoo', 'Daihatsu', 'Ferrari', 'Infiniti', 'Isuzu', 'Lamborghini', 'Lancia', 'Lotus', 'Lynk & Co', 'Maserati', 'MG', 'Polestar', 'Rover', 'Saab', 'SsangYong', 'Subaru', 'Tesla']
 
-FALLBACK_FOTO = [("werkplaats-autosleutel-reparatie-werkbank.jpg", "Sleutelspecialist programmeert een autosleutel aan de werkbank in de werkplaats in Enschede", "De werkbank in onze werkplaats in Enschede Zuid"),
-                 ("werkplaats-voorraad-autosleutel-behuizingen.jpg", "Sleutelspecialist bij de voorraadkasten met sleutels en behuizingen per merk", "Sleutels en behuizingen per merk op voorraad")]
+FALLBACK_FOTO = [("werkplaats-reparatie-werkbank-hengelo.jpg", "Sleutelspecialist programmeert een autosleutel aan de werkbank in de werkplaats in Enschede", "De werkbank in onze werkplaats in Enschede Zuid"),
+                 ("werkplaats-voorraad-behuizingen-hengelo.jpg", "Sleutelspecialist bij de voorraadkasten met sleutels en behuizingen per merk", "Sleutels en behuizingen per merk op voorraad")]
 
 def _vanaf(g, m):
     r = m["prijsregel"]
