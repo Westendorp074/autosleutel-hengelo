@@ -485,3 +485,9 @@ h1,h2,h3{overflow-wrap:break-word}
   .cookie__knop{padding:13px 10px}
   .cookie__knop[data-consent="granted"]{grid-column:1/-1;order:-1}
 }
+
+/* Bereikbaarheid: spam en onbekende afzender */
+.bereik{margin:26px 0 0;padding:16px 18px;background:var(--groen-licht);border-radius:14px}
+.bereik h2{font-family:var(--kop);font-size:1.05rem;margin:0 0 8px}
+.bereik p{margin:0 0 8px;font-size:.98rem}
+.bereik p:last-child{margin-bottom:0}

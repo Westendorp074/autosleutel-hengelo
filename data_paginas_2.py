@@ -297,6 +297,11 @@ def bouw(g):
 <section class="sectie"><div class="wrap wrap--tekst">
   <h1>Uw aanvraag is verstuurd</h1>
   <p>Wij bekijken uw kenteken en sturen u dezelfde werkdag de prijs, met daarbij wanneer u terecht kunt of wanneer wij bij u kunnen zijn. Heeft u haast? Bel gerust.</p>
+  <div class="bereik">
+    <h2>Sla ons nummer even op</h2>
+    <p>Wij antwoorden via WhatsApp vanaf <strong>{TEL_TONEN}</strong> of per e-mail vanaf <strong>{MAIL}</strong>. Zet die twee in uw contacten, dan komt ons antwoord zeker binnen en ziet u het meteen.</p>
+    <p>Nog niets gehoord na een werkdag? Kijkt u dan in uw map Ongewenste e-mail, of belt u ons even.</p>
+  </div>
   {knoppen(tweede="Naar de homepage", tweede_href="/", tweede_icoon="pijl")}
   <p class="review-tip">{icoon("ster")}Al eerder bij ons geweest? Een korte <a href="{REVIEW_LINK}" rel="noopener" data-conv="review">Google-review voor Autosleutel Hengelo</a> helpt andere automobilisten uit Hengelo ons te vinden.</p>
 </div></section>
