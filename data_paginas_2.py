@@ -298,8 +298,8 @@ def bouw(g):
   <h1>Uw aanvraag is verstuurd</h1>
   <p>Wij bekijken uw kenteken en sturen u dezelfde werkdag de prijs, met daarbij wanneer u terecht kunt of wanneer wij bij u kunnen zijn. Heeft u haast? Bel gerust.</p>
   <div class="bereik">
-    <h2>Sla ons nummer even op</h2>
-    <p>Wij antwoorden via WhatsApp vanaf <strong>{TEL_TONEN}</strong> of per e-mail vanaf <strong>{MAIL}</strong>. Zet die twee in uw contacten, dan komt ons antwoord zeker binnen en ziet u het meteen.</p>
+    <h2>Sla ons e-mailadres even op</h2>
+    <p>Ons antwoord komt van <strong>{MAIL}</strong>. Zet dat adres in uw contacten, dan komt het bericht zeker binnen en ziet u het meteen.</p>
     <p>Nog niets gehoord na een werkdag? Kijkt u dan in uw map Ongewenste e-mail, of belt u ons even.</p>
   </div>
   {knoppen(tweede="Naar de homepage", tweede_href="/", tweede_icoon="pijl")}
